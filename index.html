@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of Sanket Rotangar, AI and backend engineer." />
+    <title>Sanket Rotangar — AI & Backend Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#">sanket<span>.</span>rotangar</a>
+        <div class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#now">Now</a>
+          <a href="/resume" data-track="nav-resume" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+          <a href="#contact">Let’s talk ↗</a>
+        </div>
+      </nav>
+      <div class="hero-main">
+        <div>
+          <p class="eyebrow">AI engineer &amp; backend builder</p>
+          <h1>Fast learner, relentless builder: <em>I hustle ideas into reality.</em></h1>
+          <p class="intro">I absorb complex stacks fast, engineer resilient backend pipelines, and hustle AI products from raw prototype to production impact.</p>
+          <div class="actions">
+            <a class="button" href="#work">Explore selected work <span>↗</span></a>
+            <a class="button button--secondary" href="/resume" data-track="hero-resume" target="_blank" rel="noopener noreferrer">Resume <span>↓</span></a>
+            <button class="button button--ai" id="flip-trigger" type="button" aria-label="Open Sanket's AI assistant">Ask Sanket's AI <span>✦</span></button>
+            <a class="text-link" href="#about">A little about me</a>
+          </div>
+          <div class="proof">
+            <div><strong>02</strong><small>Engineering internships</small></div>
+            <div><strong>Top 12</strong><small>eYantra, India</small></div>
+            <div><strong>GOIC</strong><small>Innovation winner</small></div>
+          </div>
+        </div>
+        <div class="card-scene" id="card-scene">
+          <div class="card-flipper" id="card-flipper">
+            <!-- FRONT FACE — original terminal card (untouched content) -->
+            <aside class="terminal card-face card-front" aria-label="Developer profile code card">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <pre class="code"><span class="key">const</span> <span class="type">engineer</span> = {
+  name: <span class="string">'Sanket Rotangar'</span>,
+  focus: [<span class="string">'AI'</span>, <span class="string">'Backend'</span>],
+  craft: <span class="string">'systems that scale'</span>,
+  toolkit: [
+    <span class="string">'Python'</span>, <span class="string">'FastAPI'</span>,
+    <span class="string">'RAG'</span>, <span class="string">'LLMs'</span>
+  ],
+  currently: <span class="string">'building useful things'</span>
+};
+
+<span class="comment">// Ready when you are.</span></pre>
+              <span class="tag">SYSTEMS · MODELS · IMPACT</span>
+            </aside>
+            <!-- BACK FACE — AI assistant chat interface -->
+            <div class="chat-card card-face card-back" aria-label="Sanket's AI Assistant">
+              <div class="chat-header">
+                <div class="chat-header-left">
+                  <div class="chat-avatar">S</div>
+                  <div>
+                    <span class="chat-title">Sanket's AI</span>
+                    <span class="chat-status-label"><span class="chat-status-dot"></span>Online</span>
+                  </div>
+                </div>
+                <button class="chat-close" id="flip-back" type="button" aria-label="Close assistant and return to code card">✕</button>
+              </div>
+              <div class="chat-body" id="chat-body">
+                <div class="chat-msg chat-msg--ai">
+                  <p>Hey! 👋 I'm Sanket's AI assistant. Ask me anything about his work, tech stack, or experience.</p>
+                </div>
+                <div class="chat-msg chat-msg--ai">
+                  <p>Try things like: <em>"What's MeetingMind?"</em> or <em>"What languages does Sanket use?"</em></p>
+                </div>
+              </div>
+              <div class="chat-suggestions" id="chat-suggestions">
+                <button class="chat-chip" type="button">What projects has Sanket built?</button>
+                <button class="chat-chip" type="button">What's his tech stack?</button>
+                <button class="chat-chip" type="button">Tell me about MeetingMind</button>
+              </div>
+              <form class="chat-input-row" id="chat-form">
+                <input class="chat-input" type="text" placeholder="Ask about Sanket…" autocomplete="off" aria-label="Chat message input" />
+                <button class="chat-send" type="submit" aria-label="Send message">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <!-- <span>© 2026 Sanket Rotangar</span> -->
+        <span class="status" aria-live="polite">
+          <span class="status-typewriter" id="hero-typewriter">Available for select collaborations.</span><span class="typewriter-cursor" aria-hidden="true">|</span>
+        </span>
+        <span>Scroll to explore ↓</span>
+      </footer>
+    </section>
+    <main class="portfolio">
+      <section class="credibility" aria-label="Highlights">
+        <div class="credibility-inner">
+          <p class="credibility-label">A builder across applied AI &amp; real-world systems</p>
+          <p class="credibility-item"><span>↗</span>RAG &amp; agentic workflows</p>
+          <p class="credibility-item"><span>↗</span>APIs that stay dependable</p>
+          <p class="credibility-item"><span>↗</span>Product-minded engineering</p>
+        </div>
+      </section>
+      <section class="section" id="work">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Selected builds</p>
+            <h2 class="section-title">A few ideas made real.</h2>
+          </div>
+          <p class="section-note">Product-minded experiments and systems built to meet people where they are.</p>
+        </div>
+        <div class="work-grid" id="work-grid">
+          <!-- Project 01: MeetingMind -->
+          <article class="project featured" data-project="meetingmind" tabindex="0" role="button" aria-label="MeetingMind project card - click to expand details">
+            <div class="project-top">
+              <span class="project-label">01 / Meetings, made useful</span>
+              <a class="project-arrow" href="https://github.com/Sanket-Rotangar/MeetingMind" target="_blank" rel="noreferrer" aria-label="Open MeetingMind on GitHub" title="View repository on GitHub">↗</a>
+            </div>
+            <div class="project-bottom">
+              <h3>Meeting<br>Mind</h3>
+              <p>A calmer way to turn conversations into summaries, action items, and transcripts—across web, mobile, and a browser extension.</p>
+              <div class="chips"><span>Python</span><span>Node.js</span><span>Google APIs</span></div>
+            </div>
+          </article>
+
+          <!-- Project 02: NightVigil -->
+          <article class="project compact" data-project="nightvigil" tabindex="0" role="button" aria-label="NightVigil project card - click to expand details">
+            <div class="project-top">
+              <span class="project-label">02 / Public safety</span>
+              <a class="project-arrow" href="https://github.com/Sanket-Rotangar/NightVigil-App" target="_blank" rel="noreferrer" aria-label="Open NightVigil on GitHub" title="View repository on GitHub">↗</a>
+            </div>
+            <div class="project-bottom">
+              <h3>Night<br>Vigil</h3>
+              <p>Smart patrolling verification, designed around real on-ground accountability.</p>
+              <div class="chips"><span>Mobile</span><span>Geofencing</span><span>Computer vision</span></div>
+            </div>
+          </article>
+
+          <!-- Project 03: AeroConnect -->
+          <article class="project third" data-project="aeroconnect" tabindex="0" role="button" aria-label="AeroConnect project card - click to expand details">
+            <div class="project-top">
+              <span class="project-label">03 / Air, understood</span>
+              <a class="project-arrow" href="https://github.com/Sanket-Rotangar/AeroBackend" target="_blank" rel="noreferrer" aria-label="Open AeroConnect on GitHub" title="View repository on GitHub">↗</a>
+            </div>
+            <div class="project-bottom">
+              <h3>Aero<br>Connect</h3>
+              <p>An IoT air-quality system for remote environments, with live analytics and forecasting.</p>
+              <div class="chips"><span>MQTT</span><span>React</span><span>ML</span></div>
+            </div>
+          </article>
+
+          <!-- Project 04: Piping MTO Extraction -->
+          <article class="project fourth" data-project="pipingmto" tabindex="0" role="button" aria-label="Piping MTO Extraction project card - click to expand details">
+            <div class="project-top">
+              <span class="project-label">04 / Drawings to decisions</span>
+              <a class="project-arrow" href="https://github.com/Sanket-Rotangar/AI-Piping-Isometric-to-MTO-Extraction-Tool" target="_blank" rel="noreferrer" aria-label="Open Piping MTO on GitHub" title="View repository on GitHub">↗</a>
+            </div>
+            <div class="project-bottom">
+              <h3>Piping MTO<br>Extraction</h3>
+              <p>Turns a piping isometric drawing into a structured material take-off—removing manual work from a highly technical workflow.</p>
+              <div class="chips"><span>Python</span><span>Computer vision</span><span>Full stack</span></div>
+            </div>
+          </article>
+
+          <!-- Bento Full-Grid Morphing Expansion Overlay -->
+          <div class="project-expanded-overlay" id="project-expanded-overlay" aria-hidden="true">
+            <div class="expanded-inner">
+              <div class="expanded-top">
+                <div class="expanded-kicker-group">
+                  <span class="expanded-kicker" id="expanded-kicker">01 / MEETINGS, MADE USEFUL</span>
+                  <span class="expanded-badge" id="expanded-badge">ACTIVE PRODUCTION</span>
+                </div>
+                <div class="expanded-actions">
+                  <a class="expanded-github-btn" id="expanded-github-btn" href="#" target="_blank" rel="noreferrer">
+                    <span>View on GitHub</span>
+                    <span class="expanded-arrow-icon">↗</span>
+                  </a>
+                  <button class="expanded-back-btn" id="expanded-back-btn" type="button" aria-label="Return to all projects">
+                    <span class="expanded-back-icon">←</span>
+                    <span>Back to grid</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="expanded-content-grid">
+                <!-- Left: Bespoke Photo / Visual Preview Section -->
+                <div class="expanded-media-col" id="expanded-media-col">
+                  <!-- Injected dynamically via JS -->
+                </div>
+
+                <!-- Right: Rich Project Engineering Details -->
+                <div class="expanded-details-col">
+                  <h3 class="expanded-title" id="expanded-title">MeetingMind</h3>
+                  <p class="expanded-tagline" id="expanded-tagline">A calmer way to turn conversations into summaries, action items, and transcripts.</p>
+
+                  <div class="expanded-info-blocks">
+                    <div class="expanded-info-block">
+                      <span class="expanded-block-label">THE PROBLEM</span>
+                      <p id="expanded-problem">Critical commitments and engineering action items get buried in long recordings and messy notes, requiring hours of manual transcription.</p>
+                    </div>
+
+                    <div class="expanded-info-block">
+                      <span class="expanded-block-label">THE ARCHITECTURE</span>
+                      <p id="expanded-architecture">Engineered across three independent clients (Chrome Extension, Web, Mobile) backed by Python services, Google OAuth2, and automated LLM summarization pipelines.</p>
+                    </div>
+
+                    <div class="expanded-info-block">
+                      <span class="expanded-block-label">KEY OUTCOMES</span>
+                      <ul class="expanded-highlights" id="expanded-highlights">
+                        <li>Seamless Google Calendar & Gmail API workflow automation</li>
+                        <li>Multi-format exports: structured Markdown, PDF, and actionable task lists</li>
+                        <li>Cross-platform real-time transcript streaming with speaker tagging</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="expanded-chips" id="expanded-chips">
+                    <span>Python</span><span>Node.js</span><span>Google APIs</span><span>FastAPI</span><span>Chrome Extension</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section now" id="now">
+        <div class="now-grid">
+          <div class="now-copy">
+            <p class="section-kicker">In the workshop</p>
+            <h2>Making agents easier to trust.</h2>
+            <p>I’m currently building an MCP-native multi-agent orchestrator: real JSON-RPC / stdio servers, human-in-the-loop control, and an evaluation harness. The goal is simple—make advanced AI systems useful without making their behaviour mysterious.</p>
+            <a class="inline-link" href="https://github.com/Sanket-Rotangar" target="_blank" rel="noreferrer">Follow the build on GitHub ↗</a>
+          </div>
+          <aside class="build-card" aria-label="Multi agent orchestration architecture">
+            <div class="build-top"><span>ORCHESTRATOR / 01</span><span class="build-live">ACTIVE BUILD</span></div>
+            <div class="flow">
+              <div class="flow-box">Intent<br>+ Context</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box">Agent<br>Router</div>
+              <div class="flow-box">MCP Tools<br>+ Servers</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box">Eval +<br>Human check</div>
+            </div>
+            <p>Built around transparent handoffs, observable decisions, and a human who stays in control.</p>
+          </aside>
+        </div>
+      </section>
+      <section class="section signal" id="about">
+        <div class="signal-wrap">
+          <div>
+            <p class="section-kicker">How I work</p>
+            <h2 class="signal-title">Less noise.<br>More <em>signal.</em></h2>
+            <p class="signal-copy">The most satisfying projects sit at the edge of engineering and intent: a question worth answering, a system that stays understandable, and a product that gives someone time back.</p>
+          </div>
+          <div class="principles">
+            <div class="principle"><b>Start with the real problem</b><span>Useful software begins by understanding the person on the other side of the screen.</span></div>
+            <div class="principle"><b>Make complexity feel quiet</b><span>Thoughtful architecture lets the product experience remain direct and dependable.</span></div>
+            <div class="principle"><b>Keep learning in public</b><span>Every build is an excuse to get better at the craft, then share what works.</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="contact" id="contact">
+        <div class="contact-grid">
+          <div>
+            <p class="section-kicker" style="color:#a8c97f">Have a good problem?</p>
+            <h2>Let’s make it<br><em>remarkable.</em></h2>
+            <p class="contact-copy">Whether you’re exploring an AI product, untangling a backend challenge, or just want to compare notes—send a message. I read every one.</p>
+          </div>
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Access Key: Replace with your key from https://web3forms.com/ -->
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" id="web3forms-key" />
+            <input type="hidden" name="subject" value="New Portfolio Message from sanketrotangar.com" />
+            <input type="hidden" name="from_name" value="Portfolio Inquirer" />
+            <!-- Honeypot spam protection -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
+            <div class="field-row">
+              <label class="field">Your name<input name="name" autocomplete="name" required placeholder="Jane Doe" /></label>
+              <label class="field">Email<input name="email" type="email" autocomplete="email" required placeholder="jane@company.com" /></label>
+            </div>
+            <label class="field">What are you thinking?<textarea name="message" required placeholder="A little context goes a long way."></textarea></label>
+            <button class="contact-link" type="submit" id="contact-submit-btn">
+              <span>Send message</span> <span>↗</span>
+            </button>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+            <p class="form-note">Direct mail reachout powered by Web3Forms. Or email directly: <a href="mailto:sanketrotangar04@gmail.com" class="contact-direct-email">sanketrotangar04@gmail.com</a>.</p>
+          </form>
+        </div>
+        <div class="contact-bottom">
+          <span>Based in Goa, India</span>
+          <a href="https://linkedin.com/in/sanketrotangar" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/Sanket-Rotangar" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </section>
+    </main>
+    <script src="js/script.js" defer></script>
+  </body>
+</html>

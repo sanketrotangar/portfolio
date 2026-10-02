@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanket Rotangar — Resume</title>
+    <meta name="description" content="Resume of Sanket Rotangar, AI & Backend Engineer." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #0b1412;
+        --muted: #53645e;
+        --border: #dce5e1;
+        --lime: #d9f54a;
+        --paper: #f7faf8;
+        --accent: #244435;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.55;
+        padding: 24px 16px 60px;
+      }
+
+      /* Top Action Bar */
+      .action-bar {
+        max-width: 860px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--ink);
+        text-decoration: none;
+        font: 600 13px 'DM Mono', monospace;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--border);
+        transition: all 0.2s ease;
+      }
+
+      .back-link:hover {
+        background: #edf3f0;
+        transform: translateY(-1px);
+      }
+
+      .action-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 9px 18px;
+        border-radius: 999px;
+        cursor: pointer;
+        text-decoration: none;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      .btn--primary {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .btn--primary:hover {
+        background: #273b33;
+        transform: translateY(-1px);
+      }
+
+      .btn--secondary {
+        background: #fff;
+        color: var(--ink);
+        border-color: var(--border);
+      }
+
+      .btn--secondary:hover {
+        background: #edf3f0;
+      }
+
+      /* Tracking Banner */
+      .track-banner {
+        max-width: 860px;
+        margin: 0 auto 20px;
+        background: #edf7ef;
+        border: 1px solid #c2e2c8;
+        border-radius: 10px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font: 500 12px 'DM Mono', monospace;
+        color: #1e5230;
+      }
+
+      .track-status-dot {
+        width: 7px;
+        height: 7px;
+        background: #2ea44f;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      /* Resume Paper Container */
+      .resume-container {
+        max-width: 860px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: clamp(28px, 5vw, 56px);
+        box-shadow: 0 10px 30px rgba(11, 20, 18, 0.04);
+      }
+
+      /* Resume Header */
+      .resume-header {
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 24px;
+        margin-bottom: 28px;
+      }
+
+      .resume-title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 12px;
+      }
+
+      .candidate-name {
+        font-size: clamp(26px, 4vw, 36px);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        color: var(--ink);
+        line-height: 1.1;
+      }
+
+      .candidate-role {
+        font-size: 15px;
+        font-weight: 700;
+        color: #2e624b;
+        letter-spacing: 0.02em;
+        margin-top: 4px;
+      }
+
+      .contact-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        font: 500 12px 'DM Mono', monospace;
+        color: var(--muted);
+      }
+
+      .contact-strip a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .contact-strip a:hover {
+        text-decoration: underline;
+      }
+
+      /* Sections */
+      .resume-section {
+        margin-bottom: 30px;
+      }
+
+      .section-heading {
+        font: 700 12px 'DM Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #3b6150;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 6px;
+        margin-bottom: 16px;
+      }
+
+      .summary-text {
+        font-size: 14.5px;
+        color: #2b3934;
+        line-height: 1.65;
+      }
+
+      /* Experience & Projects */
+      .item {
+        margin-bottom: 20px;
+      }
+
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+
+      .item-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .item-company {
+        font-weight: 600;
+        color: #2d5543;
+      }
+
+      .item-date {
+        font: 500 12px 'DM Mono', monospace;
+        color: var(--muted);
+      }
+
+      .item-bullets {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 6px;
+      }
+
+      .item-bullets li {
+        position: relative;
+        padding-left: 18px;
+        font-size: 13.5px;
+        color: #31423b;
+        line-height: 1.6;
+        margin-bottom: 4px;
+      }
+
+      .item-bullets li::before {
+        content: "•";
+        position: absolute;
+        left: 4px;
+        color: #4f8069;
+        font-weight: bold;
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
+      }
+
+      .skill-category {
+        font-size: 13px;
+        line-height: 1.5;
+        color: #31423b;
+      }
+
+      .skill-label {
+        font: 600 12px 'DM Mono', monospace;
+        color: var(--ink);
+        margin-right: 6px;
+      }
+
+      /* Print Optimizations */
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+          color: #000;
+        }
+
+        .action-bar,
+        .track-banner {
+          display: none !important;
+        }
+
+        .resume-container {
+          box-shadow: none;
+          border: none;
+          padding: 0;
+          max-width: 100%;
+        }
+
+        .section-heading {
+          color: #000;
+          border-color: #999;
+        }
+
+        a {
+          color: #000;
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Action Bar -->
+    <header class="action-bar">
+      <a class="back-link" href="../index.html">← Back to Portfolio</a>
+      <div class="action-buttons">
+        <button class="btn btn--secondary" type="button" onclick="navigator.clipboard.writeText(window.location.href); alert('Resume link copied to clipboard!');">Copy Link 🔗</button>
+        <button class="btn btn--primary" type="button" onclick="window.print()">Print / Save as PDF 🖨️</button>
+      </div>
+    </header>
+
+    <!-- Tracking Notification -->
+    <aside class="track-banner" id="track-banner" aria-live="polite">
+      <span><span class="track-status-dot"></span><strong id="track-message">Visit logged &amp; verified.</strong></span>
+      <span id="track-details" style="opacity: 0.85;">Source: direct</span>
+    </aside>
+
+    <!-- Full ATS-Optimized Printable Resume -->
+    <main class="resume-container">
+      <header class="resume-header">
+        <div class="resume-title-row">
+          <div>
+            <h1 class="candidate-name">SANKET ROTANGAR</h1>
+            <p class="candidate-role">BACKEND ENGINEER &middot; AI SYSTEMS, RAG &amp; FINE-TUNING</p>
+          </div>
+        </div>
+        <div class="contact-strip">
+          <span>Margao, Goa, India</span>
+          <span>&bull;</span>
+          <a href="mailto:sanketrotangar04@gmail.com">sanketrotangar04@gmail.com</a>
+          <span>&bull;</span>
+          <span>+91 7972804124</span>
+          <span>&bull;</span>
+          <a href="https://linkedin.com/in/sanketrotangar" target="_blank" rel="noreferrer">linkedin.com/in/sanketrotangar</a>
+          <span>&bull;</span>
+          <a href="https://github.com/Sanket-Rotangar" target="_blank" rel="noreferrer">github.com/Sanket-Rotangar</a>
+        </div>
+      </header>
+
+      <!-- Summary -->
+      <section class="resume-section">
+        <h2 class="section-heading">Summary</h2>
+        <p class="summary-text">
+          Backend engineer with hands-on experience building RAG pipelines, LLM fine-tuning, and secure REST API microservices across two engineering internships. A quick learner and high-agency builder comfortable owning problems end-to-end—from ambiguous requirements to battle-tested production endpoints. Looking for AI &amp; Backend engineering roles (Remote / Pune / Bangalore / Goa).
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section class="resume-section">
+        <h2 class="section-heading">Experience</h2>
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <span class="item-title">AI &amp; Backend Developer Intern</span> &mdash; <span class="item-company">Spintly</span>
+            </div>
+            <span class="item-date">Feb 2026 &ndash; June 2026</span>
+          </div>
+          <ul class="item-bullets">
+            <li>Built agentic AI workflows including RAG pipelines, retrieval systems, and multi-step LLM orchestration.</li>
+            <li>Fine-tuned a Llama 3.1 model using QLoRA on Google Colab to learn company Golang coding standards; curated a dataset of ~250 examples and trained the model, tested via backend API.</li>
+            <li>Designed and documented REST APIs with Swagger, including OAuth authentication, encryption, and secure API practices in microservice architecture.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <span class="item-title">Software Developer Intern</span> &mdash; <span class="item-company">SJ Innovation</span>
+            </div>
+            <span class="item-date">June 2025 &ndash; August 2025</span>
+          </div>
+          <ul class="item-bullets">
+            <li>Designed and developed PulseSync, an AI-powered employee survey system on the MERN stack, enabling multi-format surveys, role-based access, and real-time analytics.</li>
+            <li>Independently built an Employee Engagement Mobile App in React Native, integrating authentication, attendance, announcements, and health tracking (via Android Health).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="resume-section">
+        <h2 class="section-heading">Selected Projects</h2>
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <span class="item-title"><a href="https://github.com/Sanket-Rotangar/MeetingMind" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline;">MeetingMind</a></span> &mdash; <span class="item-company">Meeting Intelligence Platform</span>
+            </div>
+            <span class="item-date">2026</span>
+          </div>
+          <ul class="item-bullets">
+            <li>Converts meeting conversations into structured summaries, action items, and transcripts.</li>
+            <li>Built three independent client versions across Web, Mobile app, and Chrome extension using Python FastAPI and Node.js.</li>
+            <li>Integrated Google OAuth, Gmail, and Calendar APIs for seamless automated meeting workflows.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <span class="item-title"><a href="https://github.com/Sanket-Rotangar/NightVigil-App" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline;">NightVigil</a></span> &mdash; <span class="item-company">Smart Patrolling Verification (Goa Police Hackathon Winner)</span>
+            </div>
+            <span class="item-date">2025</span>
+          </div>
+          <ul class="item-bullets">
+            <li>Developed mobile application for police duty verification featuring high-precision biometric facial recognition, geofencing polygons, and dynamic credit ranking.</li>
+            <li>Implemented naka and patrol duty validation, duty assignment, and real-time supervisor analytics.</li>
+            <li>Felicitated by Director General of Police (DGP) Alok Kumar.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <span class="item-title"><a href="https://github.com/Sanket-Rotangar/AeroBackend" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline;">AeroConnect</a></span> &mdash; <span class="item-company">IoT AQI Monitoring &amp; ML Forecasting (IIT Bombay eYantra Finalist)</span>
+            </div>
+            <span class="item-date">2025 &ndash; 2026</span>
+          </div>
+          <ul class="item-bullets">
+            <li>Designed compact air quality sensor nodes achieving 99.76% Packet Delivery Ratio (PDR) over LoRa mesh and MQTT protocol for off-grid deployment.</li>
+            <li>Developed real-time React WebSocket analytics dashboards and hybrid gradient-boosting ML models for 12h-ahead AQI pollution forecasting.</li>
+            <li>Top 12 Finalist out of 312 teams Pan-India in eYantra (IIT Bombay); co-authored peer-reviewed research paper.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <span class="item-title"><a href="https://github.com/Sanket-Rotangar/AI-Piping-Isometric-to-MTO-Extraction-Tool" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:underline;">Piping MTO Extraction Tool</a></span> &mdash; <span class="item-company">Computer Vision &amp; OCR CAD Parser</span>
+            </div>
+            <span class="item-date">2025</span>
+          </div>
+          <ul class="item-bullets">
+            <li>Parses complex 2D piping isometric CAD drawings into structured Material Take-Offs (MTO) and Bill of Materials using OpenCV, OCR, and geometric heuristics.</li>
+            <li>Automates extraction of pipe schedules, weld tags, and flange ratings, cutting 90%+ manual transcription time.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="resume-section">
+        <h2 class="section-heading">Education</h2>
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <span class="item-title">Padre Conceicao College of Engineering (PCCE), Verna</span>
+            </div>
+            <span class="item-date">July 2022 &ndash; July 2026</span>
+          </div>
+          <p style="font-size:13.5px;color:#2b3934;margin-top:2px;">
+            B.E. Electronics &amp; Computer Engineering &bull; <strong>Honours: Robotics and Artificial Intelligence</strong><br />
+            <strong>CGPA: 9.33</strong> &bull; 3rd Rank Holder at Goa University (ECOMP Dept, x2)
+          </p>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="resume-section">
+        <h2 class="section-heading">Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <span class="skill-label">Languages:</span> Python, Java, SQL, TypeScript/JavaScript, C++
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">AI &amp; ML:</span> RAG Pipelines, LLM Fine-Tuning (QLoRA), Agentic Workflows, OpenAI SDK, Ollama, Vector DBs (Qdrant, Chroma)
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">Backend &amp; Web:</span> FastAPI, Node.js, Express, MERN Stack, RESTful APIs, WebSockets
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">Cloud &amp; Tools:</span> Docker, GCP, Firebase, Git, Postman, Vercel, Render
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">Fundamentals:</span> Distributed Systems, OOP, DBMS, OS, Computer Networks, API Security
+          </div>
+        </div>
+      </section>
+
+      <!-- Awards & Honors -->
+      <section class="resume-section">
+        <h2 class="section-heading">Honors &amp; Awards</h2>
+        <ul class="item-bullets">
+          <li><strong>AeroConnect (Converge 2.0):</strong> Felicitated by Dr. Pramod Sawant, Hon'ble Chief Minister of Goa.</li>
+          <li><strong>EcoNode+ (GOIC):</strong> Felicitated by Rohan Khaunte, Hon'ble Minister of Tourism, IT, E&amp;C, Printing &amp; Stationery, Goa.</li>
+          <li><strong>NightVigil (Goa Police Hackathon 2025):</strong> 1st Place Winner, felicitated by DGP Alok Kumar.</li>
+          <li><strong>eYantra Innovation Challenge (IIT Bombay):</strong> Top 12 Pan-India Finalist out of 312 teams.</li>
+          <li><strong>Certifications:</strong> AI Agents Fundamentals (Hugging Face), Joy of Computing using Python (NPTEL).</li>
+        </ul>
+      </section>
+    </main>
+
+    <script>
+      (function() {
+        // Tracked redirect analytics logic
+        const params = new URLSearchParams(window.location.search);
+        const source = params.get('source') || (document.referrer ? new URL(document.referrer, window.location.href).pathname : 'direct');
+        const trackData = {
+          event: 'resume_view',
+          source: source,
+          timestamp: new Date().toISOString(),
+          referrer: document.referrer || 'direct',
+          userAgent: navigator.userAgent
+        };
+
+        try {
+          const views = JSON.parse(localStorage.getItem('tracked_resume_views') || '[]');
+          views.push(trackData);
+          localStorage.setItem('tracked_resume_views', JSON.stringify(views.slice(-50)));
+        } catch(e) {}
+
+        const detailsEl = document.getElementById('track-details');
+        if (detailsEl) {
+          detailsEl.textContent = `Source: ${source} · Logged at ${new Date().toLocaleTimeString()}`;
+        }
+
+        console.log('[Resume Tracker] Tracked redirect event:', trackData);
+
+        // Optional target PDF direct redirect configuration
+        // If Sanket places a compiled PDF (e.g., Sanket_Rotangar_Resume.pdf) in this folder,
+        // setting autoDownload to true will trigger it automatically:
+        const AUTO_DOWNLOAD = false;
+        const TARGET_PDF = "Sanket_Rotangar_Resume.pdf";
+
+        if (AUTO_DOWNLOAD) {
+          const dlLink = document.createElement('a');
+          dlLink.href = TARGET_PDF;
+          dlLink.download = TARGET_PDF;
+          document.body.appendChild(dlLink);
+          dlLink.click();
+          document.body.removeChild(dlLink);
+        }
+      })();
+    </script>
+  </body>
+</html>
