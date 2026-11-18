@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" width="100%" height="auto" role="img" aria-labelledby="dastak-det-title dastak-det-desc">
+  <title id="dastak-det-title">Dastak Full Voice Architecture</title>
+  <desc id="dastak-det-desc">Telephony trigger, LiveKit room, modular STT LLM TTS pipeline with conversation state machine, tools, post-call reporting, and Caller Arena simulation traces.</desc>
+  <defs>
+    <marker id="dd-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-edge)" />
+    </marker>
+    <marker id="dd-arrow-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-accent-border)" />
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="840" height="280" rx="14" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+
+  <!-- Pipeline nodes -->
+  <text x="30" y="38" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">REAL-TIME TELEPHONY &amp; VOICE RUNTIME</text>
+
+  <g class="diagram-node">
+    <rect x="30" y="55" width="125" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="92" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Lead Webhook</text>
+  </g>
+  <path class="edge-path" d="M 155 78 L 190 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="195" y="55" width="170" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="280" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Consent &amp; Call Window</text>
+  </g>
+  <path class="edge-path" d="M 365 78 L 400 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="405" y="55" width="130" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="470" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">LiveKit Room</text>
+  </g>
+  <path class="edge-path" d="M 535 78 L 570 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="575" y="50" width="255" height="56" rx="10" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1.5"/>
+    <text x="702" y="74" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11.5" font-weight="600">Voice Pipeline</text>
+    <text x="702" y="93" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="9.5">Turn Detection · Nova-3 · Groq + State Machine · ElevenLabs</text>
+  </g>
+
+  <!-- Lower level: Tools -> Post-call -> Caller Arena -->
+  <text x="30" y="145" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">INTEGRATIONS &amp; EVALUATION HARNESS</text>
+
+  <path class="edge-path" d="M 702 106 L 702 145 Q 702 155 692 155 L 590 155" stroke="var(--color-diagram-edge)" stroke-width="1.5" fill="none" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="390" y="132" width="195" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="487" y="160" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Tools: Calendar &amp; Sheets</text>
+  </g>
+  <path class="edge-path" d="M 390 155 L 340 155" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node node--highlight">
+    <rect x="80" y="132" width="255" height="46" rx="8" fill="var(--color-diagram-accent-fill)" stroke="var(--color-diagram-accent-border)" stroke-width="1.5"/>
+    <text x="207" y="160" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="700">Post-Call: Summary, Score &amp; Alert ✦</text>
+  </g>
+
+  <!-- Down to Caller Arena -->
+  <path class="edge-path" d="M 207 178 L 207 205 Q 207 215 217 215 L 310 215" stroke="var(--color-diagram-edge)" stroke-width="1.5" fill="none" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="315" y="195" width="515" height="48" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="572" y="217" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="600">Traces &amp; Caller Arena Evaluation Suite</text>
+    <text x="572" y="233" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="9.5">State Transitions · Latency Waterfall · Simulated Hostile Caller Scenarios</text>
+  </g>
+</svg>

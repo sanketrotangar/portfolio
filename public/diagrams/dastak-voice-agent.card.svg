@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 160" width="100%" height="auto" role="img" aria-labelledby="dastak-card-title dastak-card-desc">
+  <title id="dastak-card-title">Dastak Voice Agent Call Architecture</title>
+  <desc id="dastak-card-desc">Lead webhook, consent trigger, LiveKit room, turn and state machine, calendar booking, and scored summary output.</desc>
+  <defs>
+    <marker id="d-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-edge)" />
+    </marker>
+    <marker id="d-arrow-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-accent-border)" />
+    </marker>
+  </defs>
+
+  <!-- Row 1: Lead -> Consent -> LiveKit -->
+  <g class="diagram-node">
+    <rect x="15" y="20" width="140" height="42" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+    <text x="85" y="46" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="500">1. Lead Webhook</text>
+  </g>
+  <path class="edge-path" d="M 155 41 L 189 41" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#d-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="195" y="20" width="150" height="42" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+    <text x="270" y="46" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="500">2. Consent &amp; Window</text>
+  </g>
+  <path class="edge-path" d="M 345 41 L 379 41" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#d-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="385" y="20" width="140" height="42" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+    <text x="455" y="46" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="500">3. LiveKit Room</text>
+  </g>
+
+  <!-- Curve down to Row 2 -->
+  <path class="edge-path" d="M 455 62 L 455 85 Q 455 95 445 95 L 355 95" stroke="var(--color-diagram-edge)" stroke-width="1.5" fill="none" marker-end="url(#d-arrow)"/>
+
+  <!-- Row 2: Voice Pipeline -> Calendar -> Scored Summary -->
+  <g class="diagram-node">
+    <rect x="180" y="95" width="170" height="42" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+    <text x="265" y="121" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="10.5" font-weight="500">4. Pipeline + State Machine</text>
+  </g>
+  <path class="edge-path" d="M 180 116 L 150 116" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#d-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="15" y="95" width="130" height="42" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+    <text x="80" y="121" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="500">5. Calendar &amp; CRM</text>
+  </g>
+
+  <!-- Curve to highlight node -->
+  <path class="edge-path" d="M 80 95 L 80 80 Q 80 72 90 72 L 365 72 Q 375 72 375 82 L 375 95" stroke="var(--color-diagram-accent-border)" stroke-width="1.5" fill="none" stroke-opacity="0.8" marker-end="url(#d-arrow-accent)"/>
+
+  <g class="diagram-node node--highlight">
+    <rect x="375" y="95" width="150" height="42" rx="8" fill="var(--color-diagram-accent-fill)" stroke="var(--color-diagram-accent-border)" stroke-width="1.5"/>
+    <text x="450" y="121" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="700">6. Scored Lead ✦</text>
+  </g>
+</svg>

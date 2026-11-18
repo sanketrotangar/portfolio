@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-labelledby="nv-db-title nv-db-desc">
+  <title id="nv-db-title">Location data storage</title>
+  <desc id="nv-db-desc">An incoming GPS update reaches the backend location handler, which appends every coordinate to locationsUNO, upserts the latest position in locationsDOS, and inserts a row in locationsTROS when the officer is outside the geofence.</desc>
+  <defs>
+    <marker id="db-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#A9C2B2"/>
+    </marker>
+    <style>
+      .node { fill: #FFFFFF; stroke: #CADBCF; stroke-width: 1; }
+      .node-accent { fill: #E9F6B8; stroke: #5F7A0C; stroke-width: 1.2; }
+      .node-label { fill: #0F2A1F; font: 500 12px "DM Mono", monospace; }
+      .node-sub { fill: #4A5E53; font: 400 10px "DM Mono", monospace; }
+      .code { fill: #0F2A1F; font: 500 12.5px "DM Mono", monospace; }
+      .edge { stroke: #A9C2B2; stroke-width: 1.4; fill: none; marker-end: url(#db-arrow); }
+      .edge-label { fill: #4A5E53; font: 400 10px "DM Mono", monospace; }
+    </style>
+  </defs>
+
+  <rect class="node" x="30" y="150" width="230" height="90" rx="10"/>
+  <text class="node-label" x="145" y="180" text-anchor="middle">Incoming GPS update</text>
+  <text class="node-sub" x="145" y="200" text-anchor="middle">lat · lon · timestamp</text>
+  <text class="node-sub" x="145" y="216" text-anchor="middle">officer + duty</text>
+
+  <rect class="node" x="350" y="150" width="250" height="90" rx="10"/>
+  <text class="node-label" x="475" y="180" text-anchor="middle">Location handler</text>
+  <text class="node-sub" x="475" y="200" text-anchor="middle">validate · distance check</text>
+  <text class="node-sub" x="475" y="216" text-anchor="middle">write current + history</text>
+
+  <path class="edge" d="M262 195 H338"/>
+
+  <rect class="node" x="700" y="30" width="460" height="86" rx="10"/>
+  <text class="code" x="720" y="60">locationsUNO</text>
+  <text class="node-sub" x="720" y="82">Historical patrol coordinates</text>
+  <text class="node-sub" x="720" y="99">Every shift, appended in order</text>
+
+  <rect class="node" x="700" y="150" width="460" height="86" rx="10"/>
+  <text class="code" x="720" y="180">locationsDOS</text>
+  <text class="node-sub" x="720" y="202">Latest location for an officer and duty</text>
+  <text class="node-sub" x="720" y="219">One current row, updated in place</text>
+
+  <rect class="node-accent" x="700" y="270" width="460" height="86" rx="10"/>
+  <text class="code" x="720" y="300">locationsTROS</text>
+  <text class="node-sub" x="720" y="322">Geofence breach events</text>
+  <text class="node-sub" x="720" y="339">Distance recorded outside the radius</text>
+
+  <path class="edge" d="M602 180 C650 180, 660 73, 694 73"/>
+  <text class="edge-label" x="646" y="122" text-anchor="middle">append</text>
+
+  <path class="edge" d="M602 195 H694"/>
+  <text class="edge-label" x="648" y="187" text-anchor="middle">upsert</text>
+
+  <path class="edge" d="M602 210 C650 210, 660 313, 694 313"/>
+  <text class="edge-label" x="646" y="268" text-anchor="middle">insert on breach</text>
+</svg>

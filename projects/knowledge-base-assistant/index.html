@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Base + Assistant — Sanket Rotangar</title>
+    <meta name="description" content="Multi-tenant company knowledge base with a permission-aware agent. Cites every answer, refuses what you're not cleared to see, and flags when documents disagree." />
+    <meta property="og:title" content="Knowledge Base + Assistant — Sanket Rotangar" />
+    <meta property="og:description" content="Multi-tenant company knowledge base with a permission-aware agent. Cites every answer, refuses what you're not cleared to see, and flags when documents disagree." />
+    <meta property="og:type" content="article" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script>
+      /* Apply the saved theme before first paint to avoid a flash. */
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="detail-body">
+    <header class="site-header" id="site-header">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="/#top">sanket<span>.</span>rotangar</a>
+        <div class="nav-links">
+          <a href="/#projects">Projects</a>
+          <a href="/#problems">Systems</a>
+          <a href="/#experience">Experience</a>
+          <a href="/#contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Toggle light and dark theme" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <a class="nav-resume" href="/resume" data-track="nav-resume" target="_blank" rel="noopener noreferrer">Resume <span>↓</span></a>
+          <a class="nav-ai" href="/#contact">Let's talk <span>↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="detail-container">
+      <div class="detail-nav-back">
+        <a href="/#projects" class="back-link">← Back to all projects</a>
+      </div>
+
+      <header class="detail-header">
+        <div class="detail-tagline">
+          <span class="detail-mono">01 / ENTERPRISE RAG</span>
+          <span class="project-status-badge">In build (Phase 1)</span>
+        </div>
+        <h1 class="detail-title">Knowledge Base + Assistant</h1>
+        <p class="detail-oneliner">Multi-tenant company knowledge base with a permission-aware agent. Cites every answer, refuses what you're not cleared to see, and flags when documents disagree.</p>
+
+        <div class="detail-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">My Role</span>
+            <div class="meta-val">Solo build, end to end: tenant-aware schema, access model, ingestion and retrieval pipeline, agent layer, and the evaluation harness.</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeframe</span>
+            <div class="meta-val"><span class="badge-todo">TODO: Timeframe not specified in source</span></div>
+          </div>
+          <div class="meta-item meta-item--wide">
+            <span class="meta-label">Stack</span>
+            <div class="meta-val project-card-stack"><span class="project-chip">PostgreSQL + pgvector</span><span class="project-chip">Row-Level Security</span><span class="project-chip">Hybrid search (RRF) + reranker</span><span class="project-chip">Switchable LLM layer</span><span class="project-chip">FastAPI</span><span class="project-chip">Next.js</span></div>
+          </div>
+          <div class="meta-item meta-item--wide">
+            <span class="meta-label">Links</span>
+            <div class="meta-val"><span class="meta-note-dimmed">Links hidden: Repo and demo URLs pending publication</span></div>
+          </div>
+        </div>
+      </header>
+
+      
+
+      <section class="detail-section" id="problem">
+        <h2 class="detail-section-title">1. Problem</h2>
+        <p class="detail-body-text">Company knowledge sits in drives and chats in five versions, and leadership needs the right document at the right moment. Generic RAG chatbots answer from whatever they can see, which means they eventually leak the wrong document to the wrong person.</p>
+        
+            <div class="how-it-works-block">
+              <h4>How it works</h4>
+              <ul class="detail-bullet-list">
+                <li>Ingest: PDF, DOCX and Markdown are parsed, chunked, embedded, and stored as versioned documents with tenant, department and clearance metadata.</li><li>Retrieve: vector + keyword search fused with RRF, then reranked. Access is enforced in Postgres via Row-Level Security before the model sees anything.</li><li>Answer: the agent responds from permitted chunks only, with citations (file, version, date).</li><li>Deny gracefully: if a restricted document matches, the user is told one exists and can request access. No title, snippet or content is revealed. Requests are logged for document owners.</li>
+              </ul>
+            </div>
+      </section>
+
+      <section class="detail-section" id="architecture">
+        <h2 class="detail-section-title">2. Architecture</h2>
+        <p class="detail-section-sub">System topology, transactional boundaries and data flow.</p>
+        
+        <div class="architecture-diagram-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" width="100%" height="auto" role="img" aria-labelledby="kb-detail-title kb-detail-desc">
+  <title id="kb-detail-title">Knowledge Base Full Architecture Diagram</title>
+  <desc id="kb-detail-desc">Full pipeline showing ingestion, Postgres RLS store, hybrid retrieval, agent generation, and the permission existence check audit path.</desc>
+  <defs>
+    <marker id="det-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-edge)" />
+    </marker>
+    <marker id="det-arrow-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-accent-border)" />
+    </marker>
+  </defs>
+
+  <!-- Background container grid -->
+  <rect x="10" y="10" width="840" height="300" rx="14" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+
+  <!-- Ingestion Pipeline -->
+  <text x="30" y="38" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">INGESTION &amp; PERMISSION STORAGE</text>
+
+  <g class="diagram-node">
+    <rect x="30" y="55" width="115" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="87" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Upload PDF/MD</text>
+  </g>
+  <path class="edge-path" d="M 145 78 L 180 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="185" y="55" width="165" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="267" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Parse &amp; Chunk (Versioned)</text>
+  </g>
+  <path class="edge-path" d="M 350 78 L 385 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="390" y="55" width="120" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="450" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Embeddings</text>
+  </g>
+  <path class="edge-path" d="M 510 78 L 545 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="550" y="50" width="275" height="56" rx="10" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1.5"/>
+    <text x="687" y="76" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="12" font-weight="600">PostgreSQL Store</text>
+    <text x="687" y="94" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10">pgvector + tsvector + RLS Enforced</text>
+  </g>
+
+  <!-- Query & Retrieval Track -->
+  <text x="30" y="145" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">QUERY &amp; ROLE-GATED ANSWER TRACK</text>
+
+  <!-- Branch down from Postgres to Hybrid Retrieve -->
+  <path class="edge-path" d="M 687 106 L 687 140 Q 687 150 677 150 L 515 150" stroke="var(--color-diagram-edge)" stroke-width="1.5" fill="none" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="330" y="130" width="180" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="420" y="158" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Hybrid Retrieve (RRF)</text>
+  </g>
+  <path class="edge-path" d="M 330 153 L 265 153" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="80" y="130" width="180" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="170" y="158" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Agent (Switchable LLM)</text>
+  </g>
+
+  <!-- To Cited Answer -->
+  <path class="edge-path" d="M 170 176 L 170 195 Q 170 205 180 205 L 325 205" stroke="var(--color-diagram-accent-border)" stroke-width="1.5" fill="none" marker-end="url(#det-arrow-accent)"/>
+
+  <g class="diagram-node node--highlight">
+    <rect x="330" y="190" width="200" height="48" rx="8" fill="var(--color-diagram-accent-fill)" stroke="var(--color-diagram-accent-border)" stroke-width="1.5"/>
+    <text x="430" y="219" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="12" font-weight="700">Cited Answer &amp; Conflict Flag ✦</text>
+  </g>
+
+  <!-- Permission Denial / Existence Path (dashed) -->
+  <text x="30" y="260" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">PERMISSION DENIAL &amp; WORKFLOW PATH</text>
+
+  <path class="edge-path" d="M 750 106 L 750 260 Q 750 270 740 270 L 685 270" stroke="var(--color-diagram-edge)" stroke-dasharray="4 4" stroke-width="1.5" fill="none" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="500" y="250" width="180" height="42" rx="8" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-dasharray="3 3"/>
+    <text x="590" y="276" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10.5">Existence Check (Flag Only)</text>
+  </g>
+  <path class="edge-path" d="M 500 271 L 435 271" stroke="var(--color-diagram-edge)" stroke-dasharray="4 4" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="260" y="250" width="170" height="42" rx="8" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-dasharray="3 3"/>
+    <text x="345" y="276" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10.5">Access Request Workflow</text>
+  </g>
+  <path class="edge-path" d="M 260 271 L 205 271" stroke="var(--color-diagram-edge)" stroke-dasharray="4 4" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="80" y="250" width="120" height="42" rx="8" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-dasharray="3 3"/>
+    <text x="140" y="276" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10.5">Audit Log</text>
+  </g>
+</svg>
+        </div>
+      </section>
+
+      <section class="detail-section" id="decisions">
+        <h2 class="detail-section-title">3. Key decisions &amp; trade-offs</h2>
+        <p class="detail-section-sub">Deliberate engineering choices, underlying reasons, and rejected alternatives.</p>
+        <div class="decisions-grid">
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Authorization lives in the data layer, not the prompt.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> The model only receives chunks the user is cleared for. Prompt-based guardrails fail under adversarial input, and row-level policies don't.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Prompt-based guardrails (fail under adversarial injection)
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Two-query retrieval.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> One query runs as the user. A second privileged query returns only an existence flag. The extra latency is a deliberate price for being transparent without leaking.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Single query without existence visibility, or leaky unified query
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">One Postgres instead of a separate vector DB.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> Permissions, versions and vectors stay in one transactional store. This fits the target scale. It isn't a claim that it beats dedicated vector databases at massive scale.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Separate dedicated vector database
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Version-aware answers.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> Superseded versions are archived and excluded by default. When two different documents conflict, the answer flags the conflict and shows both dates instead of silently picking one.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Silent arbitrary document selection
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Multi-tenant from day one.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> tenant_id and RLS are on every table, even when running a single tenant. Retrofitting isolation later means rewriting every query.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Single-tenant schema with planned future migration
+                    </div>
+                  </div>
+                </div></div>
+        
+            <div class="diff-block">
+              <h4>What sets it apart</h4>
+              <ul class="detail-bullet-list">
+                <li>Permission-leak red-team suite: adversarial prompts run as unauthorized users; the pass condition is zero leakage.</li><li>Access-request workflow: a denied search becomes an approval request instead of a dead end.</li><li>Executive brief mode: 'prep me for the vendor meeting' produces a cited digest across only the documents that person can access. (Phase 2)</li><li>Onboarding paths: role-based reading sequences for new hires. (Phase 3)</li>
+              </ul>
+            </div>
+      </section>
+
+      <section class="detail-section" id="outcomes">
+        <h2 class="detail-section-title">4. Outcomes (measured only)</h2>
+        <p class="detail-section-sub">Rigorous evaluation results and validation metrics.</p>
+        
+            <div class="outcomes-table-wrapper">
+              <table class="outcomes-table">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Measured Value / Status</th>
+                    <th>Validation Context</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                <tr>
+                  <td class="outcomes-metric-col">Retrieval hit@5 on [N]-question golden set</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Golden set in build</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">Permission leakage across [N] adversarial cases</td>
+                  <td class="outcomes-val-col"><strong>Design target: 0</strong> <span class="badge-target">Design Target</span></td>
+                  <td class="outcomes-note-col">Adversarial test suite</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">p95 answer latency</td>
+                  <td class="outcomes-val-col"><strong>Design target: ≤ [ __ ]</strong> <span class="badge-target">Design Target</span></td>
+                  <td class="outcomes-note-col">Measuring</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">Cost per answered query</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Cost telemetry active</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">Citation accuracy (answer supported by cited chunk)</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Evaluation harness</td>
+                </tr>
+                </tbody>
+              </table>
+              <p class="outcomes-hard-rule-notice">
+                <em>Rule: Outcome slots are populated only from measured test runs. Design targets are explicitly tagged and never presented as achieved results.</em>
+              </p>
+            </div>
+      </section>
+
+      <section class="detail-section" id="next">
+        <h2 class="detail-section-title">5. What I'd improve next</h2>
+        <p class="detail-section-sub">Next phases, production hardening, and scale roadmap.</p>
+        <ul class="detail-bullet-list detail-next-list"><li>Pick the final project name (replacing working title).</li><li>Confirm hosting environment (Supabase + Render/Railway + Vercel).</li><li>Build the eval harness (golden Q&A set + permission-leak suite) so outcome slots can be filled from real measurements.</li><li>Implement Executive brief mode: cited digest across accessible documents only (Phase 2).</li><li>Implement Onboarding paths: role-based reading sequences for new hires (Phase 3).</li></ul>
+      </section>
+
+      <footer class="detail-footer-next">
+        <span class="detail-footer-label">Next Project</span>
+        <a href="/projects/dastak-voice-agent/" class="detail-next-link">
+          <span>Dastak: Voice Agent for Real-Estate Lead Qualification</span>
+          <span class="detail-next-arrow">→</span>
+        </a>
+      </footer>
+    </main>
+
+    <footer class="site-footer">
+      <div class="contact-bottom" style="margin-top:40px;border-top:1px solid var(--border);">
+        <span>Goa, India · open to relocate</span>
+        <a href="/services.html">Services ↗</a>
+        <a href="https://linkedin.com/in/sanketrotangar" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/Sanket-Rotangar" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </footer>
+      <script src="/js/theme.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dastak: Voice Agent for Real-Estate Lead Qualification — Sanket Rotangar</title>
+    <meta name="description" content="A Hinglish voice agent that calls new property leads within a minute, qualifies buyers, books site visits and hands brokers a scored summary." />
+    <meta property="og:title" content="Dastak: Voice Agent for Real-Estate Lead Qualification — Sanket Rotangar" />
+    <meta property="og:description" content="A Hinglish voice agent that calls new property leads within a minute, qualifies buyers, books site visits and hands brokers a scored summary." />
+    <meta property="og:type" content="article" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script>
+      /* Apply the saved theme before first paint to avoid a flash. */
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="detail-body">
+    <header class="site-header" id="site-header">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="/#top">sanket<span>.</span>rotangar</a>
+        <div class="nav-links">
+          <a href="/#projects">Projects</a>
+          <a href="/#problems">Systems</a>
+          <a href="/#experience">Experience</a>
+          <a href="/#contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Toggle light and dark theme" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <a class="nav-resume" href="/resume" data-track="nav-resume" target="_blank" rel="noopener noreferrer">Resume <span>↓</span></a>
+          <a class="nav-ai" href="/#contact">Let's talk <span>↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="detail-container">
+      <div class="detail-nav-back">
+        <a href="/#projects" class="back-link">← Back to all projects</a>
+      </div>
+
+      <header class="detail-header">
+        <div class="detail-tagline">
+          <span class="detail-mono">02 / VOICE AGENT</span>
+          <span class="project-status-badge">In build (Phase 1)</span>
+        </div>
+        <h1 class="detail-title">Dastak: Voice Agent for Real-Estate Lead Qualification</h1>
+        <p class="detail-oneliner">A Hinglish voice agent that calls new property leads within a minute, qualifies buyers, books site visits and hands brokers a scored summary.</p>
+
+        <div class="detail-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">My Role</span>
+            <div class="meta-val">Solo build, end to end: telephony and agent runtime, conversation state machine, Hinglish speech handling, booking and CRM integrations, and the simulation-based eval suite.</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeframe</span>
+            <div class="meta-val"><span class="badge-todo">TODO: Timeframe not specified in source</span></div>
+          </div>
+          <div class="meta-item meta-item--wide">
+            <span class="meta-label">Stack</span>
+            <div class="meta-val project-card-stack"><span class="project-chip">LiveKit Agents (Python)</span><span class="project-chip">Deepgram Nova-3</span><span class="project-chip">Groq LLM</span><span class="project-chip">ElevenLabs</span><span class="project-chip">FastAPI</span><span class="project-chip">Google Calendar + Sheets</span></div>
+          </div>
+          <div class="meta-item meta-item--wide">
+            <span class="meta-label">Links</span>
+            <div class="meta-val"><span class="meta-note-dimmed">Links hidden: Repo and demo URLs pending publication</span></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="status-note-banner"><span>ℹ</span> The demo runs over WebRTC (browser) in place of the phone leg. Real-world pilot: none yet.</div>
+
+      <section class="detail-section" id="problem">
+        <h2 class="detail-section-title">1. Problem</h2>
+        <p class="detail-body-text">Property leads go cold in minutes, but brokers call back in hours, after the buyer has already spoken to a competitor. Generic voice bots fall apart on real Indian calls: Hinglish, interruptions, 'call me later', wrong numbers.</p>
+        
+            <div class="how-it-works-block">
+              <h4>How it works</h4>
+              <ul class="detail-bullet-list">
+                <li>Trigger: a new lead hits a webhook (form or Sheet). A consent and calling-window check runs first.</li><li>Converse: the agent calls, confirms identity, then qualifies budget, area, BHK, timeline and buyer type. It handles objections and mirrors the caller's language mix per turn.</li><li>Act: it checks calendar slots live and books the site visit. If the buyer is hot, it hands off to a human.</li><li>Report: the broker gets a summary, a lead score with the reason, and the full transcript.</li>
+              </ul>
+            </div>
+      </section>
+
+      <section class="detail-section" id="architecture">
+        <h2 class="detail-section-title">2. Architecture</h2>
+        <p class="detail-section-sub">System topology, transactional boundaries and data flow.</p>
+        
+        <div class="architecture-diagram-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" width="100%" height="auto" role="img" aria-labelledby="dastak-det-title dastak-det-desc">
+  <title id="dastak-det-title">Dastak Full Voice Architecture</title>
+  <desc id="dastak-det-desc">Telephony trigger, LiveKit room, modular STT LLM TTS pipeline with conversation state machine, tools, post-call reporting, and Caller Arena simulation traces.</desc>
+  <defs>
+    <marker id="dd-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-edge)" />
+    </marker>
+    <marker id="dd-arrow-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-accent-border)" />
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="840" height="280" rx="14" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+
+  <!-- Pipeline nodes -->
+  <text x="30" y="38" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">REAL-TIME TELEPHONY &amp; VOICE RUNTIME</text>
+
+  <g class="diagram-node">
+    <rect x="30" y="55" width="125" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="92" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Lead Webhook</text>
+  </g>
+  <path class="edge-path" d="M 155 78 L 190 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="195" y="55" width="170" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="280" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Consent &amp; Call Window</text>
+  </g>
+  <path class="edge-path" d="M 365 78 L 400 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="405" y="55" width="130" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="470" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">LiveKit Room</text>
+  </g>
+  <path class="edge-path" d="M 535 78 L 570 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="575" y="50" width="255" height="56" rx="10" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1.5"/>
+    <text x="702" y="74" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11.5" font-weight="600">Voice Pipeline</text>
+    <text x="702" y="93" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="9.5">Turn Detection · Nova-3 · Groq + State Machine · ElevenLabs</text>
+  </g>
+
+  <!-- Lower level: Tools -> Post-call -> Caller Arena -->
+  <text x="30" y="145" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">INTEGRATIONS &amp; EVALUATION HARNESS</text>
+
+  <path class="edge-path" d="M 702 106 L 702 145 Q 702 155 692 155 L 590 155" stroke="var(--color-diagram-edge)" stroke-width="1.5" fill="none" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="390" y="132" width="195" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="487" y="160" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Tools: Calendar &amp; Sheets</text>
+  </g>
+  <path class="edge-path" d="M 390 155 L 340 155" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node node--highlight">
+    <rect x="80" y="132" width="255" height="46" rx="8" fill="var(--color-diagram-accent-fill)" stroke="var(--color-diagram-accent-border)" stroke-width="1.5"/>
+    <text x="207" y="160" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="700">Post-Call: Summary, Score &amp; Alert ✦</text>
+  </g>
+
+  <!-- Down to Caller Arena -->
+  <path class="edge-path" d="M 207 178 L 207 205 Q 207 215 217 215 L 310 215" stroke="var(--color-diagram-edge)" stroke-width="1.5" fill="none" marker-end="url(#dd-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="315" y="195" width="515" height="48" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="572" y="217" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11" font-weight="600">Traces &amp; Caller Arena Evaluation Suite</text>
+    <text x="572" y="233" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="9.5">State Transitions · Latency Waterfall · Simulated Hostile Caller Scenarios</text>
+  </g>
+</svg>
+        </div>
+      </section>
+
+      <section class="detail-section" id="decisions">
+        <h2 class="detail-section-title">3. Key decisions &amp; trade-offs</h2>
+        <p class="detail-section-sub">Deliberate engineering choices, underlying reasons, and rejected alternatives.</p>
+        <div class="decisions-grid">
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Pipeline over speech-to-speech.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> Each stage (STT, LLM, TTS) is swappable and measurable, and I control Hinglish handling. The price is stacked latency, which I recover with streaming and a measured per-stage budget.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Monolithic speech-to-speech models (opaque, unmeasurable sub-stages)
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">The LLM talks, code decides.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> A state machine owns consent, required fields and handoff. The model can't skip consent or 'forget' to collect a budget.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Pure prompt-driven conversational control
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Hinglish strategy, tested not assumed.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> Auto-detect versus language hints compared on my own test set, with script normalization (Devanagari/Latin) before extraction.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Unverified language detection defaults
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Tool latency is masked, not hidden.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> A short spoken filler covers calendar lookups, and the gap is measured.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Dead silence during API execution
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Consent-first outbound.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> Calls only to people who enquired, inside calling hours, with opt-out honored instantly.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Aggressive cold-calling outbound loops
+                    </div>
+                  </div>
+                </div>
+                <div class="decision-card">
+                  <div class="decision-header">
+                    <span class="decision-choice-label">Decision</span>
+                    <h4 class="decision-choice">Tiered testing.</h4>
+                  </div>
+                  <div class="decision-body">
+                    <div class="decision-why">
+                      <strong>Why:</strong> Logic tests run as text, STT tests on recorded audio, and a small number of full audio runs. This is how I kept a rigorous eval inside free-tier limits.
+                    </div>
+                    <div class="decision-rejected">
+                      <strong>Rejected alternative:</strong> Running expensive audio pipelines for simple state logic checks
+                    </div>
+                  </div>
+                </div></div>
+        
+            <div class="diff-block">
+              <h4>What sets it apart</h4>
+              <ul class="detail-bullet-list">
+                <li>Caller Arena: simulated hostile and awkward callers (price-haggler, silent, interrupter, NRI, wrong-number, Hindi↔English switcher) produce a repeatable scorecard.</li><li>Decision trace: per call, see each state transition and latency waterfall, so 'why did the agent say that?' has an answer.</li><li>Scored leads with reasons, so brokers know whom to call first and why.</li>
+              </ul>
+            </div>
+      </section>
+
+      <section class="detail-section" id="outcomes">
+        <h2 class="detail-section-title">4. Outcomes (measured only)</h2>
+        <p class="detail-section-sub">Rigorous evaluation results and validation metrics.</p>
+        
+            <div class="outcomes-table-wrapper">
+              <table class="outcomes-table">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Measured Value / Status</th>
+                    <th>Validation Context</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                <tr>
+                  <td class="outcomes-metric-col">Time-to-first-ring</td>
+                  <td class="outcomes-val-col"><strong>Design target: ≤60 s</strong> <span class="badge-target">Design Target</span></td>
+                  <td class="outcomes-note-col">Design target, not measured result</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">p95 turn latency</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Latency waterfall active</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">Hinglish WER on [N]-utterance set</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Empirical evaluation</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">Caller Arena pass rate over [N] scenarios</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Simulated caller testbed</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">Qualification completion rate</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Conversation completion</td>
+                </tr>
+                <tr>
+                  <td class="outcomes-metric-col">Cost per qualified lead</td>
+                  <td class="outcomes-val-col"><strong>Measuring</strong> <span class="badge-measuring">Measuring</span></td>
+                  <td class="outcomes-note-col">Per-turn API tracking</td>
+                </tr>
+                </tbody>
+              </table>
+              <p class="outcomes-hard-rule-notice">
+                <em>Rule: Outcome slots are populated only from measured test runs. Design targets are explicitly tagged and never presented as achieved results.</em>
+              </p>
+            </div>
+      </section>
+
+      <section class="detail-section" id="next">
+        <h2 class="detail-section-title">5. What I'd improve next</h2>
+        <p class="detail-section-sub">Next phases, production hardening, and scale roadmap.</p>
+        <ul class="detail-bullet-list detail-next-list"><li>Confirm the name 'Dastak' (check for name clashes).</li><li>Phase 2: Inbound missed-call callback, real +91 telephony (Indian SIP provider), WhatsApp follow-up.</li><li>Phase 3: Warm transfer to human broker with live context screen-pop, per-broker config, vertical adaptation (e.g. clinic).</li><li>Run local broker/builder pilot only after build is solid (no pilot claims until achieved).</li></ul>
+      </section>
+
+      <footer class="detail-footer-next">
+        <span class="detail-footer-label">Next Project</span>
+        <a href="/projects/meeting-mind/" class="detail-next-link">
+          <span>Meeting Mind</span>
+          <span class="detail-next-arrow">→</span>
+        </a>
+      </footer>
+    </main>
+
+    <footer class="site-footer">
+      <div class="contact-bottom" style="margin-top:40px;border-top:1px solid var(--border);">
+        <span>Goa, India · open to relocate</span>
+        <a href="/services.html">Services ↗</a>
+        <a href="https://linkedin.com/in/sanketrotangar" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/Sanket-Rotangar" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </footer>
+      <script src="/js/theme.js" defer></script>
+  </body>
+</html>

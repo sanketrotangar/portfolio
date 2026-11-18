@@ -1,0 +1,89 @@
+Cloudflare Pages + Workers: 
+Unlimited static bandwidth, 
+free DDoS/WAF/rate limiting, 
+and serverless backend (Workers) for the assistant. 
+One dashboard for hosting, DNS, security, and analytics.
+
+Groq free tier: fast, good for chat feel
+OpenRouter free models: fallback when others hit limits
+Cloudflare Workers AI: same platform, small daily free allowance
+
+Cloudflare Web Analytics
+What people look at, scroll depth, heatmaps, recordings: ----	PostHog (open source, free cloud tier)
+Resume downloads	Custom event + server-side redirect
+Errors	Sentry (free tier)	Catches broken pages and Worker failures.
+Uptime	UptimeRobot or Better Stack (free)	Alerts you if the site or assistant goes down.
+
+
+Layout: 
+1. Header (sticky)
+
+sanket.rotangar | Work · How I work · Experience · Contact | Resume ↓ (tracked) | Ask my AI ✦
+
+2. Hero
+Eyebrow: Backend + AI engineer
+Headline: I build the backend systems that make AI features work in real products.
+Sub: Slow pipelines, messy documents, unreliable LLM output, manual workflows. I fix those. Python, FastAPI, Django, RAG, MCP.
+Buttons: See what I've built · Ask my AI · Resume
+Status line: Open to backend / AI engineering roles and select freelance projects. Goa, open to relocate.
+Proof strip (3 items, real only): two engineering internships · Top 12 at eYantra (IIT Bombay) · GOIC winner (spelled out)
+3. "Problems I solve" (this is your differentiator)
+
+Four short cards, each as problem → what I build:
+
+"Our documents and knowledge are buried." → RAG search with hybrid retrieval, reranking, and access control.
+"Our AI demo breaks in production." → Evals, retries, cost limits, fallbacks.
+"Our team does this by hand." → Automation pipelines (e.g., drawings to material take-off, meetings to action items).
+"We need a backend that holds up." → APIs and data layers with clean structure and tests.
+
+Each card links to the matching project below.
+
+4. Selected work (4 to 6 projects, ordered by strength)
+
+Suggested order: Knowledge Assistant, Box Selection Tool, MCP Orchestrator, MeetingMind, Piping MTO, then AeroConnect and NightVigil if space allows.
+
+Template for each card (and its expanded view):
+
+Problem (one sentence, who had it)
+What I built (one sentence)
+Result: [X] (latency, accuracy, time saved, cost)
+How it works: small architecture diagram
+Decisions: one "why X over Y" line. This is what engineers read.
+Stack chips · Status (prototype / production, honestly) · GitHub · demo link
+5. Experience
+
+Two entries, reverse chronological:
+
+Spintly: role, Feb–Jun 2026, 2 to 3 lines on what you shipped. Keep confidential internals out.
+SJ Innovation: Software Developer Intern, Jun–Aug 2025, same format.
+
+Add education in one line: ECE, PCCE Goa, 9.33 CGPA.
+
+6. How I work (shrink the current section to this)
+
+Four plain lines, no slogans:
+
+I start by asking what breaks today.
+I build the smallest version that proves it works.
+I measure it (evals, logs) before calling it done.
+I document it so someone else can run it.
+7. Stack
+
+Plain text grouped by use, not logos: Backend: Python, FastAPI, Django, REST. AI: RAG, LLM APIs, MCP, evals. Data/Infra: list only what you have used hands-on.
+
+8. In the workshop (keep)
+
+The MCP orchestrator block. Add one line on current status and a link to the repo. This shows you're building now.
+
+9. AI assistant (labeled as a demo)
+
+Small caption: "Built by me. Grounded only on my resume and projects. If it doesn't know, it says so." This turns the chatbot into proof of skill.
+
+10. Contact
+Headline: Got a problem like these? Tell me about it.
+Form (Turnstile-protected) with plain-text email shown next to it
+LinkedIn · GitHub · Resume
+One-line response promise, only if you'll keep it ("I reply within 2 days")
+11. Footer
+
+© 2026 Sanket Rotangar · Based in Goa, India · "Anonymous analytics, chats not stored" · Built with plain HTML/CSS/JS, hosted on Cloudflare

@@ -1,0 +1,207 @@
+/* ==========================================================================
+   Design Tokens — Single Source of Truth for Colour
+   Palette: one neutral ramp (forest ink -> mint paper) + electric lime accent.
+   Light theme  = :root
+   Dark theme   = [data-theme="dark"]
+   OS default   = prefers-color-scheme: dark (unless data-theme="light")
+   No colour literal should exist outside this file.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Layout ------------------------------------------------------------ */
+  --container-width: 1120px;
+
+  /* --- Neutral ramp ------------------------------------------------------ */
+  --color-bg: #F4FAF5;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #E3EFE6;
+  --color-text: #0F2A1F;
+  --color-text-muted: #4A5E53;
+  --color-border: #CADBCF;
+  --color-border-strong: #A9C2B2;
+  /* Border for inputs, outline buttons and toggles (>=3:1 on bg and cards) */
+  --color-border-interactive: #75887E;
+
+  /* --- Cards (identical for every card) ---------------------------------- */
+  --color-card-bg: #E3EFE6;
+  --color-card-border: #C3D8C9;
+  --color-card-text: #0F2A1F;
+  --color-card-text-muted: #3F5448;
+  --color-card-inset-bg: rgba(15, 42, 31, 0.04);
+  --color-card-inset-bg-strong: rgba(15, 42, 31, 0.07);
+
+  /* --- Primary action ---------------------------------------------------- */
+  --color-primary: #0F2A1F;
+  --color-on-primary: #F4FAF5;
+  --color-primary-hover: rgba(15, 42, 31, 0.88);
+
+  /* --- Accent (fills, underlines, active states only) -------------------- */
+  --color-accent: #D4F05A;
+  --color-on-accent: #0F2A1F;
+  /* Accessible shade of the same accent, for text/icons on light surfaces */
+  --color-accent-text: #4F6A08;
+
+  /* --- Diagram surfaces: stay light in BOTH themes ----------------------- */
+  --color-diagram-panel-bg: #F4FAF5;
+  --color-diagram-panel-border: #CADBCF;
+  --color-diagram-node-bg: #FFFFFF;
+  --color-diagram-node-bg-muted: #E3EFE6;
+  --color-diagram-node-border: #CADBCF;
+  --color-diagram-edge: #A9C2B2;
+  --color-diagram-text: #0F2A1F;
+  --color-diagram-text-muted: #4A5E53;
+  --color-diagram-accent-fill: #E9F6B8;
+  --color-diagram-accent-border: #5F7A0C;
+
+  /* --- Translucent layers, washes and shadows ---------------------------- */
+  --color-header-bg: rgba(244, 250, 245, 0.88);
+  --color-header-bg-scrolled: rgba(244, 250, 245, 0.96);
+  --color-surface-translucent: rgba(255, 255, 255, 0.75);
+  --color-surface-translucent-soft: rgba(255, 255, 255, 0.70);
+  --color-wash-05: rgba(15, 42, 31, 0.05);
+  --color-wash-06: rgba(15, 42, 31, 0.06);
+  --color-wash-08: rgba(15, 42, 31, 0.08);
+  --color-wash-12: rgba(15, 42, 31, 0.12);
+  --color-glow-neutral: rgba(202, 219, 207, 0.22);
+  --color-shadow-xs: rgba(15, 42, 31, 0.03);
+  --color-shadow-sm: rgba(15, 42, 31, 0.06);
+  --color-shadow-md: rgba(15, 42, 31, 0.10);
+  --color-shadow-lg: rgba(15, 42, 31, 0.16);
+  --color-shadow-xl: rgba(15, 42, 31, 0.28);
+  --color-transparent: rgba(15, 42, 31, 0);
+
+  /* Accent washes: 8 / 10 / 12 / 15 / 20 / 25 / 30 / 35 / 40 / 60 / 70 % */
+  --color-accent-wash-08: rgba(212, 240, 90, 0.08);
+  --color-accent-wash-10: rgba(212, 240, 90, 0.10);
+  --color-accent-wash-12: rgba(212, 240, 90, 0.12);
+  --color-accent-wash-15: rgba(212, 240, 90, 0.15);
+  --color-accent-wash-20: rgba(212, 240, 90, 0.20);
+  --color-accent-wash-25: rgba(212, 240, 90, 0.25);
+  --color-accent-wash-30: rgba(212, 240, 90, 0.30);
+  --color-accent-wash-35: rgba(212, 240, 90, 0.35);
+  --color-accent-wash-40: rgba(212, 240, 90, 0.40);
+  --color-accent-wash-60: rgba(212, 240, 90, 0.60);
+  --color-accent-wash-70: rgba(212, 240, 90, 0.70);
+
+  /* --- Legacy aliases (kept so existing rules keep resolving) ------------ */
+  --bg: var(--color-bg);
+  --paper: var(--color-bg);
+  --paper-alt: var(--color-surface-muted);
+  --surface: var(--color-surface);
+  --paper-card: var(--color-surface);
+  --ink: var(--color-text);
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+  --muted: var(--color-text-muted);
+  --border: var(--color-border);
+  --line: var(--color-border);
+  --on-ink: var(--color-card-text);
+  --on-ink-muted: var(--color-card-text-muted);
+  --border-on-ink: var(--color-card-border);
+  --accent: var(--color-accent);
+  --lime: var(--color-accent);
+  --green-accent: var(--color-accent-text);
+  --green-kicker: var(--color-text-muted);
+  --green-dot: var(--color-accent);
+  --forest-dark: var(--color-card-bg);
+  --forest-mid: var(--color-card-bg);
+  --forest-card: var(--color-card-bg);
+  --forest-border: var(--color-card-border);
+  --forest-text: var(--color-card-text);
+}
+
+/* ==========================================================================
+   Dark theme
+   ========================================================================== */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #0A120E;
+  --color-surface: #0F1A14;
+  --color-surface-muted: #13221A;
+  --color-text: #E8F2EB;
+  --color-text-muted: #9DB3A5;
+  --color-border: #22372B;
+  --color-border-strong: #33513F;
+  --color-border-interactive: #5A7767;
+
+  --color-card-bg: #13221A;
+  --color-card-border: #22372B;
+  --color-card-text: #E8F2EB;
+  --color-card-text-muted: #A9BEB0;
+  --color-card-inset-bg: rgba(255, 255, 255, 0.05);
+  --color-card-inset-bg-strong: rgba(255, 255, 255, 0.08);
+
+  --color-primary: #D4F05A;
+  --color-on-primary: #0F2A1F;
+  --color-primary-hover: rgba(212, 240, 90, 0.88);
+
+  --color-accent: #D4F05A;
+  --color-on-accent: #0F2A1F;
+  --color-accent-text: #D4F05A;
+
+  --color-header-bg: rgba(10, 18, 14, 0.88);
+  --color-header-bg-scrolled: rgba(10, 18, 14, 0.96);
+  --color-surface-translucent: rgba(19, 34, 26, 0.75);
+  --color-surface-translucent-soft: rgba(19, 34, 26, 0.70);
+  --color-wash-05: rgba(232, 242, 235, 0.05);
+  --color-wash-06: rgba(232, 242, 235, 0.06);
+  --color-wash-08: rgba(232, 242, 235, 0.08);
+  --color-wash-12: rgba(232, 242, 235, 0.12);
+  --color-glow-neutral: rgba(212, 240, 90, 0.06);
+  --color-shadow-xs: rgba(0, 0, 0, 0.25);
+  --color-shadow-sm: rgba(0, 0, 0, 0.35);
+  --color-shadow-md: rgba(0, 0, 0, 0.45);
+  --color-shadow-lg: rgba(0, 0, 0, 0.55);
+  --color-shadow-xl: rgba(0, 0, 0, 0.65);
+  --color-transparent: rgba(0, 0, 0, 0);
+}
+
+/* Follow the OS unless the visitor picked a theme explicitly. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --color-bg: #0A120E;
+    --color-surface: #0F1A14;
+    --color-surface-muted: #13221A;
+    --color-text: #E8F2EB;
+    --color-text-muted: #9DB3A5;
+    --color-border: #22372B;
+    --color-border-strong: #33513F;
+    --color-border-interactive: #5A7767;
+
+    --color-card-bg: #13221A;
+    --color-card-border: #22372B;
+    --color-card-text: #E8F2EB;
+    --color-card-text-muted: #A9BEB0;
+    --color-card-inset-bg: rgba(255, 255, 255, 0.05);
+    --color-card-inset-bg-strong: rgba(255, 255, 255, 0.08);
+
+    --color-primary: #D4F05A;
+    --color-on-primary: #0F2A1F;
+    --color-primary-hover: rgba(212, 240, 90, 0.88);
+
+    --color-accent: #D4F05A;
+    --color-on-accent: #0F2A1F;
+    --color-accent-text: #D4F05A;
+
+    --color-header-bg: rgba(10, 18, 14, 0.88);
+    --color-header-bg-scrolled: rgba(10, 18, 14, 0.96);
+    --color-surface-translucent: rgba(19, 34, 26, 0.75);
+    --color-surface-translucent-soft: rgba(19, 34, 26, 0.70);
+    --color-wash-05: rgba(232, 242, 235, 0.05);
+    --color-wash-06: rgba(232, 242, 235, 0.06);
+    --color-wash-08: rgba(232, 242, 235, 0.08);
+    --color-wash-12: rgba(232, 242, 235, 0.12);
+    --color-glow-neutral: rgba(212, 240, 90, 0.06);
+    --color-shadow-xs: rgba(0, 0, 0, 0.25);
+    --color-shadow-sm: rgba(0, 0, 0, 0.35);
+    --color-shadow-md: rgba(0, 0, 0, 0.45);
+    --color-shadow-lg: rgba(0, 0, 0, 0.55);
+    --color-shadow-xl: rgba(0, 0, 0, 0.65);
+    --color-transparent: rgba(0, 0, 0, 0);
+  }
+}

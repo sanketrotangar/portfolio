@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="nv-arch-title nv-arch-desc">
+  <title id="nv-arch-title">Night Vigil system architecture</title>
+  <desc id="nv-arch-desc">The mobile application talks to a Flask backend for OTP authentication, geofence checks and location ingestion. The backend sends OTPs through an SMS or RCS gateway, issues Google Cloud Storage signed URLs, calls an external face match API, and writes patrol records to MySQL. The mobile client uploads selfies directly to Cloud Storage.</desc>
+  <!-- Colours mirror the light-theme diagram tokens; SVG images cannot read CSS custom properties. -->
+  <defs>
+    <marker id="nv-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#A9C2B2"/>
+    </marker>
+    <marker id="nv-arrow-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#5F7A0C"/>
+    </marker>
+    <style>
+      .grp { fill: #E3EFE6; stroke: #CADBCF; stroke-width: 1.2; }
+      .node { fill: #FFFFFF; stroke: #CADBCF; stroke-width: 1; }
+      .node-accent { fill: #E9F6B8; stroke: #5F7A0C; stroke-width: 1.2; }
+      .grp-label { fill: #4A5E53; font: 600 10px "DM Mono", monospace; letter-spacing: 1.1px; }
+      .grp-sub { fill: #4A5E53; font: 500 9.5px "DM Mono", monospace; }
+      .node-label { fill: #0F2A1F; font: 500 11.5px "DM Mono", monospace; }
+      .node-sub { fill: #4A5E53; font: 400 9.5px "DM Mono", monospace; }
+      .edge { stroke: #A9C2B2; stroke-width: 1.4; fill: none; marker-end: url(#nv-arrow); }
+      .edge-dashed { stroke: #A9C2B2; stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; marker-end: url(#nv-arrow); }
+      .edge-accent { stroke: #5F7A0C; stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; marker-end: url(#nv-arrow-accent); }
+      .edge-label { fill: #4A5E53; font: 400 9.5px "DM Mono", monospace; }
+    </style>
+  </defs>
+
+  <!-- Direct upload path (mobile straight to object storage) -->
+  <path class="edge-accent" d="M168 40 C168 10, 1010 10, 1010 156"/>
+  <text class="edge-label" x="589" y="4" text-anchor="middle" fill="#5F7A0C">direct image upload (signed URL)</text>
+
+  <!-- Groups -->
+  <rect class="grp" x="20" y="40" width="260" height="480" rx="16"/>
+  <text class="grp-label" x="36" y="66">MOBILE APPLICATION</text>
+  <text class="grp-sub" x="36" y="82">React Native · Expo · TypeScript</text>
+
+  <rect class="grp" x="380" y="40" width="380" height="480" rx="16"/>
+  <text class="grp-label" x="396" y="66">BACKEND</text>
+  <text class="grp-sub" x="396" y="82">Flask · Python · REST APIs</text>
+
+  <rect class="grp" x="860" y="40" width="320" height="290" rx="16"/>
+  <text class="grp-label" x="876" y="66">EXTERNAL SERVICES</text>
+
+  <rect class="grp" x="860" y="370" width="320" height="150" rx="16"/>
+  <text class="grp-label" x="876" y="396">DATABASE</text>
+
+  <!-- Mobile nodes -->
+  <rect class="node" x="36" y="102" width="228" height="54" rx="9"/>
+  <text class="node-label" x="150" y="134" text-anchor="middle">OTP login</text>
+
+  <rect class="node" x="36" y="202" width="228" height="54" rx="9"/>
+  <text class="node-label" x="150" y="234" text-anchor="middle">Assigned duty + geofence</text>
+
+  <rect class="node" x="36" y="302" width="228" height="54" rx="9"/>
+  <text class="node-label" x="150" y="334" text-anchor="middle">Selfie capture</text>
+
+  <rect class="node" x="36" y="402" width="228" height="54" rx="9"/>
+  <text class="node-label" x="150" y="426" text-anchor="middle">Background location</text>
+  <text class="node-sub" x="150" y="442" text-anchor="middle">Expo TaskManager</text>
+
+  <!-- Backend nodes -->
+  <rect class="node" x="396" y="102" width="348" height="54" rx="9"/>
+  <text class="node-label" x="570" y="126" text-anchor="middle">OTP auth + JWT</text>
+  <text class="node-sub" x="570" y="142" text-anchor="middle">session issue</text>
+
+  <rect class="node" x="396" y="202" width="348" height="54" rx="9"/>
+  <text class="node-label" x="570" y="226" text-anchor="middle">Geofence check</text>
+  <text class="node-sub" x="570" y="242" text-anchor="middle">Haversine distance vs radius</text>
+
+  <rect class="node" x="396" y="302" width="348" height="54" rx="9"/>
+  <text class="node-label" x="570" y="326" text-anchor="middle">Signed URL + face match</text>
+  <text class="node-sub" x="570" y="342" text-anchor="middle">image reference, not the file</text>
+
+  <rect class="node" x="396" y="402" width="348" height="54" rx="9"/>
+  <text class="node-label" x="570" y="426" text-anchor="middle">Location ingest</text>
+  <text class="node-sub" x="570" y="442" text-anchor="middle">store update · evaluate radius</text>
+
+  <!-- External nodes -->
+  <rect class="node" x="876" y="82" width="288" height="58" rx="9"/>
+  <text class="node-label" x="1020" y="106" text-anchor="middle">SMS / RCS gateway</text>
+  <text class="node-sub" x="1020" y="122" text-anchor="middle">OTP delivery to officer</text>
+
+  <rect class="node" x="876" y="162" width="288" height="58" rx="9"/>
+  <text class="node-label" x="1020" y="186" text-anchor="middle">Google Cloud Storage</text>
+  <text class="node-sub" x="1020" y="202" text-anchor="middle">selfie object store</text>
+
+  <rect class="node" x="876" y="242" width="288" height="58" rx="9"/>
+  <text class="node-label" x="1020" y="266" text-anchor="middle">Face Match API</text>
+  <text class="node-sub" x="1020" y="282" text-anchor="middle">external verification service</text>
+
+  <!-- Database node -->
+  <rect class="node-accent" x="876" y="406" width="288" height="94" rx="9"/>
+  <text class="node-label" x="1020" y="434" text-anchor="middle">MySQL</text>
+  <text class="node-sub" x="1020" y="454" text-anchor="middle">locationsUNO · locationsDOS</text>
+  <text class="node-sub" x="1020" y="470" text-anchor="middle">locationsTROS</text>
+
+  <!-- Mobile to backend -->
+  <path class="edge" d="M264 129 H390"/>
+  <text class="edge-label" x="327" y="121" text-anchor="middle">phone + OTP</text>
+
+  <path class="edge" d="M264 229 H390"/>
+  <text class="edge-label" x="327" y="221" text-anchor="middle">coords</text>
+
+  <path class="edge" d="M264 329 H390"/>
+  <text class="edge-label" x="327" y="321" text-anchor="middle">selfie</text>
+
+  <path class="edge" d="M264 429 H390"/>
+  <text class="edge-label" x="327" y="421" text-anchor="middle">GPS batches</text>
+
+  <!-- Backend to external services -->
+  <path class="edge" d="M744 129 H870"/>
+  <text class="edge-label" x="807" y="121" text-anchor="middle">send OTP</text>
+
+  <path class="edge" d="M744 315 C790 315, 810 191, 870 191"/>
+  <text class="edge-label" x="807" y="234" text-anchor="middle">signed URL</text>
+
+  <path class="edge" d="M744 336 C790 336, 812 271, 870 271"/>
+  <text class="edge-label" x="807" y="316" text-anchor="middle">match request</text>
+
+  <!-- Backend to database -->
+  <path class="edge" d="M744 429 C800 429, 810 453, 870 453"/>
+  <text class="edge-label" x="807" y="421" text-anchor="middle">location writes</text>
+
+  <path class="edge-dashed" d="M744 240 H830 V472 H870"/>
+  <text class="edge-label" x="838" y="360" text-anchor="middle">breach rows</text>
+</svg>

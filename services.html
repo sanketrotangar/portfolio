@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>[BRAND] — Connected Business Systems for Growing Businesses</title>
+  <meta name="description" content="Front desk, memory CRM, knowledge assistant, and daily task automation connected into one system for hotels, restaurants, supermarkets, and distributors. Fixed-scope 14-day pilots." />
+  <link rel="canonical" href="https://[BRAND_DOMAIN]/services" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="[BRAND]" />
+  <meta property="og:title" content="[BRAND] — Connected Business Systems for Growing Businesses" />
+  <meta property="og:description" content="No customer, order or task falls through the cracks. Front desk, memory, brain, and hands connected into one calm system." />
+  <meta property="og:url" content="https://[BRAND_DOMAIN]/services" />
+  <meta property="og:image" content="https://[BRAND_DOMAIN]/og-services.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="[BRAND] — Connected Business Systems" />
+  <meta name="twitter:description" content="Front desk, memory, brain, and hands. Fixed-scope 14-day pilots with one agreed metric." />
+  <meta name="twitter:image" content="https://[BRAND_DOMAIN]/og-services.png" />
+
+  <!-- Google Fonts: Manrope & DM Mono (Exact match with backup/index.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <script>
+    /* Apply the saved theme before first paint to avoid a flash. */
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/services.css" />
+  <link rel="stylesheet" href="css/assistant.css" />
+
+  <!-- JSON-LD: ProfessionalService Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "[BRAND]",
+    "description": "Connected business systems for small and mid-size companies: 24/7 multilingual front desk, memory CRM, knowledge brain, and workflow automations.",
+    "url": "https://[BRAND_DOMAIN]/services",
+    "priceRange": "$$",
+    "areaServed": "Worldwide",
+    "provider": {
+      "@type": "Person",
+      "name": "[BRAND] Solo AI Engineer",
+      "url": "https://[BRAND_DOMAIN]/"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Connected Business Systems",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Front desk voice and chat agents"
+          },
+          "description": "Multilingual voice and chat agents that answer customer questions 24/7 in the languages your customers use."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Memory CRM"
+          },
+          "description": "Lightweight CRM ledger that logs every customer enquiry, reservation, and purchase order automatically."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Brain document assistant"
+          },
+          "description": "Knowledge assistant that answers staff and customers strictly using your own business files."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hands workflow automations"
+          },
+          "description": "Automations for scheduled follow-ups, customer reminders, reports, and data entry."
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+<body class="svc-body">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============================================================
+       Navigation (Matches backup/index.html brand & pill actions)
+       ============================================================ -->
+  <header class="svc-header" id="svc-site-header">
+    <nav class="svc-nav" aria-label="Main navigation">
+      <a class="svc-brand" href="/" data-track="nav_brand">
+        [BRAND]<span>.</span>systems
+      </a>
+
+      <div class="svc-nav-actions">
+        <button class="svc-theme-btn" id="svc-theme-toggle" type="button" aria-label="Toggle theme color mode" data-track="theme_toggle">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+          </svg>
+        </button>
+        <a class="svc-btn-pill svc-btn-secondary" href="/" data-track="nav_home">Engineer Profile</a>
+        <a class="svc-btn-pill svc-btn-primary" href="#contact" data-track="cta_book">Book Workflow Check</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============================================================
+         1. Hero Section (Exact visual geometry from backup/index.html)
+         ============================================================ -->
+    <section class="svc-hero" id="hero">
+      <div class="svc-hero-main">
+        <div>
+          <p class="svc-eyebrow">Connected Business Systems / Solo AI Engineer</p>
+          <h1 class="svc-hero-title">
+            Customer calls during dinner. Messages sit unanswered. <em>Evenings lost to admin.</em>
+          </h1>
+          <p class="svc-intro">
+            One connected system for your front desk, customer notes, staff answers, and daily tasks. Built for your business in a fixed-scope 14-day pilot.
+          </p>
+
+          <div class="svc-actions">
+            <a class="svc-btn-pill svc-btn-primary" href="#contact" data-track="cta_book" data-track-detail="hero_primary">
+              Book a free 30-min workflow check <span>↗</span>
+            </a>
+            <a class="svc-btn-pill svc-btn-secondary" href="#demo" data-track="demo_started" data-track-detail="hero_secondary">
+              Try the sample demo
+            </a>
+          </div>
+
+          <div class="svc-proof-strip">
+            <div><strong>24/7</strong><small>Front desk replies</small></div>
+            <div><strong>14 Days</strong><small>Fixed-scope pilot</small></div>
+            <div><strong>0 Cracks</strong><small>No missed orders</small></div>
+          </div>
+        </div>
+
+        <!-- Floating Terminal Card (Signature from backup/index.html) -->
+        <aside class="svc-terminal" aria-label="Connected system architecture card">
+          <div class="svc-dots"><i></i><i></i><i></i></div>
+          <pre class="svc-code"><span class="svc-key">const</span> <span class="svc-type">connectedSystem</span> = {
+  promise: <span class="svc-string">'No customer, order or task falls through the cracks'</span>,
+  frontDesk: <span class="svc-string">'24/7 voice + chat in customer language'</span>,
+  memory: <span class="svc-string">'Lightweight CRM ledger'</span>,
+  brain: <span class="svc-string">'Private document knowledge assistant'</span>,
+  hands: <span class="svc-string">'Scheduled follow-ups &amp; reminders'</span>,
+  pilot: <span class="svc-string">'14 days · One agreed metric'</span>
+};
+
+<span class="svc-comment">// Baseline measured before building.</span></pre>
+          <span class="svc-tag">ONE CONNECTED SYSTEM · ZERO HYPE</span>
+        </aside>
+      </div>
+
+      <div class="svc-hero-footer">
+        <span>© 2026 [BRAND]</span>
+        <span class="svc-status-pill">[RESPONSE TIME — e.g. replies within 1 business day] · Remote</span>
+        <span>Scroll to explore ↓</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. "Which sounds like you?" Selectable Cards
+         ============================================================ -->
+    <section class="svc-section" id="which-sounds-like-you">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Diagnostics</p>
+            <h2 class="svc-section-title">Which sounds like <em>you?</em></h2>
+          </div>
+          <p class="svc-section-note">Select the situation closest to your typical workday to see the tailored starting point.</p>
+        </div>
+
+        <div class="svc-sound-grid" role="tablist" aria-label="Business situations">
+          <button class="svc-sound-card" role="tab" aria-selected="true" data-sound-key="a" data-track="sound_card_click" data-track-detail="whatsapp_excel">
+            <div class="svc-sound-card-top">
+              <span class="svc-sound-letter">A</span>
+              <span class="svc-sound-indicator">Selected ↗</span>
+            </div>
+            <h3>We run on WhatsApp, calls and Excel</h3>
+            <p style="margin:0;font-size:13.5px;color:var(--muted);line-height:1.5;">Orders live in chat messages and notes. Hard to track who was followed up.</p>
+          </button>
+
+          <button class="svc-sound-card" role="tab" aria-selected="false" data-sound-key="b" data-track="sound_card_click" data-track-detail="software_not_helping">
+            <div class="svc-sound-card-top">
+              <span class="svc-sound-letter">B</span>
+              <span class="svc-sound-indicator">Select ↗</span>
+            </div>
+            <h3>We have software but it isn't helping</h3>
+            <p style="margin:0;font-size:13.5px;color:var(--muted);line-height:1.5;">Paying monthly for tools staff dislikes. Data still gets typed by hand.</p>
+          </button>
+
+          <button class="svc-sound-card" role="tab" aria-selected="false" data-sound-key="c" data-track="sound_card_click" data-track-detail="not_sure_where_to_start">
+            <div class="svc-sound-card-top">
+              <span class="svc-sound-letter">C</span>
+              <span class="svc-sound-indicator">Select ↗</span>
+            </div>
+            <h3>Not sure where to start</h3>
+            <p style="margin:0;font-size:13.5px;color:var(--muted);line-height:1.5;">Know you are losing hours, but not sure which single workflow to automate first.</p>
+          </button>
+
+          <button class="svc-sound-card" role="tab" aria-selected="false" data-sound-key="d" data-track="sound_card_click" data-track-detail="grow_faster">
+            <div class="svc-sound-card-top">
+              <span class="svc-sound-letter">D</span>
+              <span class="svc-sound-indicator">Select ↗</span>
+            </div>
+            <h3>We want to grow faster</h3>
+            <p style="margin:0;font-size:13.5px;color:var(--muted);line-height:1.5;">Volume is climbing, but hiring more desk staff just for manual intake is too slow.</p>
+          </button>
+        </div>
+
+        <!-- Tailored Response Drawer -->
+        <div class="svc-sound-drawer" id="svc-sound-response" role="tabpanel">
+          <div class="svc-sound-drawer-text">
+            <h4 id="svc-sound-kicker">Recommended starting point</h4>
+            <p id="svc-sound-text">
+              You run operations from your phone and paper notes. Customer details live across chat threads. When things get busy, replies wait hours and follow-ups get forgotten. We connect your inbound messages to a simple ledger that logs every customer and alerts you only when human attention is needed.
+            </p>
+          </div>
+          <a class="svc-btn-pill svc-btn-primary" id="svc-sound-cta" href="#contact" data-track="cta_book" data-sound-choice="run_on_whatsapp_excel">
+            Book a workflow check for spreadsheet-first teams <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. Industry Switcher
+         ============================================================ -->
+    <div class="svc-industry-strip" id="industry">
+      <div class="svc-container svc-industry-inner">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span style="font:700 12px var(--font-mono);text-transform:uppercase;color:var(--green-kicker);">Switch Industry Scenario:</span>
+          <div class="svc-industry-pills" role="tablist" aria-label="Select industry">
+            <button class="svc-industry-pill" role="tab" aria-selected="true" data-industry="hotel" data-track="industry_selected" data-track-detail="hotel">Hotel</button>
+            <button class="svc-industry-pill" role="tab" aria-selected="false" data-industry="restaurant" data-track="industry_selected" data-track-detail="restaurant">Restaurant</button>
+            <button class="svc-industry-pill" role="tab" aria-selected="false" data-industry="supermarket" data-track="industry_selected" data-track-detail="supermarket">Supermarket</button>
+            <button class="svc-industry-pill" role="tab" aria-selected="false" data-industry="distributor" data-track="industry_selected" data-track-detail="distributor">Distributor</button>
+            <button class="svc-industry-pill" role="tab" aria-selected="false" data-industry="new_business" data-track="industry_selected" data-track-detail="new_business">New business</button>
+          </div>
+        </div>
+
+        <span class="svc-sample-badge">Sample demo, sample data</span>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         4. Interactive Sample Demo
+         ============================================================ -->
+    <section class="svc-section svc-section-alt" id="demo">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Interactive Proof</p>
+            <h2 class="svc-section-title">See an enquiry become an <em>action.</em></h2>
+          </div>
+          <p class="svc-section-note">
+            Watch an incoming customer message get answered accurately from company files, recorded in the Memory ledger, and scheduled for staff follow-up.
+          </p>
+        </div>
+
+        <div class="svc-demo-grid">
+          <!-- Left: Terminal Chat Window -->
+          <div class="svc-demo-chat-card">
+            <div class="svc-chat-top">
+              <div class="svc-chat-user">
+                <div class="svc-chat-avatar" aria-hidden="true">C</div>
+                <div class="svc-chat-meta">
+                  <strong id="svc-demo-client-name">Elena Rostova</strong>
+                  <small id="svc-demo-channel">WhatsApp · 23:14</small>
+                </div>
+              </div>
+              <span class="svc-sample-badge">Sample demo, sample data</span>
+            </div>
+
+            <div class="svc-chat-stream" id="svc-chat-stream" role="log" aria-live="polite">
+              <!-- Message bubbles injected by JS -->
+            </div>
+
+            <div class="svc-chat-footer">
+              <button class="svc-btn-pill svc-btn-lime" id="svc-demo-play-btn" type="button" data-track="demo_started" data-track-detail="play_btn">
+                Play demo
+              </button>
+              <button class="svc-btn-pill svc-btn-secondary" id="svc-demo-reset-btn" type="button" data-track="demo_started" data-track-detail="reset_btn" style="color:var(--on-ink);border-color:var(--border-on-ink);">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Live Memory CRM Card -->
+          <div class="svc-demo-crm-card">
+            <div class="svc-crm-ticket-head">
+              <div>
+                <strong style="display:block;font-size:15px;letter-spacing:-0.02em;">MEMORY CRM RECORD</strong>
+                <small class="svc-mono" id="svc-crm-ticket-id" style="color:var(--muted);font-size:11px;">#TICK-HOT-042</small>
+              </div>
+              <span class="svc-crm-badge" id="svc-crm-badge">Live Ledger Sync</span>
+            </div>
+
+            <div class="svc-crm-rows">
+              <div class="svc-crm-row">
+                <span class="svc-crm-label">Contact</span>
+                <span class="svc-crm-val empty" id="crm-contact">Waiting for enquiry...</span>
+              </div>
+              <div class="svc-crm-row">
+                <span class="svc-crm-label">Knowledge Source</span>
+                <span class="svc-crm-val empty" id="crm-knowledge">No document referenced yet</span>
+              </div>
+              <div class="svc-crm-row">
+                <span class="svc-crm-label">Extracted Needs</span>
+                <span class="svc-crm-val empty" id="crm-request">Pending details...</span>
+              </div>
+              <div class="svc-crm-row">
+                <span class="svc-crm-label">Scheduled Action</span>
+                <span class="svc-crm-val empty" id="crm-status">Idle · Monitoring channel</span>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--line);font:400 11px var(--font-mono);color:var(--muted);display:flex;justify-content:space-between;">
+              <span>AUDIT TRAIL: SECURE</span>
+              <span>SAMPLE DATA ONLY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. Leak Calculator
+         ============================================================ -->
+    <section class="svc-section" id="calculator">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Honest Math</p>
+            <h2 class="svc-section-title">Calculate what is leaking each <em>month.</em></h2>
+          </div>
+          <p class="svc-section-note">
+            Use your own numbers. We measure your exact baseline during your 14-day pilot before writing any software.
+          </p>
+        </div>
+
+        <div class="svc-calc-layout">
+          <!-- Inputs Card -->
+          <div class="svc-calc-controls">
+            <div class="svc-calc-field">
+              <div class="svc-calc-field-top">
+                <label for="calc-enquiries">Customer enquiries per week</label>
+                <span class="svc-calc-badge" id="calc-enquiries-val">75 enquiries/wk</span>
+              </div>
+              <p style="margin:0;font-size:12.5px;color:var(--muted);">Calls, WhatsApp messages, website leads, or emails.</p>
+              <input class="svc-range-input" type="range" id="calc-enquiries-range" min="10" max="300" step="5" value="75" />
+              <input type="hidden" id="calc-enquiries" value="75" />
+            </div>
+
+            <div class="svc-calc-field">
+              <div class="svc-calc-field-top">
+                <label for="calc-missed">% missed or answered too late</label>
+                <span class="svc-calc-badge" id="calc-missed-val">22%</span>
+              </div>
+              <p style="margin:0;font-size:12.5px;color:var(--muted);">Messages arriving after hours, during peak shifts, or missed calls.</p>
+              <input class="svc-range-input" type="range" id="calc-missed-range" min="5" max="60" step="1" value="22" />
+              <input type="hidden" id="calc-missed" value="22" />
+            </div>
+
+            <div class="svc-calc-field">
+              <div class="svc-calc-field-top">
+                <label for="calc-value">Average customer or order value ($ USD)</label>
+                <span class="svc-calc-badge" id="calc-value-val">$180</span>
+              </div>
+              <p style="margin:0;font-size:12.5px;color:var(--muted);">Average room night, dinner check, basket size, or wholesale order.</p>
+              <input type="number" id="calc-value" value="180" min="5" max="10000" style="padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:600 14px var(--font-mono);" />
+            </div>
+
+            <div class="svc-calc-field">
+              <div class="svc-calc-field-top">
+                <label for="calc-admin">Hours spent per week on repetitive admin</label>
+                <span class="svc-calc-badge" id="calc-admin-val">14 hrs/wk</span>
+              </div>
+              <p style="margin:0;font-size:12.5px;color:var(--muted);">Retyping data, answering repeat questions, sending reminders.</p>
+              <input class="svc-range-input" type="range" id="calc-admin-range" min="2" max="50" step="1" value="14" />
+              <input type="hidden" id="calc-admin" value="14" />
+            </div>
+
+            <div class="svc-calc-field">
+              <div class="svc-calc-field-top">
+                <label for="calc-rate">Estimated hourly cost of staff or owner ($ USD)</label>
+                <span class="svc-calc-badge" id="calc-rate-val">$25/hr</span>
+              </div>
+              <input type="number" id="calc-rate" value="25" min="5" max="300" style="padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:600 14px var(--font-mono);" />
+            </div>
+          </div>
+
+          <!-- Receipt Output Box -->
+          <div class="svc-calc-receipt" aria-live="polite">
+            <div class="svc-calc-receipt-head">
+              <span>ESTIMATED MONTHLY LEAK</span>
+              <span>CALCULATOR #CALC-80</span>
+            </div>
+
+            <div class="svc-calc-big-leak">
+              <span style="font:500 11px var(--font-mono);letter-spacing:0.08em;text-transform:uppercase;color:var(--on-ink-muted);display:block;margin-bottom:6px;">Estimated monthly money leaking</span>
+              <div class="svc-calc-big-num" id="calc-out-money">$4,498</div>
+              <div class="svc-calc-hours-num" id="calc-out-hours">61 admin hours</div>
+            </div>
+
+            <div class="svc-calc-formula">
+              <strong style="color:var(--on-ink);display:block;margin-bottom:6px;">Exact Formula Breakdown:</strong>
+              <div>• <span id="calc-f-enquiries">71 enquiries missed or delayed per month</span></div>
+              <div>• <span id="calc-f-sales">$3,195 estimated lost revenue (at 25% close rate)</span></div>
+              <div>• <span id="calc-f-payroll">$1,525 paid for repetitive manual tasks</span></div>
+            </div>
+
+            <div class="svc-calc-disclaimer">
+              This calculation uses your own numbers, not invented benchmarks. Your exact baseline is measured in your pilot before building begins.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. "A Tuesday, before and after" (Timeline)
+         ============================================================ -->
+    <section class="svc-section" id="tuesday">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Daily Reality</p>
+            <h2 class="svc-section-title">A Tuesday, before and <em>after.</em></h2>
+          </div>
+          <p class="svc-section-note">
+            See how one ordinary Tuesday changes across the day for a <strong class="svc-current-industry-name">Hotel</strong> with the system in place.
+          </p>
+        </div>
+
+        <div class="svc-timeline-container" id="svc-tuesday-timeline">
+          <!-- Injected dynamically by JS based on selected industry -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. How It Works
+         ============================================================ -->
+    <section class="svc-section svc-section-alt" id="how-it-works">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Engagement Model</p>
+            <h2 class="svc-section-title">How it works. Three clear <em>steps.</em></h2>
+          </div>
+          <p class="svc-section-note">
+            Baseline is measured before building, then compared after. No open-ended consulting bills.
+          </p>
+        </div>
+
+        <div class="svc-steps-grid">
+          <article class="svc-step-card">
+            <span class="svc-step-num">STEP 01</span>
+            <h3>Free 30-min workflow check</h3>
+            <p>
+              We map your daily enquiry, ordering, or booking process. We identify your single biggest time leak and agree whether this system is a practical fit. If not, we say so plainly.
+            </p>
+          </article>
+
+          <article class="svc-step-card">
+            <span class="svc-step-num">STEP 02</span>
+            <h3>Fixed-scope 14-day pilot</h3>
+            <p>
+              We agree on ONE specific metric to improve (such as zero unanswered messages during peak hours or 10 hours saved per week). We measure the baseline first, connect the system, and compare.
+            </p>
+          </article>
+
+          <article class="svc-step-card">
+            <span class="svc-step-num">STEP 03</span>
+            <h3>Run and improve</h3>
+            <p>
+              You receive complete ownership of the setup, written operating guides, and staff walkthrough recordings. Ongoing maintenance and adjustments are handled on a predictable retainer.
+            </p>
+          </article>
+        </div>
+
+        <!-- 14-Day Timeline Schedule Card -->
+        <div class="svc-schedule-card">
+          <span style="font:700 11px var(--font-mono);letter-spacing:0.08em;text-transform:uppercase;color:var(--green-kicker);">Visible 14-Day Pilot Schedule</span>
+          <div class="svc-schedule-phases">
+            <div class="svc-schedule-phase">
+              <span class="svc-phase-days">Days 1 to 3</span>
+              <div class="svc-phase-name">Audit &amp; Baseline</div>
+              <p class="svc-phase-desc">Record current response times, volume, and document the baseline metric.</p>
+            </div>
+            <div class="svc-schedule-phase">
+              <span class="svc-phase-days">Days 4 to 8</span>
+              <div class="svc-phase-name">Connect &amp; Test</div>
+              <p class="svc-phase-desc">Connect Front desk to your channel, import knowledge docs into Brain, verify CRM logging.</p>
+            </div>
+            <div class="svc-schedule-phase">
+              <span class="svc-phase-days">Days 9 to 12</span>
+              <div class="svc-phase-name">Staff Trial</div>
+              <p class="svc-phase-desc">Your staff tests real cases alongside the system with manual human handoffs active.</p>
+            </div>
+            <div class="svc-schedule-phase">
+              <span class="svc-phase-days">Days 13 to 14</span>
+              <div class="svc-phase-name">Measurement &amp; Review</div>
+              <p class="svc-phase-desc">Compare the agreed metric against the baseline recorded on Day 1.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Requirements & Skeptical Technical Note -->
+        <div class="svc-split-boxes">
+          <div class="svc-detail-card">
+            <h4>What we need from you</h4>
+            <ul class="svc-check-list">
+              <li>Access to the channel you want connected (WhatsApp Business, phone line, inbox, or spreadsheet).</li>
+              <li>A sample of 5 to 10 real customer questions and your existing price or policy documents.</li>
+              <li>One person on your staff who can answer questions during the setup phase.</li>
+              <li>30 minutes per week for a brief progress review.</li>
+            </ul>
+          </div>
+
+          <div class="svc-detail-card">
+            <h4>How it works under the hood (for the skeptical reader)</h4>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--muted);margin:0;">
+              Front desk receives voice calls or text messages via standard webhooks. Incoming queries are checked against your private documents using semantic search and deterministic rule checks. The system formats answers in structured JSON to guarantee numbers, policies, and links are never hallucinated. Memory writes records directly to your secure database or spreadsheet. If a query falls outside approved documents, the system triggers a human handoff instantly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. Honest FAQ
+         ============================================================ -->
+    <!-- ============================================================
+         8. How I work (moved from the home page)
+         ============================================================ -->
+    <section class="svc-section" id="how-i-work">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Method</p>
+            <h2 class="svc-section-title">Scope, prototype, harden, <em>handoff.</em></h2>
+          </div>
+          <p class="svc-section-note">
+            One problem and one metric before anything gets built. The system should stay understandable after I leave.
+          </p>
+        </div>
+
+        <div class="svc-flow-grid">
+          <article class="svc-step-card">
+            <span class="svc-step-num">STEP 01</span>
+            <h3>Scope</h3>
+            <p>One problem, one metric, and a written definition of done before anything gets built.</p>
+          </article>
+          <article class="svc-step-card">
+            <span class="svc-step-num">STEP 02</span>
+            <h3>Prototype</h3>
+            <p>A thin end-to-end slice, so the risky part shows up early instead of at the end.</p>
+          </article>
+          <article class="svc-step-card">
+            <span class="svc-step-num">STEP 03</span>
+            <h3>Harden</h3>
+            <p>Permissions, failure paths, evaluation and observability added while the slice is still small.</p>
+          </article>
+          <article class="svc-step-card">
+            <span class="svc-step-num">STEP 04</span>
+            <h3>Handoff</h3>
+            <p>Code, runbook and a walkthrough, so the system stays understandable without me.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="svc-section" id="faq">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Transparency</p>
+            <h2 class="svc-section-title">Questions people actually <em>ask.</em></h2>
+          </div>
+          <p class="svc-section-note">Candid information about privacy, accuracy, and operational handoffs.</p>
+        </div>
+
+        <div class="svc-faq-grid">
+          <details class="svc-faq-item">
+            <summary class="svc-faq-summary">
+              <span>Where does my data go?</span>
+              <span class="svc-faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="svc-faq-content">
+              <p>
+                Your customer data and company files stay in systems and databases you control. We configure the connections in your accounts. Your proprietary documents and customer contact lists are never used to train public machine learning models.
+              </p>
+            </div>
+          </details>
+
+          <details class="svc-faq-item">
+            <summary class="svc-faq-summary">
+              <span>What if it gets an answer wrong?</span>
+              <span class="svc-faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="svc-faq-content">
+              <p>
+                The system is strictly instructed to say "I do not have that confirmed in our documents, let me notify our staff" whenever a fact is not explicitly present in your verified files. It does not guess prices, discounts, or terms. If uncertainty is detected, it alerts your team immediately.
+              </p>
+            </div>
+          </details>
+
+          <details class="svc-faq-item">
+            <summary class="svc-faq-summary">
+              <span>How are handoffs to a human handled?</span>
+              <span class="svc-faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="svc-faq-content">
+              <p>
+                If a customer requests a person, expresses frustration, or has a custom requirement outside standard rules, the conversation is flagged. Your staff receives an immediate notification via WhatsApp, SMS, or email with the chat summary so anyone can step in directly.
+              </p>
+            </div>
+          </details>
+
+          <details class="svc-faq-item">
+            <summary class="svc-faq-summary">
+              <span>Who owns it at the end?</span>
+              <span class="svc-faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="svc-faq-content">
+              <p>
+                You own all code, configurations, database records, and document indexes. There is no vendor lock-in or closed proprietary platform. If you ever choose to manage it yourself or have another engineer maintain it, you retain full access to everything.
+              </p>
+            </div>
+          </details>
+
+          <details class="svc-faq-item">
+            <summary class="svc-faq-summary">
+              <span>What does it cost?</span>
+              <span class="svc-faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="svc-faq-content">
+              <p>
+                The initial 30-minute diagnostic check is free. If we proceed to a 14-day pilot, it is a single fixed fee quoted upfront based on your channels and complexity. Ongoing support is a predictable flat monthly retainer without hidden per-message markups.
+              </p>
+            </div>
+          </details>
+
+          <details class="svc-faq-item">
+            <summary class="svc-faq-summary">
+              <span>Does it work in my language?</span>
+              <span class="svc-faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="svc-faq-content">
+              <p>
+                Yes. The system works in the languages your customers use. It automatically detects the language of incoming messages or voice calls and responds accurately in that same language.
+              </p>
+            </div>
+          </details>
+
+          <details class="svc-faq-item">
+            <summary class="svc-faq-summary">
+              <span>What can't it do?</span>
+              <span class="svc-faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="svc-faq-content">
+              <p>
+                It cannot replace human judgment on complex disputes or delicate negotiations. It cannot fix broken business operations or faulty inventory records. It will not blast unsolicited spam messages. It is built to answer repetitive questions, capture accurate data, and execute scheduled tasks reliably.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         9. Pricing Stance
+         ============================================================ -->
+    <section class="svc-section" id="pricing">
+      <div class="svc-container">
+        <div class="svc-section-header">
+          <div>
+            <p class="svc-section-kicker">Honest Pricing</p>
+            <h2 class="svc-section-title">No fake tier tables. Fixed pilot <em>quotes.</em></h2>
+          </div>
+          <p class="svc-section-note">
+            Every business runs on different channels and documents. We quote a fixed fee after the workflow check so there are no surprise costs.
+          </p>
+        </div>
+
+        <div class="svc-pricing-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+            <span style="font:700 11px var(--font-mono);letter-spacing:0.08em;text-transform:uppercase;color:var(--green-kicker);">PILOT INVESTMENT SCOPE</span>
+            <span style="font:400 11px var(--font-mono);color:var(--muted);">QUOTED IN USD · LOCAL CURRENCY ON REQUEST</span>
+          </div>
+
+          <div class="svc-pricing-cols">
+            <div class="svc-price-cell">
+              <span>14-Day Measured Pilot</span>
+              <strong>[PILOT PRICE — e.g. $1,500 to $3,000 USD]</strong>
+              <small>Fixed scope quoted after the 30-min workflow check. Includes baseline measurement, channel connection, indexing, and staff training.</small>
+            </div>
+
+            <div class="svc-price-cell">
+              <span>Ongoing Maintenance Retainer</span>
+              <strong>[RETAINER PRICE — e.g. $350 to $750 USD/mo]</strong>
+              <small>Optional month-to-month support. Includes system monitoring, document updates, prompt refinements, and technical check-ins.</small>
+            </div>
+          </div>
+
+          <p style="margin:0;font-size:14px;color:var(--muted);line-height:1.6;">
+            If our initial 30-minute check reveals that your problem is better solved with a free off-the-shelf setting or that our system will not produce a measurable return, we will tell you directly on that call.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10. Final CTA & Booking Form (Full-bleed dark forest from backup/index.html)
+         ============================================================ -->
+    <section class="svc-contact" id="contact">
+      <div class="svc-contact-grid">
+        <div>
+          <p class="svc-section-kicker">Next step</p>
+          <h2>Have a workflow that leaks time? <em>Let’s fix it.</em></h2>
+          <p class="svc-contact-copy">
+            Tell us about the daily tasks that take up your evenings or cause mistakes. We will review your current tools, find your biggest time leak, and let you know if a 14-day pilot makes financial sense.
+          </p>
+
+          <div class="svc-direct-channels">
+            <a class="svc-channel-link" href="https://wa.me/[WHATSAPP_NUMBER — e.g. 919876543210]?text=Hi,%20I%20would%20like%20to%20request%20a%20free%20workflow%20check." target="_blank" rel="noopener noreferrer" data-track="cta_book" data-track-detail="whatsapp_direct">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.188 8.188 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/>
+              </svg>
+              <span>Chat directly on WhatsApp ([WHATSAPP_NUMBER]) ↗</span>
+            </a>
+
+            <a class="svc-channel-link" href="mailto:[EMAIL — e.g. sanketrotangar04@gmail.com]?subject=Workflow%20Check%20Inquiry" data-track="cta_book" data-track-detail="email_direct">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4-8 5-8-5V6l8 5 8-5z"/>
+              </svg>
+              <span>Plain email: [EMAIL — e.g. sanketrotangar04@gmail.com] ↗</span>
+            </a>
+
+            <a class="svc-channel-link" href="[BOOKING_CALENDAR_LINK — e.g. https://cal.com/sanketrotangar]" target="_blank" rel="noopener noreferrer" data-track="cta_book" data-track-detail="calendar_direct">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 16H5V9h14z"/>
+              </svg>
+              <span>Direct calendar link ([BOOKING_CALENDAR_LINK]) ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Form Card (Styled like backup/index.html contact form) -->
+        <form class="svc-contact-form" id="svc-lead-form" action="/api/lead" method="POST">
+          <div class="svc-field-row">
+            <label class="svc-field">
+              Your Name
+              <input id="lead-name" name="name" type="text" autocomplete="name" required placeholder="Elena Rostova" maxlength="100" />
+            </label>
+            <label class="svc-field">
+              Business Type
+              <select id="lead-business" name="business_type">
+                <option value="Hotel">Hotel or Guesthouse</option>
+                <option value="Restaurant">Restaurant or Cafe</option>
+                <option value="Supermarket">Supermarket or Retailer</option>
+                <option value="Distributor">Distributor or Wholesale</option>
+                <option value="New business">New business or Consultancy</option>
+                <option value="Other">Other business</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="svc-field">
+            What is your biggest daily headache?
+            <textarea id="lead-headache" name="headache" required placeholder="What takes up your evenings, causes repeated mistakes, or slows down orders?" minlength="10" maxlength="4000"></textarea>
+          </label>
+
+          <div class="svc-field">
+            <span>Preferred Contact Method</span>
+            <div class="svc-radio-group">
+              <label class="svc-radio-pill">
+                <input type="radio" name="contact_pref" value="WhatsApp" checked />
+                <span>WhatsApp</span>
+              </label>
+              <label class="svc-radio-pill">
+                <input type="radio" name="contact_pref" value="Email" />
+                <span>Email</span>
+              </label>
+              <label class="svc-radio-pill">
+                <input type="radio" name="contact_pref" value="Phone" />
+                <span>Phone call</span>
+              </label>
+            </div>
+          </div>
+
+          <label class="svc-field">
+            Your Email or Phone Number
+            <input id="lead-contact" name="contact_details" type="text" required placeholder="you@company.com or +1 415 555 0192" maxlength="200" />
+          </label>
+
+          <!-- Cloudflare Turnstile Placeholder -->
+          <div class="cf-turnstile" data-sitekey="[TURNSTILE_SITEKEY]" data-theme="dark"></div>
+          <noscript>
+            <p style="font:400 11px var(--font-mono);color:var(--on-ink-muted);margin:0;">JavaScript is off. Form submits directly.</p>
+          </noscript>
+
+          <div class="svc-form-status" id="svc-form-status" role="status" aria-live="polite"></div>
+
+          <button class="svc-btn-pill svc-btn-lime" id="svc-form-submit" type="submit" data-track="cta_book" data-track-detail="form_submit_btn" style="justify-content:center;padding:15px 22px;font-size:14px;">
+            Request free workflow check <span>↗</span>
+          </button>
+
+          <p style="margin:0;color:var(--on-ink-muted);font:400 11px var(--font-mono);line-height:1.5;text-align:center;">
+            [RESPONSE TIME — e.g. replies within 1 business day]. No newsletter, no sales sequence.
+          </p>
+        </form>
+      </div>
+
+      <div class="svc-contact-bottom">
+        <span>© 2026 [BRAND] · Connected Business Systems</span>
+        <span>Anonymous usage metrics only. No cross-site advertising.</span>
+        <a href="/" data-track="footer_home">Main site ↗</a>
+        <a href="https://github.com/Sanket-Rotangar" target="_blank" rel="noopener noreferrer" data-track="footer_github">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cloudflare Turnstile widget loader -->
+  <script>
+    (function () {
+      var widget = document.querySelector('.cf-turnstile');
+      var key = widget && widget.getAttribute('data-sitekey') || '';
+      if (key && key.indexOf('[') !== 0) {
+        var s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
+
+  <!-- Services page logic -->
+  <script src="js/theme.js" defer></script>
+  <script src="js/services.js" defer></script>
+  <script src="js/assistant.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+[
+  {
+    "slug": "knowledge-base-assistant",
+    "index": "01",
+    "title": "Knowledge Base + Assistant",
+    "working_title": "[TBD: pick a name; 'Dastavez' was dropped]",
+    "label": "ENTERPRISE RAG",
+    "oneLiner": "Multi-tenant company knowledge base with a permission-aware agent. Cites every answer, refuses what you're not cleared to see, and flags when documents disagree.",
+    "outcome": "Upload \u2192 hybrid retrieval \u2192 role-gated, cited answers.",
+    "stack": [
+      "PostgreSQL + pgvector",
+      "Row-Level Security",
+      "Hybrid search (RRF) + reranker",
+      "Switchable LLM layer",
+      "FastAPI",
+      "Next.js"
+    ],
+    "status": "in-progress",
+    "status_raw": "In build (Phase 1)",
+    "featured": true,
+    "links": {
+      "github": null,
+      "live": null
+    },
+    "diagram": {
+      "nodes": [
+        "Upload",
+        "Parse & chunk (versioned)",
+        "Embed",
+        "Postgres: pgvector + tsvector + RLS",
+        "Hybrid retrieve + rerank",
+        "Cited answer"
+      ],
+      "edges": [
+        {
+          "from": "Upload",
+          "to": "Parse & chunk (versioned)"
+        },
+        {
+          "from": "Parse & chunk (versioned)",
+          "to": "Embed"
+        },
+        {
+          "from": "Embed",
+          "to": "Postgres: pgvector + tsvector + RLS"
+        },
+        {
+          "from": "Postgres: pgvector + tsvector + RLS",
+          "to": "Hybrid retrieve + rerank"
+        },
+        {
+          "from": "Hybrid retrieve + rerank",
+          "to": "Cited answer"
+        }
+      ]
+    },
+    "detail": {
+      "role": "Solo build, end to end: tenant-aware schema, access model, ingestion and retrieval pipeline, agent layer, and the evaluation harness.",
+      "timeframe": null,
+      "problem": "Company knowledge sits in drives and chats in five versions, and leadership needs the right document at the right moment. Generic RAG chatbots answer from whatever they can see, which means they eventually leak the wrong document to the wrong person.",
+      "how_it_works": [
+        "Ingest: PDF, DOCX and Markdown are parsed, chunked, embedded, and stored as versioned documents with tenant, department and clearance metadata.",
+        "Retrieve: vector + keyword search fused with RRF, then reranked. Access is enforced in Postgres via Row-Level Security before the model sees anything.",
+        "Answer: the agent responds from permitted chunks only, with citations (file, version, date).",
+        "Deny gracefully: if a restricted document matches, the user is told one exists and can request access. No title, snippet or content is revealed. Requests are logged for document owners."
+      ],
+      "decisions": [
+        {
+          "choice": "Authorization lives in the data layer, not the prompt.",
+          "why": "The model only receives chunks the user is cleared for. Prompt-based guardrails fail under adversarial input, and row-level policies don't.",
+          "rejected": "Prompt-based guardrails (fail under adversarial injection)"
+        },
+        {
+          "choice": "Two-query retrieval.",
+          "why": "One query runs as the user. A second privileged query returns only an existence flag. The extra latency is a deliberate price for being transparent without leaking.",
+          "rejected": "Single query without existence visibility, or leaky unified query"
+        },
+        {
+          "choice": "One Postgres instead of a separate vector DB.",
+          "why": "Permissions, versions and vectors stay in one transactional store. This fits the target scale. It isn't a claim that it beats dedicated vector databases at massive scale.",
+          "rejected": "Separate dedicated vector database"
+        },
+        {
+          "choice": "Version-aware answers.",
+          "why": "Superseded versions are archived and excluded by default. When two different documents conflict, the answer flags the conflict and shows both dates instead of silently picking one.",
+          "rejected": "Silent arbitrary document selection"
+        },
+        {
+          "choice": "Multi-tenant from day one.",
+          "why": "tenant_id and RLS are on every table, even when running a single tenant. Retrofitting isolation later means rewriting every query.",
+          "rejected": "Single-tenant schema with planned future migration"
+        }
+      ],
+      "differentiators": [
+        "Permission-leak red-team suite: adversarial prompts run as unauthorized users; the pass condition is zero leakage.",
+        "Access-request workflow: a denied search becomes an approval request instead of a dead end.",
+        "Executive brief mode: 'prep me for the vendor meeting' produces a cited digest across only the documents that person can access. (Phase 2)",
+        "Onboarding paths: role-based reading sequences for new hires. (Phase 3)"
+      ],
+      "outcomes": [
+        {
+          "metric": "Retrieval hit@5 on [N]-question golden set",
+          "value": "Measuring",
+          "target": "[ __ % ]",
+          "isTarget": false,
+          "note": "Golden set in build"
+        },
+        {
+          "metric": "Permission leakage across [N] adversarial cases",
+          "value": "Design target: 0",
+          "target": "0",
+          "isTarget": true,
+          "note": "Adversarial test suite"
+        },
+        {
+          "metric": "p95 answer latency",
+          "value": "Design target: \u2264 [ __ ]",
+          "target": "\u2264 [ __ ]",
+          "isTarget": true,
+          "note": "Measuring"
+        },
+        {
+          "metric": "Cost per answered query",
+          "value": "Measuring",
+          "target": "[ $ __ ]",
+          "isTarget": false,
+          "note": "Cost telemetry active"
+        },
+        {
+          "metric": "Citation accuracy (answer supported by cited chunk)",
+          "value": "Measuring",
+          "target": "[ __ % ]",
+          "isTarget": false,
+          "note": "Evaluation harness"
+        }
+      ],
+      "next": [
+        "Pick the final project name (replacing working title).",
+        "Confirm hosting environment (Supabase + Render/Railway + Vercel).",
+        "Build the eval harness (golden Q&A set + permission-leak suite) so outcome slots can be filled from real measurements.",
+        "Implement Executive brief mode: cited digest across accessible documents only (Phase 2).",
+        "Implement Onboarding paths: role-based reading sequences for new hires (Phase 3)."
+      ]
+    }
+  },
+  {
+    "slug": "dastak-voice-agent",
+    "index": "02",
+    "title": "Dastak: Voice Agent for Real-Estate Lead Qualification",
+    "working_title": "Dastak",
+    "label": "VOICE AGENT",
+    "oneLiner": "A Hinglish voice agent that calls new property leads within a minute, qualifies buyers, books site visits and hands brokers a scored summary.",
+    "outcome": "Lead in \u2192 call in \u226460s (design target) \u2192 qualified, booked, scored.",
+    "stack": [
+      "LiveKit Agents (Python)",
+      "Deepgram Nova-3",
+      "Groq LLM",
+      "ElevenLabs",
+      "FastAPI",
+      "Google Calendar + Sheets"
+    ],
+    "status": "in-progress",
+    "status_raw": "In build (Phase 1)",
+    "featured": true,
+    "links": {
+      "github": null,
+      "live": null
+    },
+    "diagram": {
+      "nodes": [
+        "Lead webhook",
+        "Trigger: consent & window",
+        "LiveKit room",
+        "Voice pipeline + state machine",
+        "Calendar & Sheet/CRM",
+        "Scored summary & alert"
+      ],
+      "edges": [
+        {
+          "from": "Lead webhook",
+          "to": "Trigger: consent & window"
+        },
+        {
+          "from": "Trigger: consent & window",
+          "to": "LiveKit room"
+        },
+        {
+          "from": "LiveKit room",
+          "to": "Voice pipeline + state machine"
+        },
+        {
+          "from": "Voice pipeline + state machine",
+          "to": "Calendar & Sheet/CRM"
+        },
+        {
+          "from": "Calendar & Sheet/CRM",
+          "to": "Scored summary & alert"
+        }
+      ]
+    },
+    "detail": {
+      "role": "Solo build, end to end: telephony and agent runtime, conversation state machine, Hinglish speech handling, booking and CRM integrations, and the simulation-based eval suite.",
+      "timeframe": null,
+      "problem": "Property leads go cold in minutes, but brokers call back in hours, after the buyer has already spoken to a competitor. Generic voice bots fall apart on real Indian calls: Hinglish, interruptions, 'call me later', wrong numbers.",
+      "how_it_works": [
+        "Trigger: a new lead hits a webhook (form or Sheet). A consent and calling-window check runs first.",
+        "Converse: the agent calls, confirms identity, then qualifies budget, area, BHK, timeline and buyer type. It handles objections and mirrors the caller's language mix per turn.",
+        "Act: it checks calendar slots live and books the site visit. If the buyer is hot, it hands off to a human.",
+        "Report: the broker gets a summary, a lead score with the reason, and the full transcript."
+      ],
+      "decisions": [
+        {
+          "choice": "Pipeline over speech-to-speech.",
+          "why": "Each stage (STT, LLM, TTS) is swappable and measurable, and I control Hinglish handling. The price is stacked latency, which I recover with streaming and a measured per-stage budget.",
+          "rejected": "Monolithic speech-to-speech models (opaque, unmeasurable sub-stages)"
+        },
+        {
+          "choice": "The LLM talks, code decides.",
+          "why": "A state machine owns consent, required fields and handoff. The model can't skip consent or 'forget' to collect a budget.",
+          "rejected": "Pure prompt-driven conversational control"
+        },
+        {
+          "choice": "Hinglish strategy, tested not assumed.",
+          "why": "Auto-detect versus language hints compared on my own test set, with script normalization (Devanagari/Latin) before extraction.",
+          "rejected": "Unverified language detection defaults"
+        },
+        {
+          "choice": "Tool latency is masked, not hidden.",
+          "why": "A short spoken filler covers calendar lookups, and the gap is measured.",
+          "rejected": "Dead silence during API execution"
+        },
+        {
+          "choice": "Consent-first outbound.",
+          "why": "Calls only to people who enquired, inside calling hours, with opt-out honored instantly.",
+          "rejected": "Aggressive cold-calling outbound loops"
+        },
+        {
+          "choice": "Tiered testing.",
+          "why": "Logic tests run as text, STT tests on recorded audio, and a small number of full audio runs. This is how I kept a rigorous eval inside free-tier limits.",
+          "rejected": "Running expensive audio pipelines for simple state logic checks"
+        }
+      ],
+      "differentiators": [
+        "Caller Arena: simulated hostile and awkward callers (price-haggler, silent, interrupter, NRI, wrong-number, Hindi\u2194English switcher) produce a repeatable scorecard.",
+        "Decision trace: per call, see each state transition and latency waterfall, so 'why did the agent say that?' has an answer.",
+        "Scored leads with reasons, so brokers know whom to call first and why."
+      ],
+      "outcomes": [
+        {
+          "metric": "Time-to-first-ring",
+          "value": "Design target: \u226460 s",
+          "target": "\u226460 s",
+          "isTarget": true,
+          "note": "Design target, not measured result"
+        },
+        {
+          "metric": "p95 turn latency",
+          "value": "Measuring",
+          "target": "[ __ ms ]",
+          "isTarget": false,
+          "note": "Latency waterfall active"
+        },
+        {
+          "metric": "Hinglish WER on [N]-utterance set",
+          "value": "Measuring",
+          "target": "[ __ % ]",
+          "isTarget": false,
+          "note": "Empirical evaluation"
+        },
+        {
+          "metric": "Caller Arena pass rate over [N] scenarios",
+          "value": "Measuring",
+          "target": "[ __ % ]",
+          "isTarget": false,
+          "note": "Simulated caller testbed"
+        },
+        {
+          "metric": "Qualification completion rate",
+          "value": "Measuring",
+          "target": "[ __ % ]",
+          "isTarget": false,
+          "note": "Conversation completion"
+        },
+        {
+          "metric": "Cost per qualified lead",
+          "value": "Measuring",
+          "target": "[ \u20b9 __ ]",
+          "isTarget": false,
+          "note": "Per-turn API tracking"
+        }
+      ],
+      "status_note": "The demo runs over WebRTC (browser) in place of the phone leg. Real-world pilot: none yet.",
+      "next": [
+        "Confirm the name 'Dastak' (check for name clashes).",
+        "Phase 2: Inbound missed-call callback, real +91 telephony (Indian SIP provider), WhatsApp follow-up.",
+        "Phase 3: Warm transfer to human broker with live context screen-pop, per-broker config, vertical adaptation (e.g. clinic).",
+        "Run local broker/builder pilot only after build is solid (no pilot claims until achieved)."
+      ]
+    }
+  },
+  {
+    "slug": "meeting-mind",
+    "index": "03",
+    "title": "Meeting Mind",
+    "working_title": "Meeting Mind",
+    "label": "MEETING INTELLIGENCE",
+    "oneLiner": "TODO: Content not written yet in portfolio-projects.md.",
+    "outcome": "TODO: Pending specification in portfolio-projects.md",
+    "stack": [],
+    "status": "in-progress",
+    "status_raw": "TBD",
+    "featured": true,
+    "links": {
+      "github": null,
+      "live": null
+    },
+    "diagram": {
+      "nodes": [
+        "Input",
+        "Processing",
+        "Output"
+      ],
+      "edges": []
+    },
+    "detail": {
+      "role": null,
+      "timeframe": null,
+      "problem": null,
+      "decisions": [],
+      "outcomes": [],
+      "next": [
+        "Draft what it does today in the owner's words, built vs planned, stack, repo state, business case, architecture, key decisions, and real metrics (if any)."
+      ]
+    }
+  },
+  {
+    "slug": "aeroconnect",
+    "index": "04",
+    "title": "AeroConnect",
+    "working_title": "AeroConnect",
+    "label": "IOT & TELEMETRY",
+    "oneLiner": "TODO: Content not written yet in portfolio-projects.md.",
+    "outcome": "TODO: Pending specification in portfolio-projects.md",
+    "stack": [],
+    "status": "in-progress",
+    "status_raw": "TBD",
+    "featured": true,
+    "links": {
+      "github": null,
+      "live": null
+    },
+    "diagram": {
+      "nodes": [
+        "Sensor Node",
+        "LoRa Gateway",
+        "Dashboard"
+      ],
+      "edges": []
+    },
+    "detail": {
+      "role": null,
+      "timeframe": null,
+      "problem": null,
+      "decisions": [],
+      "outcomes": [],
+      "next": [
+        "Draft what it does today in the owner's words, built vs planned, stack, repo state, business case, architecture, key decisions, and real metrics (if any)."
+      ]
+    }
+  },
+  {
+    "slug": "rio-quickbite",
+    "index": "05",
+    "title": "RIO: QuickBite Assistant",
+    "working_title": "RIO: QuickBite Assistant",
+    "label": "MULTI-AGENT APP",
+    "oneLiner": "Solo internship assessment project: a multi-agent assistant layered on a Swiggy/Zomato-style food delivery app (orders, decisions, support).",
+    "outcome": "TODO: Pending verification of NDA/IP terms and documentation extraction.",
+    "stack": [],
+    "status": "in-progress",
+    "status_raw": "TBD",
+    "featured": false,
+    "links": {
+      "github": null,
+      "live": null
+    },
+    "diagram": {
+      "nodes": [
+        "Order",
+        "Multi-Agent Hub",
+        "Support"
+      ],
+      "edges": []
+    },
+    "detail": {
+      "role": "Solo internship assessment project",
+      "timeframe": null,
+      "problem": null,
+      "decisions": [],
+      "outcomes": [],
+      "next": [
+        "Check NDA/IP terms before publishing. Safe default: no company name, no proprietary data or screenshots, framed as built during an internship assessment."
+      ]
+    }
+  }
+]

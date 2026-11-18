@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Base + Assistant — Sanket Rotangar</title>
+    <meta name="description" content="Multi-tenant company knowledge base with a permission-aware agent: cited answers, role-gated retrieval in Postgres, and a graceful denial path." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Knowledge Base + Assistant — Sanket Rotangar" />
+    <meta property="og:description" content="Multi-tenant company knowledge base with a permission-aware agent: cited answers, role-gated retrieval in Postgres, and a graceful denial path." />
+    <meta property="og:image" content="/assets/projects/knowledge-base-assistant/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      /* Apply the saved theme before first paint to avoid a flash. */
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="stylesheet" href="../css/assistant.css" />
+  </head>
+  <body class="detail-body">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container case-nav">
+        <a class="case-back" href="../index.html#projects">← All projects</a>
+        <div class="case-nav__actions">
+          <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Toggle light and dark theme" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <a class="nav-cta" href="../index.html#contact">Work with me</a>
+          <a class="nav-resume" href="/resume">Resume</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container case-main" id="main">
+      <header class="detail-header">
+        <div class="detail-tagline">
+          <span class="detail-mono">01 / ENTERPRISE RAG</span>
+          <span class="project-status-badge">In build (Phase 1)</span>
+        </div>
+        <h1 class="detail-title">Knowledge Base + Assistant</h1>
+        <p class="detail-oneliner">Multi-tenant company knowledge base with a permission-aware agent. Cites every answer, refuses what you are not cleared to see, and flags when documents disagree.</p>
+        <div class="detail-meta-grid">
+          <div class="meta-item"><span class="meta-label">Role</span><div class="meta-val">Solo build, end to end: tenant-aware schema, access model, ingestion and retrieval pipeline, agent layer, and the evaluation harness.</div></div><div class="meta-item"><span class="meta-label">Status</span><div class="meta-val">In build (Phase 1)</div></div><div class="meta-item meta-item--wide"><span class="meta-label">Stack</span><div class="meta-val project-card-stack"><span class="project-chip">PostgreSQL + pgvector</span><span class="project-chip">Row-Level Security</span><span class="project-chip">Hybrid search (RRF) + reranker</span><span class="project-chip">Switchable LLM layer</span><span class="project-chip">FastAPI</span><span class="project-chip">Next.js</span></div></div>
+        </div>
+      </header>
+
+      <section class="detail-section" id="problem">
+        <h2 class="detail-section-title">Problem</h2>
+        <p class="detail-body-text">Company knowledge sits in drives and chats in five versions, and leadership needs the right document at the right moment. Generic RAG chatbots answer from whatever they can see, which means they eventually leak the wrong document to the wrong person.</p>
+      </section>
+
+      <section class="detail-section" id="built">
+        <h2 class="detail-section-title">What I built</h2>
+        <p class="detail-section-sub">How the system runs end to end.</p>
+        <ul class="detail-bullet-list"><li>Ingest: PDF, DOCX and Markdown are parsed, chunked, embedded, and stored as versioned documents with tenant, department and clearance metadata.</li><li>Retrieve: vector + keyword search fused with RRF, then reranked. Access is enforced in Postgres via Row-Level Security before the model sees anything.</li><li>Answer: the agent responds from permitted chunks only, with citations (file, version, date).</li><li>Deny gracefully: if a restricted document matches, the user is told one exists and can request access. No title, snippet or content is revealed. Requests are logged for document owners.</li></ul>
+      </section>
+
+      <section class="detail-section" id="architecture">
+        <h2 class="detail-section-title">Architecture</h2>
+        <p class="detail-section-sub">Ingestion and permission storage on top, the role-gated answer track in the middle, the denial path below.</p>
+        <div class="case-panel">
+          <button class="zoom-btn" type="button"
+            data-zoom="../assets/projects/knowledge-base-assistant/architecture.svg"
+            data-zoom-alt="Architecture diagram: upload, parse and version, embed, then Postgres with pgvector and row-level security; hybrid retrieval and reranking feed an agent that returns a cited answer. A separate dashed path covers the existence check, access request and audit log.">
+            <picture>
+              <source media="(max-width: 639px)" srcset="../assets/projects/knowledge-base-assistant/architecture-mobile.svg" />
+              <img src="../assets/projects/knowledge-base-assistant/architecture.svg" alt="Architecture diagram: upload, parse and version, embed, then Postgres with pgvector and row-level security; hybrid retrieval and reranking feed an agent that returns a cited answer. A separate dashed path covers the existence check, access request and audit log." width="1200" height="560" loading="lazy" />
+            </picture>
+          </button>
+        </div>
+        <span class="zoom-hint">Click the diagram to zoom</span>
+      </section>
+
+      <section class="detail-section" id="decisions">
+        <h2 class="detail-section-title">Key decisions and trade-offs</h2>
+        <p class="detail-section-sub">What I chose, what I rejected, and why.</p>
+        <div class="decisions-grid"><article class="decision-card"><div class="decision-header"><span class="decision-choice-label">Choice</span><p class="decision-choice">Authorization lives in the data layer, not the prompt.</p></div><div class="decision-body"><p class="decision-why"><strong>Why:</strong> The model only receives chunks the user is cleared for. Prompt-based guardrails fail under adversarial input, and row-level policies do not.</p><p class="decision-rejected"><strong>Rejected:</strong> Prompt-based guardrails (fail under adversarial injection)</p></div></article><article class="decision-card"><div class="decision-header"><span class="decision-choice-label">Choice</span><p class="decision-choice">Two-query retrieval.</p></div><div class="decision-body"><p class="decision-why"><strong>Why:</strong> One query runs as the user. A second privileged query returns only an existence flag. The extra latency is a deliberate price for being transparent without leaking.</p><p class="decision-rejected"><strong>Rejected:</strong> Single query without existence visibility, or a leaky unified query</p></div></article><article class="decision-card"><div class="decision-header"><span class="decision-choice-label">Choice</span><p class="decision-choice">One Postgres instead of a separate vector database.</p></div><div class="decision-body"><p class="decision-why"><strong>Why:</strong> Permissions, versions and vectors stay in one transactional store. This fits the target scale. It is not a claim that it beats dedicated vector databases at massive scale.</p><p class="decision-rejected"><strong>Rejected:</strong> A separate dedicated vector database</p></div></article><article class="decision-card"><div class="decision-header"><span class="decision-choice-label">Choice</span><p class="decision-choice">Version-aware answers.</p></div><div class="decision-body"><p class="decision-why"><strong>Why:</strong> Superseded versions are archived and excluded by default. When two documents conflict, the answer flags the conflict and shows both dates instead of silently picking one.</p><p class="decision-rejected"><strong>Rejected:</strong> Silent arbitrary document selection</p></div></article><article class="decision-card"><div class="decision-header"><span class="decision-choice-label">Choice</span><p class="decision-choice">Multi-tenant from day one.</p></div><div class="decision-body"><p class="decision-why"><strong>Why:</strong> tenant_id and RLS are on every table, even when running a single tenant. Retrofitting isolation later means rewriting every query.</p><p class="decision-rejected"><strong>Rejected:</strong> Single-tenant schema with a planned future migration</p></div></article></div>
+      </section>
+
+      <section class="detail-section" id="results">
+        <h2 class="detail-section-title">Results</h2>
+        <p class="detail-section-sub">Measured numbers only. Design targets are labelled as targets.</p>
+        <div class="outcomes-table-wrapper"><table class="outcomes-table"><caption class="sr-only">Results and design targets</caption><thead><tr><th scope="col">Metric</th><th scope="col">Value</th><th scope="col">Note</th></tr></thead><tbody><tr><td class="outcomes-metric-col">Retrieval hit@5 on a golden question set</td><td class="outcomes-val-col">[ __ % ] <span class="badge-measuring">Measuring</span></td><td class="outcomes-note-col">Golden set in build</td></tr><tr><td class="outcomes-metric-col">Permission leakage across adversarial cases</td><td class="outcomes-val-col">0 <span class="badge-target">Design target</span></td><td class="outcomes-note-col">Design target, not a measured result</td></tr><tr><td class="outcomes-metric-col">p95 answer latency</td><td class="outcomes-val-col">[ __ s ] <span class="badge-measuring">Measuring</span></td><td class="outcomes-note-col">Target to be set from the latency budget</td></tr><tr><td class="outcomes-metric-col">Cost per answered query</td><td class="outcomes-val-col">[ $ __ ] <span class="badge-measuring">Measuring</span></td><td class="outcomes-note-col">Cost telemetry active</td></tr><tr><td class="outcomes-metric-col">Citation accuracy (answer supported by cited chunk)</td><td class="outcomes-val-col">[ __ % ] <span class="badge-measuring">Measuring</span></td><td class="outcomes-note-col">Evaluation harness</td></tr></tbody></table></div>
+      </section>
+
+      <section class="detail-section" id="next">
+        <h2 class="detail-section-title">What I would improve next</h2>
+        <ul class="detail-bullet-list"><li>Pick the final project name (the working title is still TBD).</li><li>Confirm hosting (Supabase + Render/Railway + Vercel are the current options).</li><li>Build the evaluation harness (golden Q&amp;A set plus the permission-leak suite) so the outcome slots can be filled from real measurements.</li><li>Executive brief mode: a cited digest across only the documents a person can access (Phase 2).</li><li>Onboarding paths: role-based reading sequences for new hires (Phase 3).</li></ul>
+      </section>
+
+      <section class="detail-section" id="links">
+        <h2 class="detail-section-title">Links</h2>
+        <p class="detail-body-text"><em>Repository and demo are not published yet.</em></p>
+      </section>
+
+      <footer class="detail-footer-next">
+        <span class="detail-footer-label">Next project</span>
+        <a class="detail-next-link" href="rio-assistant.html">
+          <span>RIO: QuickBite Assistant</span>
+          <span class="detail-next-arrow" aria-hidden="true">→</span>
+        </a>
+      </footer>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>Goa, India · open to relocate</span>
+        <nav aria-label="Footer">
+          <a href="https://github.com/Sanket-Rotangar" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/sanketrotangar" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:sanketrotangar04@gmail.com">Email</a>
+          <a href="../services.html">Services</a>
+          <a href="/resume">Resume</a>
+        </nav>
+      </div>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Architecture diagram, full size">
+      <button class="lightbox__close" type="button">Close ✕</button>
+      <img id="lightbox-image" src="../assets/projects/knowledge-base-assistant/architecture.svg" alt="" />
+    </dialog>
+
+    <script src="../js/theme.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/assistant.js" defer></script>
+  </body>
+</html>

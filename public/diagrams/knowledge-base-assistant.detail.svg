@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" width="100%" height="auto" role="img" aria-labelledby="kb-detail-title kb-detail-desc">
+  <title id="kb-detail-title">Knowledge Base Full Architecture Diagram</title>
+  <desc id="kb-detail-desc">Full pipeline showing ingestion, Postgres RLS store, hybrid retrieval, agent generation, and the permission existence check audit path.</desc>
+  <defs>
+    <marker id="det-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-edge)" />
+    </marker>
+    <marker id="det-arrow-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-diagram-accent-border)" />
+    </marker>
+  </defs>
+
+  <!-- Background container grid -->
+  <rect x="10" y="10" width="840" height="300" rx="14" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1"/>
+
+  <!-- Ingestion Pipeline -->
+  <text x="30" y="38" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">INGESTION &amp; PERMISSION STORAGE</text>
+
+  <g class="diagram-node">
+    <rect x="30" y="55" width="115" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="87" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Upload PDF/MD</text>
+  </g>
+  <path class="edge-path" d="M 145 78 L 180 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="185" y="55" width="165" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="267" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Parse &amp; Chunk (Versioned)</text>
+  </g>
+  <path class="edge-path" d="M 350 78 L 385 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="390" y="55" width="120" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="450" y="83" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Embeddings</text>
+  </g>
+  <path class="edge-path" d="M 510 78 L 545 78" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="550" y="50" width="275" height="56" rx="10" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-width="1.5"/>
+    <text x="687" y="76" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="12" font-weight="600">PostgreSQL Store</text>
+    <text x="687" y="94" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10">pgvector + tsvector + RLS Enforced</text>
+  </g>
+
+  <!-- Query & Retrieval Track -->
+  <text x="30" y="145" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">QUERY &amp; ROLE-GATED ANSWER TRACK</text>
+
+  <!-- Branch down from Postgres to Hybrid Retrieve -->
+  <path class="edge-path" d="M 687 106 L 687 140 Q 687 150 677 150 L 515 150" stroke="var(--color-diagram-edge)" stroke-width="1.5" fill="none" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="330" y="130" width="180" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="420" y="158" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Hybrid Retrieve (RRF)</text>
+  </g>
+  <path class="edge-path" d="M 330 153 L 265 153" stroke="var(--color-diagram-edge)" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="80" y="130" width="180" height="46" rx="8" fill="var(--color-diagram-node-bg)" stroke="var(--color-diagram-node-border)"/>
+    <text x="170" y="158" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="11">Agent (Switchable LLM)</text>
+  </g>
+
+  <!-- To Cited Answer -->
+  <path class="edge-path" d="M 170 176 L 170 195 Q 170 205 180 205 L 325 205" stroke="var(--color-diagram-accent-border)" stroke-width="1.5" fill="none" marker-end="url(#det-arrow-accent)"/>
+
+  <g class="diagram-node node--highlight">
+    <rect x="330" y="190" width="200" height="48" rx="8" fill="var(--color-diagram-accent-fill)" stroke="var(--color-diagram-accent-border)" stroke-width="1.5"/>
+    <text x="430" y="219" text-anchor="middle" fill="var(--color-diagram-text)" font-family="DM Mono, monospace" font-size="12" font-weight="700">Cited Answer &amp; Conflict Flag ✦</text>
+  </g>
+
+  <!-- Permission Denial / Existence Path (dashed) -->
+  <text x="30" y="260" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10" letter-spacing="0.08em" text-transform="uppercase">PERMISSION DENIAL &amp; WORKFLOW PATH</text>
+
+  <path class="edge-path" d="M 750 106 L 750 260 Q 750 270 740 270 L 685 270" stroke="var(--color-diagram-edge)" stroke-dasharray="4 4" stroke-width="1.5" fill="none" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="500" y="250" width="180" height="42" rx="8" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-dasharray="3 3"/>
+    <text x="590" y="276" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10.5">Existence Check (Flag Only)</text>
+  </g>
+  <path class="edge-path" d="M 500 271 L 435 271" stroke="var(--color-diagram-edge)" stroke-dasharray="4 4" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="260" y="250" width="170" height="42" rx="8" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-dasharray="3 3"/>
+    <text x="345" y="276" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10.5">Access Request Workflow</text>
+  </g>
+  <path class="edge-path" d="M 260 271 L 205 271" stroke="var(--color-diagram-edge)" stroke-dasharray="4 4" stroke-width="1.5" marker-end="url(#det-arrow)"/>
+
+  <g class="diagram-node">
+    <rect x="80" y="250" width="120" height="42" rx="8" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-dasharray="3 3"/>
+    <text x="140" y="276" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10.5">Audit Log</text>
+  </g>
+</svg>

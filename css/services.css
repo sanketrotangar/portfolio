@@ -1,0 +1,1579 @@
+@import "tokens.css";
+
+/* ==========================================================================
+   SERVICES STYLESHEET — BACKUP-ALIGNED DESIGN SYSTEM
+   Directly inherits the visual language, typography, color tokens,
+   radial glow geometry, offset shadows, and terminal aesthetics of backup/index.html.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Local Typography Tokens (all colours live in css/tokens.css)
+   -------------------------------------------------------------------------- */
+:root {
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Base Typography
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body.svc-body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.svc-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 6vw, 96px);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  background: var(--color-primary);
+  color: var(--color-accent-text);
+  padding: 10px 16px;
+  font: 700 13px var(--font-mono);
+  border-radius: 6px;
+  z-index: 1000;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation & Header
+   -------------------------------------------------------------------------- */
+.svc-header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background: var(--color-header-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.svc-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px clamp(24px, 6vw, 96px);
+}
+
+.svc-brand {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--ink);
+}
+
+.svc-brand span {
+  color: var(--color-accent-text);
+}
+
+.svc-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.svc-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--color-border-interactive);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.svc-theme-btn:hover {
+  background: var(--color-wash-06);
+  border-color: var(--border);
+}
+
+.svc-theme-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+.svc-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  border: none;
+}
+
+.svc-btn-pill span {
+  font-size: 16px;
+  line-height: 0;
+}
+
+.svc-btn-secondary {
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--color-border-interactive);
+}
+
+.svc-btn-secondary:hover {
+  background: var(--color-wash-06);
+}
+
+.svc-btn-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.svc-btn-primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+.svc-btn-lime {
+  background: var(--lime);
+  color: var(--color-on-accent);
+  font-weight: 800;
+}
+
+.svc-btn-lime:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   1. Hero Section (Exact visual geometry from backup/index.html)
+   -------------------------------------------------------------------------- */
+.svc-hero {
+  min-height: calc(100vh - 66px);
+  padding: 26px clamp(24px, 6vw, 96px) 48px;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+}
+
+.svc-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 28%, var(--accent) 0 8%, transparent 33%),
+    radial-gradient(circle at 78% 70%, var(--color-accent-wash-20) 0, transparent 24%),
+    var(--paper);
+}
+
+.svc-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(58vw, 760px);
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  right: -13vw;
+  top: 14vh;
+  box-shadow:
+    0 0 0 52px var(--border),
+    0 0 0 105px var(--border);
+}
+
+.svc-hero-main {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 48px;
+  padding: 60px 0 45px;
+}
+
+.svc-eyebrow {
+  color: var(--green-kicker);
+  font: 500 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 24px;
+}
+
+.svc-eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent-text);
+  box-shadow: 0 0 0 5px var(--color-accent-wash-15);
+}
+
+.svc-hero-title {
+  max-width: 850px;
+  font-size: clamp(3.2rem, 6.8vw, 6.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.075em;
+  margin: 0;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.svc-hero-title em {
+  color: var(--green-accent);
+  font-style: normal;
+  position: relative;
+  white-space: nowrap;
+}
+
+.svc-hero-title em::after {
+  content: "";
+  position: absolute;
+  height: 7px;
+  background: var(--lime);
+  border-radius: 8px;
+  width: 100%;
+  left: 1%;
+  bottom: -1px;
+  z-index: -1;
+  transform: rotate(-1deg);
+}
+
+.svc-intro {
+  max-width: 530px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 17px;
+  margin: 28px 0;
+}
+
+.svc-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.svc-proof-strip {
+  display: flex;
+  gap: 28px;
+  margin-top: 44px;
+}
+
+.svc-proof-strip div {
+  border-left: 1px solid var(--line);
+  padding-left: 15px;
+}
+
+.svc-proof-strip strong {
+  display: block;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.svc-proof-strip small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Floating Terminal Profile Card (from backup/index.html) */
+.svc-terminal {
+  width: 100%;
+  max-width: 440px;
+  align-self: center;
+  background: var(--color-card-bg);
+  border: 1px solid var(--forest-border);
+  color: var(--forest-text);
+  padding: 0 24px 24px;
+  border-radius: 20px;
+  box-shadow: 18px 21px 0 var(--color-shadow-md);
+  transform: rotate(2deg);
+  transition: transform 0.3s ease;
+}
+
+.svc-terminal:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.svc-dots {
+  height: 51px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  border-bottom: 1px solid var(--border-on-ink);
+  margin-bottom: 19px;
+}
+
+.svc-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-on-ink);
+}
+
+.svc-dots i:first-child {
+  background: var(--lime);
+}
+
+.svc-code {
+  font: 400 12px/1.85 var(--font-mono);
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+.svc-key { color: var(--color-accent-text); }
+.svc-type { color: var(--on-ink-muted); }
+.svc-string { color: var(--on-ink); }
+.svc-comment { color: var(--on-ink-muted); }
+
+.svc-tag {
+  display: inline-flex;
+  margin-top: 20px;
+  padding: 7px 11px;
+  color: var(--on-ink-muted);
+  border: 1px solid var(--forest-border);
+  border-radius: 6px;
+  font: 500 10.5px var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.svc-hero-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font: 400 11px var(--font-mono);
+  margin-top: 20px;
+}
+
+.svc-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.svc-status-pill::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--color-accent-text);
+  border-radius: 50%;
+}
+
+/* --------------------------------------------------------------------------
+   Shared Section Layouts (Consistent with backup/index.html)
+   -------------------------------------------------------------------------- */
+.svc-section {
+  padding: clamp(72px, 10vw, 130px) clamp(24px, 6vw, 96px);
+  background: var(--surface);
+}
+
+.svc-section-alt {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.svc-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 46px;
+}
+
+.svc-section-kicker {
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-kicker);
+  margin: 0 0 12px;
+}
+
+.svc-section-title {
+  max-width: 720px;
+  font-size: clamp(2.3rem, 4.6vw, 4.4rem);
+  letter-spacing: -0.07em;
+  line-height: 1;
+  margin: 0;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.svc-section-title em {
+  color: var(--green-accent);
+  font-style: normal;
+  position: relative;
+}
+
+.svc-section-title em::after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  background: var(--lime);
+  border-radius: 8px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.svc-section-note {
+  max-width: 320px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Hairline Grid Card Container (signature from backup principles) */
+.svc-hairline-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   2. "Which sounds like you?" Selectable Cards
+   -------------------------------------------------------------------------- */
+.svc-sound-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.svc-sound-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  outline: none;
+}
+
+.svc-sound-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px var(--color-shadow-md);
+  border-color: var(--border);
+}
+
+.svc-sound-card[aria-selected="true"] {
+  border-color: var(--ink);
+  box-shadow: 6px 6px 0 var(--lime), 0 12px 24px var(--color-shadow-md);
+}
+
+.svc-sound-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.svc-sound-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--paper-alt);
+  font: 700 12px var(--font-mono);
+  color: var(--ink);
+}
+
+.svc-sound-card[aria-selected="true"] .svc-sound-letter {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.svc-sound-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.svc-sound-indicator {
+  margin-top: auto;
+  font: 500 11.5px var(--font-mono);
+  color: var(--muted);
+}
+
+.svc-sound-card[aria-selected="true"] .svc-sound-indicator {
+  color: var(--green-kicker);
+  font-weight: 700;
+}
+
+.svc-sound-drawer {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 8px 8px 0 var(--border);
+}
+
+.svc-sound-drawer-text h4 {
+  font: 500 11px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green-kicker);
+  margin: 0 0 8px;
+}
+
+.svc-sound-drawer-text p {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--ink);
+  line-height: 1.6;
+  max-width: 650px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Industry Switcher
+   -------------------------------------------------------------------------- */
+.svc-industry-strip {
+  background: var(--bg);
+  padding: 24px clamp(24px, 6vw, 96px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.svc-industry-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.svc-industry-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--surface);
+  padding: 5px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.svc-industry-pill {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.svc-industry-pill:hover {
+  color: var(--ink);
+}
+
+.svc-industry-pill[aria-selected="true"] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.svc-sample-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-accent-text);
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.svc-sample-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--color-on-primary);
+  border-radius: 50%;
+}
+
+/* --------------------------------------------------------------------------
+   4. Interactive Sample Demo (Terminal & CRM Ledger)
+   -------------------------------------------------------------------------- */
+.svc-demo-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+}
+
+.svc-demo-chat-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--forest-border);
+  border-radius: 20px;
+  padding: 24px;
+  color: var(--forest-text);
+  box-shadow: 14px 14px 0 var(--border);
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+}
+
+.svc-chat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-on-ink);
+  margin-bottom: 18px;
+}
+
+.svc-chat-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.svc-chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-card-inset-bg);
+  color: var(--color-accent-text);
+  display: grid;
+  place-items: center;
+  font: 700 12px var(--font-mono);
+}
+
+.svc-chat-meta strong {
+  display: block;
+  font-size: 13.5px;
+  color: var(--color-card-text);
+}
+
+.svc-chat-meta small {
+  font: 400 11px var(--font-mono);
+  color: var(--on-ink-muted);
+}
+
+.svc-chat-stream {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.svc-msg {
+  max-width: 86%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  animation: svcMsgEnter 0.25s ease-out;
+}
+
+@keyframes svcMsgEnter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.svc-msg-customer {
+  align-self: flex-start;
+  background: var(--color-card-inset-bg);
+  color: var(--on-ink);
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--border-on-ink);
+}
+
+.svc-msg-agent {
+  align-self: flex-end;
+  background: var(--lime);
+  color: var(--color-on-accent);
+  font-weight: 500;
+  border-bottom-right-radius: 2px;
+}
+
+.svc-msg-sender {
+  font: 600 10px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.svc-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--ink);
+  border-radius: 999px;
+  align-self: flex-start;
+  font: 400 11px var(--font-mono);
+  color: var(--on-ink-muted);
+}
+
+.svc-typing-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--lime);
+  border-radius: 50%;
+  animation: svcTypingBlink 1.2s infinite ease-in-out;
+}
+
+.svc-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.svc-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes svcTypingBlink {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.svc-chat-footer {
+  padding-top: 14px;
+  border-top: 1px solid var(--border-on-ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+/* CRM Ledger Ticket (Right side) */
+.svc-demo-crm-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 14px 14px 0 var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.svc-crm-ticket-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+
+.svc-crm-badge {
+  font: 700 10.5px var(--font-mono);
+  text-transform: uppercase;
+  color: var(--green-kicker);
+  padding: 4px 8px;
+  background: var(--color-accent-wash-15);
+  border-radius: 6px;
+}
+
+.svc-crm-rows {
+  display: grid;
+  gap: 12px;
+  flex: 1;
+}
+
+.svc-crm-row {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  transition: all 0.25s ease;
+}
+
+.svc-crm-row.is-updated {
+  border-color: var(--green-dot);
+  background: var(--bg);
+}
+
+.svc-crm-label {
+  display: block;
+  font: 600 10px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.svc-crm-val {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.svc-crm-val.empty {
+  color: var(--on-ink-muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   5. Leak Calculator
+   -------------------------------------------------------------------------- */
+.svc-calc-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.svc-calc-controls {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 14px 14px 0 var(--border);
+  display: grid;
+  gap: 24px;
+}
+
+.svc-calc-field {
+  display: grid;
+  gap: 8px;
+}
+
+.svc-calc-field-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.svc-calc-badge {
+  font: 600 12.5px var(--font-mono);
+  color: var(--color-on-accent);
+  background: var(--lime);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.svc-range-input {
+  width: 100%;
+  height: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.svc-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--lime);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.svc-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.svc-calc-receipt {
+  background: var(--color-card-bg);
+  border: 1px solid var(--forest-border);
+  border-radius: 20px;
+  padding: 30px;
+  color: var(--forest-text);
+  box-shadow: 14px 14px 0 var(--border);
+}
+
+.svc-calc-receipt-head {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-on-ink);
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--on-ink-muted);
+}
+
+.svc-calc-big-leak {
+  margin-bottom: 24px;
+}
+
+.svc-calc-big-num {
+  font-size: clamp(3rem, 5.5vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+  color: var(--color-accent-text);
+}
+
+.svc-calc-hours-num {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: var(--color-card-text);
+  margin-top: 6px;
+}
+
+.svc-calc-formula {
+  border-top: 1px solid var(--border-on-ink);
+  padding-top: 16px;
+  font: 400 11px/1.8 var(--font-mono);
+  color: var(--on-ink-muted);
+}
+
+.svc-calc-disclaimer {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--on-ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   6. "A Tuesday, before and after" (Timeline)
+   -------------------------------------------------------------------------- */
+.svc-timeline-container {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 14px 14px 0 var(--border);
+}
+
+.svc-timeline-row {
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: 110px 1fr 1fr;
+  align-items: stretch;
+}
+
+.svc-timeline-time {
+  padding: 24px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+}
+
+.svc-timeline-time span {
+  font: 700 13px var(--font-mono);
+  color: var(--ink);
+  background: var(--paper-alt);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.svc-timeline-col {
+  padding: 24px;
+}
+
+.svc-timeline-col:first-of-type {
+  border-right: 1px solid var(--border);
+}
+
+.svc-timeline-col-head {
+  font: 700 10.5px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.svc-timeline-col-head.before { color: var(--text-muted); }
+.svc-timeline-col-head.after { color: var(--green-accent); }
+
+.svc-timeline-col p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   7. How It Works (Steps & Timeline)
+   -------------------------------------------------------------------------- */
+.svc-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.svc-step-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 10px 10px 0 var(--border);
+}
+
+.svc-step-num {
+  font: 700 11px var(--font-mono);
+  color: var(--green-kicker);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.svc-step-card h3 {
+  font-size: 19px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+
+.svc-step-card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* 14-day schedule strip */
+.svc-schedule-card {
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 26px 30px;
+  margin-bottom: 32px;
+}
+
+.svc-schedule-phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.svc-schedule-phase {
+  border-top: 2px solid var(--ink);
+  padding-top: 10px;
+}
+
+.svc-phase-days {
+  font: 700 11px var(--font-mono);
+  color: var(--green-kicker);
+  text-transform: uppercase;
+}
+
+.svc-phase-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 4px 0 6px;
+  color: var(--ink);
+}
+
+.svc-phase-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Split detail boxes */
+.svc-split-boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.svc-detail-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.svc-detail-card h4 {
+  font: 700 11px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green-kicker);
+  margin: 0 0 14px;
+}
+
+.svc-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.svc-check-list li {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  padding-left: 20px;
+  position: relative;
+}
+
+.svc-check-list li::before {
+  content: "↗";
+  position: absolute;
+  left: 0;
+  color: var(--green-accent);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   8. Honest FAQ (Accordion)
+   -------------------------------------------------------------------------- */
+.svc-faq-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  max-width: 860px;
+}
+
+.svc-faq-item {
+  background: var(--surface);
+}
+
+.svc-faq-summary {
+  padding: 22px 26px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  outline: none;
+}
+
+.svc-faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.svc-faq-summary:hover {
+  background: var(--paper-alt);
+}
+
+.svc-faq-icon {
+  font: 400 18px var(--font-mono);
+  color: var(--green-accent);
+  transition: transform 0.2s;
+}
+
+.svc-faq-item[open] .svc-faq-icon {
+  transform: rotate(45deg);
+}
+
+.svc-faq-content {
+  padding: 0 26px 24px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+.svc-faq-content p {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. Pricing Stance
+   -------------------------------------------------------------------------- */
+.svc-pricing-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 44px);
+  max-width: 860px;
+  box-shadow: 14px 14px 0 var(--border);
+}
+
+.svc-pricing-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 24px 0;
+}
+
+.svc-price-cell strong {
+  display: block;
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: var(--ink);
+  margin: 6px 0;
+}
+
+.svc-price-cell span {
+  font: 500 11px var(--font-mono);
+  color: var(--green-kicker);
+  text-transform: uppercase;
+}
+
+.svc-price-cell small {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   10. Final CTA & Booking Form (Full-bleed dark forest from backup/index.html)
+   -------------------------------------------------------------------------- */
+.svc-contact {
+  background: var(--color-card-bg);
+  color: var(--color-card-text);
+  padding: clamp(72px, 11vw, 150px) clamp(24px, 6vw, 96px) 44px;
+}
+
+.svc-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  gap: clamp(38px, 8vw, 120px);
+  align-items: start;
+}
+
+.svc-contact h2 {
+  max-width: 860px;
+  font-size: clamp(3rem, 7.5vw, 6.8rem);
+  letter-spacing: -0.08em;
+  line-height: 0.94;
+  margin: 0 0 28px;
+  font-weight: 800;
+  color: var(--on-ink);
+}
+
+.svc-contact h2 em {
+  color: var(--color-accent-text);
+  font-style: normal;
+}
+
+.svc-contact-copy {
+  color: var(--on-ink-muted);
+  max-width: 480px;
+  line-height: 1.65;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.svc-direct-channels {
+  display: grid;
+  gap: 12px;
+}
+
+.svc-channel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--on-ink);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--border-on-ink);
+  border: 1px solid var(--border-on-ink);
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.svc-channel-link:hover {
+  background: var(--border-on-ink);
+  color: var(--surface);
+}
+
+.svc-contact-form {
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid var(--color-card-border);
+  border-radius: 20px;
+  background: var(--color-card-inset-bg);
+  box-shadow: 14px 14px 0 var(--color-card-border);
+}
+
+.svc-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.svc-field {
+  display: grid;
+  gap: 8px;
+  color: var(--on-ink-muted);
+  font: 500 10.5px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.svc-field input,
+.svc-field select,
+.svc-field textarea {
+  font: 500 14px var(--font-body);
+  color: var(--color-text);
+  outline: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-interactive);
+  border-radius: 8px;
+  padding: 12px 14px;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.svc-field input:focus,
+.svc-field select:focus,
+.svc-field textarea:focus {
+  border-color: var(--color-accent-text);
+  box-shadow: 0 0 0 3px var(--color-accent-wash-15);
+}
+
+.svc-field textarea {
+  min-height: 95px;
+}
+
+.svc-radio-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.svc-radio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 400 12px var(--font-mono);
+  color: var(--color-card-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-interactive);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.svc-radio-pill input {
+  margin: 0;
+}
+
+.svc-form-status {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  display: none;
+}
+
+.svc-form-status.is-active {
+  display: block;
+}
+
+.svc-form-status.is-success {
+  background: var(--color-accent-wash-15);
+  color: var(--color-accent-text);
+  border: 1px solid var(--accent);
+}
+
+.svc-form-status.is-error {
+  background: var(--border-on-ink);
+  color: var(--text-muted);
+  border: 1px solid var(--text-muted);
+}
+
+.svc-contact-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 110px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-on-ink);
+  color: var(--on-ink-muted);
+  font: 400 11px var(--font-mono);
+}
+
+.svc-contact-bottom a {
+  color: var(--on-ink);
+  text-decoration: none;
+}
+
+.svc-contact-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Media Queries (Aligned with backup/index.html)
+   -------------------------------------------------------------------------- */
+@media (max-width: 980px) {
+  .svc-hero-main {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .svc-terminal {
+    max-width: 100%;
+    transform: none;
+  }
+
+  .svc-sound-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .svc-sound-drawer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .svc-demo-grid,
+  .svc-calc-layout,
+  .svc-split-boxes,
+  .svc-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .svc-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .svc-schedule-phases {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .svc-hero {
+    min-height: auto;
+  }
+
+  .svc-sound-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .svc-section-header {
+    display: block;
+  }
+
+  .svc-section-note {
+    margin-top: 18px;
+  }
+
+  .svc-timeline-row {
+    grid-template-columns: 1fr;
+  }
+
+  .svc-timeline-time {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+  }
+
+  .svc-timeline-col:first-of-type {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .svc-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .svc-schedule-phases {
+    grid-template-columns: 1fr;
+  }
+
+  .svc-contact-bottom {
+    margin-top: 70px;
+    flex-wrap: wrap;
+  }
+
+  .svc-hero-title {
+    font-size: clamp(2.8rem, 12vw, 4.4rem);
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Method: four compact steps (moved from the home page) */
+.svc-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 980px) {
+  .svc-flow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .svc-flow-grid {
+    grid-template-columns: 1fr;
+  }
+}

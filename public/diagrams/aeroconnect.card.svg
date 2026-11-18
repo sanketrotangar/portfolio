@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 150" width="100%" height="auto" role="img" aria-labelledby="aeroconnect-t aeroconnect-d">
+  <title id="aeroconnect-t">AeroConnect Diagram Placeholder</title>
+  <desc id="aeroconnect-d">Architecture diagram placeholder for AeroConnect. Pending draft in portfolio-projects.md.</desc>
+  <rect x="10" y="10" width="520" height="130" rx="10" fill="var(--color-diagram-node-bg-muted)" stroke="var(--color-diagram-node-border)" stroke-dasharray="6 6"/>
+  <text x="270" y="67" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="12" font-weight="600">[BUILD WARNING · DIAGRAM PENDING]</text>
+  <text x="270" y="89" text-anchor="middle" fill="var(--color-diagram-text-muted)" font-family="DM Mono, monospace" font-size="10.5">Architecture not yet drafted in portfolio-projects.md</text>
+</svg>
