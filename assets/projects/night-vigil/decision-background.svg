@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" width="480" height="240" role="img" aria-labelledby="nv-bg-title nv-bg-desc">
+  <title id="nv-bg-title">Background tracking lifecycle</title>
+  <desc id="nv-bg-desc">Check-in registers an Expo TaskManager background task. The task keeps recording location updates at the configured time and distance thresholds until checkout stops it.</desc>
+  <defs>
+    <marker id="bg-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 z" fill="#A9C2B2"/></marker>
+    <style>
+      .node { fill: #FFFFFF; stroke: #CADBCF; stroke-width: 1; }
+      .node-accent { fill: #E9F6B8; stroke: #5F7A0C; stroke-width: 1.2; }
+      .label { fill: #0F2A1F; font: 500 12.5px "DM Mono", monospace; }
+      .sub { fill: #4A5E53; font: 400 10px "DM Mono", monospace; }
+      .edge { stroke: #A9C2B2; stroke-width: 1.4; fill: none; marker-end: url(#bg-arrow); }
+      .edge-label { fill: #4A5E53; font: 400 10px "DM Mono", monospace; }
+    </style>
+  </defs>
+
+  <rect class="node" x="14" y="92" width="110" height="60" rx="9"/>
+  <text class="label" x="69" y="117" text-anchor="middle">Check in</text>
+  <text class="sub" x="69" y="135" text-anchor="middle">tracking starts</text>
+
+  <rect class="node-accent" x="156" y="62" width="172" height="120" rx="10"/>
+  <text class="label" x="242" y="92" text-anchor="middle">TaskManager</text>
+  <text class="sub" x="242" y="112" text-anchor="middle">registered background</text>
+  <text class="sub" x="242" y="127" text-anchor="middle">location task</text>
+  <text class="sub" x="242" y="150" text-anchor="middle">time + distance</text>
+  <text class="sub" x="242" y="165" text-anchor="middle">thresholds</text>
+
+  <rect class="node" x="360" y="92" width="106" height="60" rx="9"/>
+  <text class="label" x="413" y="117" text-anchor="middle">Check out</text>
+  <text class="sub" x="413" y="135" text-anchor="middle">tracking stops</text>
+
+  <path class="edge" d="M126 122 H150"/>
+  <path class="edge" d="M330 122 H354"/>
+
+  <path class="edge" d="M328 50 C300 18, 192 18, 158 50"/>
+  <text class="edge-label" x="243" y="22" text-anchor="middle">repeat while on duty</text>
+</svg>
