@@ -432,11 +432,6 @@
   outline-offset: 3px;
 }
 
-/* Text-only card: no diagram column */
-.project-card--text {
-  grid-template-columns: 1fr;
-}
-
 /* Card whose detail page is not published yet */
 .project-card--disabled {
   cursor: default;
