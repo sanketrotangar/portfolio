@@ -432,6 +432,28 @@
   outline-offset: 3px;
 }
 
+/* Text-only card: no diagram column */
+.project-card--text {
+  grid-template-columns: 1fr;
+}
+
+/* Card whose detail page is not published yet */
+.project-card--disabled {
+  cursor: default;
+}
+
+.project-card--disabled:hover {
+  transform: none;
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+.project-card--disabled .project-card__cta {
+  color: var(--color-text-muted);
+  text-decoration-color: var(--color-border-interactive);
+  font-weight: 600;
+}
+
 .project-card__body {
   display: flex;
   flex-direction: column;
@@ -476,6 +498,18 @@
   border-radius: 999px;
   color: var(--color-text-muted);
   font: 500 11px 'DM Mono', monospace;
+}
+
+.project-card__award {
+  align-self: flex-start;
+  padding: 3px 9px;
+  border: 1px solid var(--color-accent-wash-40);
+  border-radius: 999px;
+  background: var(--color-accent-wash-12);
+  color: var(--color-accent-text);
+  font: 600 10px 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .project-card__cta {
@@ -979,6 +1013,303 @@
     justify-content: flex-start;
     column-gap: 4px;
     row-gap: 2px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Case-study media + Night Vigil specifics
+   Built from the existing tokens; no new palette or typography.
+   -------------------------------------------------------------------------- */
+.nv-hero-media {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 760px;
+  margin: 28px 0 0;
+}
+
+.nv-shot {
+  margin: 0;
+  min-width: 0;
+}
+
+.nv-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+}
+
+.nv-shot figcaption {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  font: 400 10.5px 'DM Mono', monospace;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.nv-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 560px;
+  margin: 4px 0 24px;
+}
+
+/* --------------------------------------------------------------------------
+   Achievement pages: short write-up plus an image gallery
+   -------------------------------------------------------------------------- */
+.ach-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.ach-gallery figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.ach-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+}
+
+.ach-gallery figcaption {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  font: 400 10.5px 'DM Mono', monospace;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.ach-gallery__empty {
+  margin: 0;
+  padding: 18px;
+  border: 1px dashed var(--color-border-interactive);
+  border-radius: 12px;
+  color: var(--color-text-muted);
+  font: 500 11px 'DM Mono', monospace;
+  text-align: center;
+}
+
+.nv-flow.steps-grid,
+.nv-questions.steps-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nv-flow .step p,
+.nv-questions .step p {
+  font-size: 13px;
+}
+
+.nv-decision {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(18px, 3vw, 32px);
+  align-items: center;
+}
+
+.nv-decision + .nv-decision {
+  margin-top: 16px;
+}
+
+.nv-decision h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+.nv-decision p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.nv-decision__figure {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--color-diagram-panel-border);
+  border-radius: 12px;
+  background: var(--color-diagram-panel-bg);
+}
+
+.nv-decision__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nv-decision__figure figcaption {
+  margin-top: 6px;
+  color: var(--color-text-muted);
+  font: 400 10px 'DM Mono', monospace;
+  text-align: center;
+}
+
+.nv-record-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.nv-record {
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+
+.nv-record code {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--color-accent-text);
+  font: 600 13px 'DM Mono', monospace;
+}
+
+.nv-record p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.nv-award {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(20px, 3vw, 32px);
+  align-items: center;
+  padding: clamp(16px, 2.5vw, 24px);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+
+.nv-award img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.nv-award h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  letter-spacing: -0.03em;
+}
+
+.nv-award p {
+  margin: 0 0 12px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.nv-award__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nv-award__facts li {
+  padding: 4px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font: 500 11px 'DM Mono', monospace;
+  color: var(--color-text-muted);
+}
+
+.nv-case .decision-card h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+.nv-case .decision-card p {
+  margin: 0;
+}
+
+.nv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .nv-flow.steps-grid,
+  .nv-questions.steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nv-decision {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-decision__figure {
+    order: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .nv-hero-media {
+    display: flex;
+    max-width: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nv-hero-media .nv-shot {
+    flex: 0 0 68%;
+    scroll-snap-align: start;
+  }
+
+  .nv-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+  }
+
+  .nv-record-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-award {
+    grid-template-columns: 1fr;
+  }
+
+  /* Wide diagrams stay readable on phones: scroll inside the panel, and the
+     zoom control still opens the full-size version. */
+  .nv-case .case-panel {
+    padding: 10px;
+  }
+
+  .nv-case .case-panel .zoom-btn img {
+    width: 860px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .nv-flow.steps-grid,
+  .nv-questions.steps-grid {
+    grid-template-columns: 1fr;
   }
 }
 

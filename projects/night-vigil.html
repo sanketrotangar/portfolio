@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Night Vigil — Smart Patrolling Verification — Sanket Rotangar</title>
+    <meta name="description" content="Night Vigil: a smart patrolling verification system with OTP authentication, selfie-based identity checks, geofencing and background location tracking. Winner, Goa Police Hackathon 2025." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Night Vigil — Smart Patrolling Verification — Sanket Rotangar" />
+    <meta property="og:description" content="A patrol verification platform connecting identity checks, geofence compliance and background location tracking. Winner, Goa Police Hackathon 2025." />
+    <meta property="og:image" content="/assets/projects/night-vigil/card.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      /* Apply the saved theme before first paint to avoid a flash. */
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="stylesheet" href="../css/assistant.css" />
+    <style>
+      .nv-headline {
+        margin: 0 0 14px;
+        font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.25;
+        color: var(--color-text);
+      }
+
+      /* Two screenshots remain in the hero row after removing the camera screen */
+      .nv-hero-media { grid-template-columns: repeat(2, minmax(0, 240px)); }
+    </style>
+  </head>
+  <body class="detail-body">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container case-nav">
+        <a class="case-back" href="../index.html#projects">← All projects</a>
+        <div class="case-nav__actions">
+          <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Toggle light and dark theme" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <a class="nav-cta" href="../index.html#contact">Work with me</a>
+          <a class="nav-resume" href="/resume">Resume</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container case-main nv-case" id="main">
+      <header class="detail-header">
+        <div class="detail-tagline">
+          <span class="detail-mono">02 / Smart patrolling verification</span>
+          <span class="project-status-badge">Winner — Goa Police Hackathon 2025</span>
+        </div>
+        <h1 class="detail-title">Night Vigil</h1>
+        <p class="nv-headline">Making patrol verification accountable.</p>
+        <p class="detail-oneliner">
+          A smart patrolling verification system designed to help verify field-officer presence and
+          monitor patrol activity through OTP authentication, facial verification, geofencing and
+          background location tracking.
+        </p>
+        <div class="detail-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Recognition</span>
+            <div class="meta-val">Winner — Goa Police Hackathon 2025</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Team</span>
+            <div class="meta-val">Team of 4</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Build window</span>
+            <div class="meta-val">48-hour hackathon</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Surfaces</span>
+            <div class="meta-val">Mobile app · Flask API · MySQL</div>
+          </div>
+          <div class="meta-item meta-item--wide">
+            <span class="meta-label">Stack</span>
+            <div class="meta-val project-card-stack">
+              <span class="project-chip">React Native</span>
+              <span class="project-chip">Expo</span>
+              <span class="project-chip">Python</span>
+              <span class="project-chip">Flask</span>
+              <span class="project-chip">MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="nv-hero-media">
+          <figure class="nv-shot">
+            <img src="../assets/projects/night-vigil/app-dashboard.jpg" width="720" height="1450" loading="eager"
+              alt="Night Vigil home screen showing the officer's assigned and completed patrol duties for the day." />
+            <figcaption>Assigned duties</figcaption>
+          </figure>
+          <figure class="nv-shot">
+            <img src="../assets/projects/night-vigil/app-duty-checkin.jpg" width="720" height="1450" loading="lazy"
+              alt="Duty details screen with schedule, reporting point and a check-in button." />
+            <figcaption>Duty details and check-in</figcaption>
+          </figure>
+        </div>
+
+        <div class="nv-actions">
+          <a class="btn-detail-link btn-detail-link--accent" href="#architecture">Explore the architecture <span aria-hidden="true">↓</span></a>
+          <a class="btn-detail-link" href="#problem">Read the problem <span aria-hidden="true">↓</span></a>
+        </div>
+      </header>
+
+      <section class="detail-section" id="problem">
+        <h2 class="detail-section-title">The problem</h2>
+        <p class="detail-body-text">
+          Verifying field patrol activity is difficult when attendance records and manual reporting
+          are the primary sources of confirmation.
+        </p>
+        <p class="detail-body-text">
+          A check-in alone does not establish whether an officer was physically present at the
+          assigned location or whether patrol activity continued after check-in.
+        </p>
+        <p class="detail-body-text">The system needed to connect three things:</p>
+        <ul class="steps-grid nv-questions">
+          <li class="step">
+            <h3>Identity</h3>
+            <p>Is the officer the person assigned to the duty?</p>
+          </li>
+          <li class="step">
+            <h3>Location</h3>
+            <p>Is the officer within the designated geofence?</p>
+          </li>
+          <li class="step">
+            <h3>Activity</h3>
+            <p>Is patrol movement being recorded during the assigned shift?</p>
+          </li>
+        </ul>
+        <p class="detail-body-text" style="margin-top: 24px;">
+          The challenge was to bring these verification steps into one connected workflow for field
+          officers and supervisors.
+        </p>
+      </section>
+
+      <section class="detail-section" id="solution">
+        <h2 class="detail-section-title">Connecting identity, location and patrol activity</h2>
+        <p class="detail-body-text">
+          Night Vigil connects a mobile patrol workflow to a backend verification and monitoring
+          system.
+        </p>
+        <p class="detail-body-text">
+          An officer authenticates using an OTP, views their assigned duty and location boundary,
+          completes a selfie-based identity check, and checks in within the assigned geofence.
+        </p>
+        <p class="detail-body-text">
+          Once the patrol begins, the mobile application records location updates in the background.
+          The backend evaluates geofence compliance and stores both the latest location and the
+          historical patrol trail.
+        </p>
+        <p class="detail-body-text">
+          This creates a structured record of identity verification, check-in and patrol movement
+          rather than relying on a single attendance event.
+        </p>
+
+        <div class="nv-pair">
+          <figure class="nv-shot">
+            <img src="../assets/projects/night-vigil/app-duty-checkin.jpg" width="720" height="1450" loading="lazy"
+              alt="Duty details with the reporting point and geofence radius before check-in." />
+            <figcaption>Assigned duty, reporting point and boundary</figcaption>
+          </figure>
+          <figure class="nv-shot">
+            <img src="../assets/projects/night-vigil/app-duty-active.jpg" width="720" height="1450" loading="lazy"
+              alt="Duty details screen while the patrol is in progress, with a check-out action." />
+            <figcaption>Patrol in progress, tracking active</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="detail-section" id="how-it-works">
+        <h2 class="detail-section-title">How it works</h2>
+        <p class="detail-section-sub">The officer's path through the application, from login to checkout.</p>
+        <ol class="steps-grid nv-flow">
+          <li class="step">
+            <h3>Authenticate</h3>
+            <p>Officer enters their phone number and verifies access using an OTP.</p>
+          </li>
+          <li class="step">
+            <h3>View assigned duty</h3>
+            <p>The application retrieves the assigned patrol details, schedule and geofence boundary.</p>
+          </li>
+          <li class="step">
+            <h3>Verify identity</h3>
+            <p>Officer captures a selfie. The backend obtains a time-limited upload URL, stores the image in cloud storage and sends the relevant images to an external face-matching service.</p>
+          </li>
+          <li class="step">
+            <h3>Verify location</h3>
+            <p>The backend calculates the officer's distance from the assigned geofence using the Haversine formula and evaluates check-in eligibility.</p>
+          </li>
+          <li class="step">
+            <h3>Track patrol</h3>
+            <p>The mobile application records background location updates at a configured interval of approximately two minutes or 50 metres of movement.</p>
+          </li>
+          <li class="step">
+            <h3>Check out</h3>
+            <p>The officer checks out to stop background tracking.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="detail-section" id="architecture">
+        <h2 class="detail-section-title">How the system is connected</h2>
+        <p class="detail-section-sub">Four groups: the mobile application, the Flask backend, external services and the database.</p>
+        <div class="case-panel">
+          <button class="zoom-btn" type="button"
+            data-zoom="../assets/projects/night-vigil/architecture.svg"
+            data-zoom-alt="Architecture diagram: the React Native mobile app handles OTP login, duty and geofence, selfie capture and background location. The Flask backend handles OTP auth, geofence checks, signed URLs with face matching, and location ingestion. External services are an SMS or RCS gateway, Google Cloud Storage and a face match API. MySQL stores patrol records. Selfies upload directly from the mobile app to Cloud Storage.">
+            <img src="../assets/projects/night-vigil/architecture.svg" width="1200" height="560" loading="lazy"
+              alt="Architecture diagram: the React Native mobile app handles OTP login, duty and geofence, selfie capture and background location. The Flask backend handles OTP auth, geofence checks, signed URLs with face matching, and location ingestion. External services are an SMS or RCS gateway, Google Cloud Storage and a face match API. MySQL stores patrol records. Selfies upload directly from the mobile app to Cloud Storage." />
+          </button>
+        </div>
+        <span class="zoom-hint">Click the diagram to zoom</span>
+        <p class="detail-body-text" style="margin-top: 20px;">
+          Check-ins and location updates reach the Flask API, which evaluates the geofence and writes
+          to MySQL. Selfie images take a different path: the API issues a signed URL and the phone
+          uploads the file straight to Cloud Storage.
+        </p>
+      </section>
+
+      <section class="detail-section" id="decisions">
+        <h2 class="detail-section-title">Important engineering decisions</h2>
+        <p class="detail-section-sub">Three choices that shaped how the build behaves in the field.</p>
+
+        <article class="decision-card nv-decision">
+          <div>
+            <h3>Background location tracking</h3>
+            <p>
+              Patrol activity does not stop when the phone screen turns off, so tracking cannot depend
+              on the app being open. The application uses Expo TaskManager to run a configured
+              background location task. Updates are triggered using time and distance thresholds.
+              Tracking is connected to the patrol check-in and check-out lifecycle, so it starts with
+              the duty and stops when the officer checks out.
+            </p>
+          </div>
+          <figure class="nv-decision__figure">
+            <img src="../assets/projects/night-vigil/decision-background.svg" width="480" height="240" loading="lazy"
+              alt="Diagram: check-in registers a TaskManager background task, which repeats location updates at the configured thresholds until check-out stops it." />
+            <figcaption>Tracking runs for the length of the duty</figcaption>
+          </figure>
+        </article>
+
+        <article class="decision-card nv-decision">
+          <div>
+            <h3>Geofence verification</h3>
+            <p>
+              The backend calculates the distance between the incoming GPS coordinate and the
+              configured geofence centre using the Haversine formula. It evaluates the boundary and
+              records breach events when the configured radius is exceeded. Verification lives on the
+              server rather than in the app, so the check does not rely on the client deciding it is
+              in the right place.
+            </p>
+          </div>
+          <figure class="nv-decision__figure">
+            <img src="../assets/projects/night-vigil/decision-geofence.svg" width="480" height="240" loading="lazy"
+              alt="Diagram: a Haversine distance is measured from the geofence centre to the officer coordinate. Inside the radius is eligible; outside the radius is recorded as a breach." />
+            <figcaption>Distance is evaluated server-side</figcaption>
+          </figure>
+        </article>
+
+        <article class="decision-card nv-decision">
+          <div>
+            <h3>Direct image uploads</h3>
+            <p>
+              The backend generates a time-limited Google Cloud Storage signed URL. The mobile client
+              uploads the image directly to storage rather than sending the image file through the
+              backend API. The API handles only the URL request and the image reference, which keeps
+              the request payload small and avoids routing full-size photos through Flask.
+            </p>
+          </div>
+          <figure class="nv-decision__figure">
+            <img src="../assets/projects/night-vigil/decision-upload.svg" width="480" height="240" loading="lazy"
+              alt="Diagram split into an API lane and a storage lane: the mobile client requests a signed URL from the backend, then uploads image bytes straight to Cloud Storage." />
+            <figcaption>The image never passes through the API</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section class="detail-section" id="database">
+        <h2 class="detail-section-title">Separating live location from patrol history</h2>
+        <p class="detail-body-text">
+          The system keeps three location records with different responsibilities.
+        </p>
+        <ul class="nv-record-grid">
+          <li class="nv-record">
+            <code>locationsUNO</code>
+            <p>Stores historical patrol coordinates.</p>
+          </li>
+          <li class="nv-record">
+            <code>locationsDOS</code>
+            <p>Maintains the latest location for an officer and duty.</p>
+          </li>
+          <li class="nv-record">
+            <code>locationsTROS</code>
+            <p>Stores geofence breach events and distance outside the boundary.</p>
+          </li>
+        </ul>
+        <div class="case-panel">
+          <button class="zoom-btn" type="button"
+            data-zoom="../assets/projects/night-vigil/db-records.svg"
+            data-zoom-alt="Diagram: an incoming GPS update reaches the location handler, which appends to locationsUNO, upserts locationsDOS, and inserts into locationsTROS when the officer is outside the geofence.">
+            <img src="../assets/projects/night-vigil/db-records.svg" width="1200" height="400" loading="lazy"
+              alt="Diagram: an incoming GPS update reaches the location handler, which appends to locationsUNO, upserts locationsDOS, and inserts into locationsTROS when the officer is outside the geofence." />
+          </button>
+        </div>
+        <span class="zoom-hint">Click the diagram to zoom</span>
+        <p class="detail-body-text" style="margin-top: 20px;">
+          The monitoring system needs to retrieve an officer's latest location while also retaining
+          the full historical patrol trail.
+        </p>
+        <p class="detail-body-text">
+          Keeping these responsibilities separate avoids having to derive the latest position from
+          the entire historical dataset every time the monitoring interface needs it.
+        </p>
+        <p class="detail-body-text">
+          This creates separate records for historical analysis, current monitoring and breach
+          auditing.
+        </p>
+      </section>
+
+      <section class="detail-section" id="stack">
+        <h2 class="detail-section-title">Technologies used</h2>
+        <p class="detail-section-sub">Grouped by what each part of the build needed.</p>
+        <div class="stack-grid">
+          <div class="stack-group">
+            <h3>Mobile</h3>
+            <ul>
+              <li>React Native</li>
+              <li>Expo</li>
+              <li>TypeScript</li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <h3>Backend</h3>
+            <ul>
+              <li>Python</li>
+              <li>Flask</li>
+              <li>REST APIs</li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <h3>Database</h3>
+            <ul>
+              <li>MySQL</li>
+              <li>PyMySQL</li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <h3>Authentication</h3>
+            <ul>
+              <li>OTP</li>
+              <li>PyJWT</li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <h3>Location</h3>
+            <ul>
+              <li>Expo Location</li>
+              <li>Expo TaskManager</li>
+              <li>Haversine</li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <h3>Cloud storage</h3>
+            <ul>
+              <li>Google Cloud Storage signed URLs</li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <h3>Integrations</h3>
+            <ul>
+              <li>SMS / RCS gateway</li>
+              <li>External Face Match API</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section" id="challenges">
+        <h2 class="detail-section-title">What I learned and what I would improve</h2>
+        <p class="detail-section-sub">The constraints that shaped the build, and the gaps I would close next.</p>
+
+        <article class="decision-card" style="margin-bottom: 16px;">
+          <h3>Separating current location from historical data</h3>
+          <p class="decision-why">
+            The monitoring use case needed quick access to the latest officer location while retaining
+            the full patrol trail. I separated current-state updates from historical coordinate
+            storage.
+          </p>
+        </article>
+
+        <article class="decision-card" style="margin-bottom: 16px;">
+          <h3>Tracking outside the foreground</h3>
+          <p class="decision-why">
+            Patrol tracking needed to continue beyond a normal open-screen workflow. I used Expo
+            TaskManager to register background location execution with configured time and distance
+            thresholds.
+          </p>
+        </article>
+
+        <article class="decision-card">
+          <h3>Handling image uploads efficiently</h3>
+          <p class="decision-why">
+            Selfie images did not need to pass through the API server. I used time-limited signed
+            upload URLs to send images directly to Google Cloud Storage.
+          </p>
+        </article>
+
+        <h3 class="about-subhead" style="margin-top: 32px;">What I would improve next</h3>
+        <ul class="detail-bullet-list">
+          <li>Add reliable offline buffering and retry handling for GPS updates.</li>
+          <li>Complete and test breach push notifications end-to-end.</li>
+          <li>Strengthen endpoint-level authorization and add automated security tests.</li>
+          <li>Add mobile test coverage, CI/CD and operational monitoring.</li>
+          <li>Validate geofence behaviour against GPS drift, poor connectivity and device background restrictions.</li>
+        </ul>
+      </section>
+
+      <section class="detail-section" id="results">
+        <h2 class="detail-section-title">Results and achievement</h2>
+        <p class="detail-section-sub">What the hackathon produced. No performance or usage numbers are claimed.</p>
+        <div class="nv-award">
+          <img src="../assets/projects/night-vigil/award-goa-police-2025.jpg" width="1200" height="1341" loading="lazy"
+            alt="Team receiving the Goa Police Hackathon 2025 certificate of merit at Goa Police headquarters." />
+          <div>
+            <h3>Winner — Goa Police Hackathon 2025</h3>
+            <p>
+              Night Vigil was built during the 48-hour Goa Police Hackathon and judged first place.
+              The final build connected mobile OTP authentication, selfie-based identity verification,
+              geofencing and background patrol tracking with a Flask backend and MySQL.
+            </p>
+            <ul class="nv-award__facts" aria-label="Result summary">
+              <li>Winner</li>
+              <li>Team of 4</li>
+              <li>48-hour build</li>
+              <li>Mobile + backend + database connected</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section" id="closing">
+        <h2 class="detail-section-title">Building systems that connect real-world activity with reliable software.</h2>
+        <p class="detail-body-text">
+          Night Vigil is the kind of problem I like working on: a field workflow, a backend that
+          verifies what the workflow claims, and a record that a supervisor can inspect later.
+        </p>
+        <div class="nv-actions">
+          <a class="btn-detail-link" href="../index.html#projects">← Back to projects</a>
+          <a class="btn-detail-link" href="#architecture">Architecture <span aria-hidden="true">↑</span></a>
+        </div>
+      </section>
+
+      <footer class="detail-footer-next">
+        <span class="detail-footer-label">The award</span>
+        <a class="detail-next-link" href="../achievements/goa-police-hackathon-2025.html">
+          <span>Winner — Goa Police Hackathon 2025</span>
+          <span class="detail-next-arrow" aria-hidden="true">→</span>
+        </a>
+      </footer>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>Goa, India · open to relocate</span>
+        <nav aria-label="Footer">
+          <a href="https://github.com/Sanket-Rotangar" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/sanketrotangar" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:sanketrotangar04@gmail.com">Email</a>
+          <a href="../services.html">Services</a>
+          <a href="/resume">Resume</a>
+        </nav>
+      </div>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Diagram, full size">
+      <button class="lightbox__close" type="button">Close ✕</button>
+      <img id="lightbox-image" src="../assets/projects/night-vigil/architecture.svg" alt="" />
+    </dialog>
+
+    <script src="../js/theme.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/assistant.js" defer></script>
+  </body>
+</html>

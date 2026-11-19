@@ -150,46 +150,5 @@
     window.addEventListener('scroll', setScrolled, { passive: true });
   }
 
-  /* --- Contact form ----------------------------------------------------- */
-  var form = document.getElementById('contact-form');
-  if (form) {
-    var status = document.getElementById('form-status');
-    var submit = form.querySelector('[type="submit"]');
-
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      if (status) {
-        status.textContent = 'Sending…';
-        status.classList.add('is-active');
-      }
-      if (submit) submit.disabled = true;
-
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      })
-        .then(function (response) {
-          return response.json().catch(function () {
-            return {};
-          });
-        })
-        .then(function (data) {
-          if (status) {
-            status.textContent =
-              data && data.success
-                ? 'Message sent. I read every one.'
-                : 'That did not send. Email sanketrotangar04@gmail.com instead.';
-          }
-        })
-        .catch(function () {
-          if (status) {
-            status.textContent = 'That did not send. Email sanketrotangar04@gmail.com instead.';
-          }
-        })
-        .then(function () {
-          if (submit) submit.disabled = false;
-        });
-    });
-  }
+  /* Contact form is handled on index.html (posts to /api/contact). */
 })();

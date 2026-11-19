@@ -76,6 +76,6 @@ omitted rather than invented. Fill a row, then update the matching card and page
 | Missing | Where it belongs |
 | --- | --- |
 | Company names and dates for the three internships | Experience section |
-| Web3Forms access key (`YOUR_ACCESS_KEY_HERE`) | Contact form hidden field |
+| `RESEND_API_KEY` and `CONTACT_TO_EMAIL` (optional `RESEND_FROM_EMAIL`) | Cloudflare Pages environment variables for `/api/contact` |
 | Production origin for absolute `og:image` URLs | Case-study `<head>` |
 | Any entries for the Notes section, or delete the section | `#notes` on the home page |

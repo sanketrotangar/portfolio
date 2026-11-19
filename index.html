@@ -277,7 +277,7 @@
       <nav class="nav-shell container" aria-label="Main navigation">
         <a class="nav-brand" href="#top">Sanket Rotangar</a>
         <ul class="nav-menu">
-          <li><a href="#projects">Work</a></li>
+          <li><a href="#projects">Projects</a></li>
           <li><a href="#awards">Awards</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#about">About</a></li>
@@ -311,7 +311,7 @@
             software that holds up in production, not just in a demo.
           </p>
           <div class="hero-actions">
-            <a class="btn btn--solid" href="#projects">View work <span aria-hidden="true">↗</span></a>
+            <a class="btn btn--solid" href="#projects">View projects <span aria-hidden="true">↗</span></a>
             <a class="btn btn--outline" href="#contact">Work with me <span aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -340,13 +340,12 @@
           <div class="section-head">
             <p class="section-kicker">Work</p>
             <h2 class="section-title">Selected builds.</h2>
-            <p class="section-lede">Production builds across retrieval, real-time voice and multi-agent apps. Each card opens the full case study.</p>
+            <p class="section-lede">Production builds across retrieval, real-time voice and multi-agent apps. Open cards read as full case studies; the rest are being documented.</p>
           </div>
 
           <ul class="project-list" id="project-list">
             <li data-project data-award="goic-2025">
-              <a class="project-card reveal" href="projects/knowledge-base-assistant.html"
-                 aria-label="Knowledge Base + Assistant case study">
+              <div class="project-card project-card--disabled reveal" aria-disabled="true">
                 <div class="project-card__body">
                   <span class="project-card__label">01 / Enterprise RAG</span>
                   <h3 class="project-card__title">Knowledge Base + Assistant</h3>
@@ -357,36 +356,48 @@
                     <li>Hybrid search (RRF) + reranker</li>
                     <li>FastAPI</li>
                   </ul>
-                  <span class="project-card__cta">View case study <span class="project-card__arrow" aria-hidden="true">↗</span></span>
+                  <span class="project-card__cta">Detailed page coming soon</span>
                 </div>
                 <div class="project-card__diagram">
                   <img src="assets/projects/knowledge-base-assistant/knowledge_base.svg" width="1200" height="750"
                        alt="Flow diagram: company documents pass through hybrid search, rerank, and role checks to return role-gated cited answers." loading="lazy" />
                 </div>
+              </div>
+            </li>
+
+            <li data-project data-award="goa-police-2025">
+              <a class="project-card project-card--text reveal" href="projects/night-vigil.html"
+                 aria-label="Night Vigil case study">
+                <div class="project-card__body">
+                  <span class="project-card__label">02 / Smart patrolling verification</span>
+                  <h3 class="project-card__title">Night Vigil</h3>
+                  <span class="project-card__award">Winner — Goa Police Hackathon 2025</span>
+                  <p class="project-card__outcome">Patrol verification combining identity checks, geofencing and background location tracking.</p>
+                  <ul class="project-card__stack" aria-label="Stack">
+                    <li>React Native · Expo</li>
+                    <li>Python · Flask</li>
+                    <li>MySQL</li>
+                  </ul>
+                  <span class="project-card__cta">View case study <span class="project-card__arrow" aria-hidden="true">↗</span></span>
+                </div>
               </a>
             </li>
 
             <li data-project data-award="design-for-bharat-2025">
-              <a class="project-card reveal" href="projects/rio-assistant.html"
-                 aria-label="RIO: QuickBite Assistant case study">
+              <div class="project-card project-card--text project-card--disabled reveal" aria-disabled="true">
                 <div class="project-card__body">
-                  <span class="project-card__label">02 / Multi-agent app</span>
+                  <span class="project-card__label">03 / Multi-agent app</span>
                   <h3 class="project-card__title">RIO: QuickBite Assistant</h3>
                   <p class="project-card__outcome">Multi-agent assistant on a food-delivery app: orders, decisions, support.</p>
-                  <span class="project-card__cta">View case study <span class="project-card__arrow" aria-hidden="true">↗</span></span>
+                  <span class="project-card__cta">Detailed page coming soon</span>
                 </div>
-                <div class="project-card__diagram">
-                  <img src="assets/projects/rio-assistant/card.svg" width="640" height="400"
-                       alt="Architecture diagram for RIO: QuickBite Assistant." loading="lazy" />
-                </div>
-              </a>
+              </div>
             </li>
 
-            <li data-project data-award="goa-police-2025">
-              <a class="project-card reveal" href="projects/voice-agent.html"
-                 aria-label="Dastak: Voice Agent for Real-Estate Lead Qualification case study">
+            <li data-project data-award="voice-agent">
+              <div class="project-card project-card--disabled reveal" aria-disabled="true">
                 <div class="project-card__body">
-                  <span class="project-card__label">03 / Voice agent</span>
+                  <span class="project-card__label">04 / Voice agent</span>
                   <h3 class="project-card__title">Dastak: Voice Agent for Real-Estate Lead Qualification</h3>
                   <p class="project-card__outcome">Lead in → call in ≤60s (design target) → qualified, booked, scored.</p>
                   <ul class="project-card__stack" aria-label="Stack">
@@ -395,20 +406,20 @@
                     <li>Groq</li>
                     <li>ElevenLabs</li>
                   </ul>
-                  <span class="project-card__cta">View case study <span class="project-card__arrow" aria-hidden="true">↗</span></span>
+                  <span class="project-card__cta">Detailed page coming soon</span>
                 </div>
                 <div class="project-card__diagram">
                   <img src="assets/projects/voice-agent/voice_agent.svg" width="1200" height="750"
                        alt="Flow diagram: new lead is called with consent check and Hinglish qualification, booking a site visit." loading="lazy" />
                 </div>
-              </a>
+              </div>
             </li>
 
             <li data-project data-award="eyantra-2025" hidden>
               <a class="project-card reveal" href="projects/meeting-mind.html"
                  aria-label="Meeting Mind case study">
                 <div class="project-card__body">
-                  <span class="project-card__label">04 / Meeting intelligence</span>
+                  <span class="project-card__label">05 / Meeting intelligence</span>
                   <h3 class="project-card__title">Meeting Mind</h3>
                   <p class="project-card__outcome">Case study in progress: notes and metrics not published yet.</p>
                   <span class="project-card__cta">View case study <span class="project-card__arrow" aria-hidden="true">↗</span></span>
@@ -424,7 +435,7 @@
               <a class="project-card reveal" href="projects/aeroconnect.html"
                  aria-label="AeroConnect case study">
                 <div class="project-card__body">
-                  <span class="project-card__label">05 / IoT + telemetry</span>
+                  <span class="project-card__label">06 / IoT + telemetry</span>
                   <h3 class="project-card__title">AeroConnect</h3>
                   <p class="project-card__outcome">IoT air-quality monitoring with ML forecasting; write-up in progress.</p>
                   <span class="project-card__cta">View case study <span class="project-card__arrow" aria-hidden="true">↗</span></span>
@@ -447,7 +458,7 @@
           <div class="section-head">
             <p class="section-kicker">Awards</p>
             <h2 class="section-title">Awards & recognition.</h2>
-            <p class="section-lede">Team awards from state, government and national competitions. Details on each project page.</p>
+            <p class="section-lede">Team awards from state, government and national competitions. More details on each achievement.</p>
           </div>
 
           <div class="awards-card">
@@ -458,7 +469,7 @@
                 <p class="awards-card__context">Student Innovators category. EcoNode+, a smart waste management system, selected to be co-created with the Government of Goa. Team of 3.</p>
               </div>
               <span class="awards-card__pill">Winner</span>
-              <a class="awards-card__link" href="projects/knowledge-base-assistant.html">Case study ↗</a>
+              <a class="awards-card__link" href="achievements/goa-open-innovation-2025.html">More details ↗</a>
             </div>
             <div class="awards-card__row">
               <time class="awards-card__date" datetime="2025-12">Dec 2025</time>
@@ -467,16 +478,16 @@
                 <p class="awards-card__context">WildGuard, an internet-free communication network for forest areas that detects danger incidents such as poaching and illegal hunting. State winner at the IIT Goa exhibition, among the top three Goa teams. Team of 3.</p>
               </div>
               <span class="awards-card__pill">Rank 1 in Goa</span>
-              <a class="awards-card__link" href="projects/rio-assistant.html">Case study ↗</a>
+              <a class="awards-card__link" href="achievements/design-for-bharat-2025.html">More details ↗</a>
             </div>
             <div class="awards-card__row">
               <time class="awards-card__date" datetime="2025-09">Sep 2025</time>
               <div>
                 <h3 class="awards-card__title">Goa Police Hackathon 2025</h3>
-                <p class="awards-card__context">Night Vigil, a smart patrolling verification app built in 48 hours (19-21 Sep). Completed and handed over to Goa Police for deployment. Team of 4.</p>
+                <p class="awards-card__context">Night Vigil, a smart patrolling verification system built in 48 hours (19-21 Sep) with OTP authentication, facial verification, geofencing and background location tracking. Team of 4.</p>
               </div>
               <span class="awards-card__pill">1st place</span>
-              <a class="awards-card__link" href="projects/voice-agent.html">Case study ↗</a>
+              <a class="awards-card__link" href="achievements/goa-police-hackathon-2025.html">More details ↗</a>
             </div>
             <div class="awards-card__row" hidden>
               <time class="awards-card__date" datetime="2025-03">Mar 2025</time>
@@ -485,7 +496,7 @@
                 <p class="awards-card__context">AeroConnect, a solar-powered air-quality monitoring network, taken from a year-long competition to the finals at IIT Bombay. Team of 3.</p>
               </div>
               <span class="awards-card__pill">Top 12 in India</span>
-              <a class="awards-card__link" href="projects/meeting-mind.html">Case study ↗</a>
+              <a class="awards-card__link" href="achievements/eyantra-2025.html">More details ↗</a>
             </div>
             <div class="awards-card__row" hidden>
               <time class="awards-card__date" datetime="2024-10">Oct 2024</time>
@@ -494,7 +505,7 @@
                 <p class="awards-card__context">Third Eye. Qualified for the national round and the Goa delegation at the National Youth Festival, Jan 2025. Team of 3.</p>
               </div>
               <span class="awards-card__pill">Top honors</span>
-              <a class="awards-card__link" href="projects/aeroconnect.html">Case study ↗</a>
+              <a class="awards-card__link" href="achievements/thematic-south-goa-2024.html">More details ↗</a>
             </div>
           </div>
 
@@ -675,11 +686,8 @@
 
             <!-- RIGHT: Form card -->
             <div>
-              <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                <!-- FORM_ENDPOINT constant - replace YOUR_ACCESS_KEY_HERE with actual key or use mailto fallback -->
-                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-                <input type="hidden" name="subject" value="New portfolio message" />
-                <input type="hidden" name="from_name" value="Portfolio Inquirer" />
+              <form class="contact-form" id="contact-form" action="/api/contact" method="POST">
+                <!-- Delivered by functions/api/contact.js through Resend. -->
                 <div class="field-row">
                   <label class="field">Your name<input name="name" autocomplete="name" required placeholder="Jane Doe" /></label>
                   <label class="field">Email<input name="email" type="email" autocomplete="email" required placeholder="jane@company.com" /></label>
@@ -692,7 +700,7 @@
                     <option value="other">Other</option>
                   </select>
                 </label>
-                <label class="field">WHAT ARE YOU WORKING ON?<textarea name="message" required placeholder="A little context goes a long way."></textarea></label>
+                <label class="field">WHAT ARE YOU WORKING ON?<textarea name="message" required minlength="20" placeholder="A little context goes a long way."></textarea></label>
                 <button class="btn btn--solid" type="submit">Send message <span aria-hidden="true">↗</span></button>
                 <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
               </form>
@@ -719,13 +727,11 @@
     <script src="js/main.js" defer></script>
     <script src="js/assistant.js" defer></script>
     <script>
-      // Contact form: fallback to mailto if no endpoint configured
+      // Contact form: submits to /api/contact, which delivers through Resend.
       (function () {
         var form = document.getElementById('contact-form');
         var status = document.getElementById('form-status');
         var submitBtn = form ? form.querySelector('[type="submit"]') : null;
-        var ENDPOINT = form ? form.action : '';
-        var FALLBACK_EMAIL = 'sanketrotangar04@gmail.com';
 
         function showStatus(msg, type) {
           if (!status) return;
@@ -736,42 +742,31 @@
         if (form) {
           form.addEventListener('submit', function (event) {
             event.preventDefault();
-            var hasRealEndpoint = ENDPOINT && !ENDPOINT.includes('YOUR_ACCESS_KEY_HERE');
 
             showStatus('Sending…', 'loading');
             if (submitBtn) submitBtn.disabled = true;
 
-            if (!hasRealEndpoint) {
-              // mailto fallback
-              var formData = new FormData(form);
-              var name = formData.get('name') || '';
-              var email = formData.get('email') || '';
-              var inquiry = formData.get('inquiry_type') || '';
-              var message = formData.get('message') || '';
-              var subject = encodeURIComponent('Portfolio inquiry: ' + (inquiry || 'General'));
-              var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nType: ' + inquiry + '\n\n' + message);
-              window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
-              showStatus('Opening your email client…', 'success');
-              if (submitBtn) submitBtn.disabled = false;
-              return;
-            }
-
-            fetch(ENDPOINT, {
+            fetch(form.action, {
               method: 'POST',
               body: new FormData(form),
               headers: { Accept: 'application/json' }
             })
-              .then(function (response) { return response.json().catch(function () { return {}; }); })
+              .then(function (response) {
+                return response.json().catch(function () { return {}; });
+              })
               .then(function (data) {
                 if (data && data.success) {
-                  showStatus('Message sent. I read every one.', 'success');
+                  showStatus(data.message || 'Message sent. I read every one.', 'success');
                   form.reset();
                 } else {
-                  showStatus('That did not send. Email ' + FALLBACK_EMAIL + ' instead.', 'error');
+                  showStatus(
+                    (data && data.error) || 'That did not send. Email sanketrotangar04@gmail.com instead.',
+                    'error'
+                  );
                 }
               })
               .catch(function () {
-                showStatus('That did not send. Email ' + FALLBACK_EMAIL + ' instead.', 'error');
+                showStatus('That did not send. Email sanketrotangar04@gmail.com instead.', 'error');
               })
               .then(function () {
                 if (submitBtn) submitBtn.disabled = false;
