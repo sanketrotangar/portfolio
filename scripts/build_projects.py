@@ -357,7 +357,7 @@ def build():
           <a href="/#contact">Contact</a>
         </div>
         <div class="nav-actions">
-          <a class="nav-resume" href="/resume" data-track="nav-resume" target="_blank" rel="noopener noreferrer">Resume <span>↓</span></a>
+          <a class="nav-resume" href="../../resume/index.html" data-track="nav-resume" target="_blank" rel="noopener noreferrer">Resume <span>↓</span></a>
           <a class="nav-ai" href="/#contact">Let's talk <span>↗</span></a>
         </div>
       </nav>

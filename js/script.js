@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------ */
   /*  6. Resume Download Tracked Redirect & Local Protocol Handler      */
   /* ------------------------------------------------------------------ */
-  const resumeLinks = document.querySelectorAll('a[href="/resume"], [data-track*="resume"]');
+  const resumeLinks = document.querySelectorAll('a[href$="resume/index.html"], [data-track*="resume"]');
   resumeLinks.forEach((link) => {
     // If opened via local file:// protocol, update relative path to avoid root filesystem navigation
     if (window.location.protocol === 'file:') {
