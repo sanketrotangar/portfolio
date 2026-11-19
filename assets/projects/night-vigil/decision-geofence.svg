@@ -9,23 +9,24 @@
     </style>
   </defs>
 
-  <circle cx="160" cy="118" r="78" fill="#E9F6B8" fill-opacity="0.55" stroke="#5F7A0C" stroke-opacity="0.55" stroke-width="1.4" stroke-dasharray="5 5"/>
-  <text class="accent-label" x="160" y="58" text-anchor="middle">configured radius</text>
+  <text class="accent-label" x="140" y="44" text-anchor="middle">configured radius</text>
+  <circle cx="140" cy="124" r="70" fill="#E9F6B8" fill-opacity="0.55" stroke="#5F7A0C" stroke-opacity="0.55" stroke-width="1.4" stroke-dasharray="5 5"/>
 
-  <circle cx="160" cy="118" r="5" fill="#0F2A1F"/>
-  <text class="sub" x="160" y="140" text-anchor="middle">geofence centre</text>
+  <circle cx="140" cy="124" r="5" fill="#0F2A1F"/>
+  <text class="sub" x="140" y="104" text-anchor="middle">geofence centre</text>
 
-  <circle cx="388" cy="176" r="6" fill="#0F2A1F"/>
-  <circle cx="388" cy="176" r="13" fill="none" stroke="#A9C2B2" stroke-width="1.2"/>
-  <text class="sub" x="388" y="205" text-anchor="middle">officer coordinate</text>
+  <line x1="146" y1="128" x2="378" y2="198" stroke="#0F2A1F" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="3 4"/>
+  <text class="accent-label" x="288" y="152" text-anchor="middle">Haversine distance</text>
 
-  <line x1="166" y1="123" x2="376" y2="170" stroke="#0F2A1F" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="3 4"/>
-  <text class="accent-label" x="270" y="136" text-anchor="middle">Haversine distance</text>
+  <circle cx="384" cy="200" r="6" fill="#0F2A1F"/>
+  <circle cx="384" cy="200" r="13" fill="none" stroke="#A9C2B2" stroke-width="1.2"/>
+  <text class="sub" x="384" y="229" text-anchor="middle">officer coordinate</text>
 
-  <rect x="292" y="26" width="172" height="46" rx="8" fill="#FFFFFF" stroke="#CADBCF" stroke-width="1"/>
-  <text class="sub" x="378" y="45" text-anchor="middle">inside radius</text>
-  <text class="label" x="378" y="62" text-anchor="middle">check-in eligible</text>
+  <rect x="296" y="22" width="168" height="48" rx="8" fill="#FFFFFF" stroke="#CADBCF" stroke-width="1"/>
+  <text class="sub" x="380" y="42" text-anchor="middle">inside radius</text>
+  <text class="label" x="380" y="59" text-anchor="middle">check-in eligible</text>
 
-  <rect x="292" y="212" width="172" height="22" rx="8" fill="#FFFFFF" stroke="#CADBCF" stroke-width="1" transform="translate(0,-4)"/>
-  <text class="sub" x="378" y="222" text-anchor="middle">outside radius → breach recorded</text>
+  <rect x="296" y="82" width="168" height="48" rx="8" fill="#FFFFFF" stroke="#CADBCF" stroke-width="1"/>
+  <text class="sub" x="380" y="102" text-anchor="middle">outside radius</text>
+  <text class="label" x="380" y="119" text-anchor="middle">breach recorded</text>
 </svg>

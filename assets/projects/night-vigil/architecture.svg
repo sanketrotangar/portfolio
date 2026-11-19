@@ -24,9 +24,7 @@
     </style>
   </defs>
 
-  <!-- Direct upload path (mobile straight to object storage) -->
-  <path class="edge-accent" d="M168 40 C168 10, 1010 10, 1010 156"/>
-  <text class="edge-label" x="589" y="4" text-anchor="middle" fill="#5F7A0C">direct image upload (signed URL)</text>
+  <text class="edge-label" x="589" y="14" text-anchor="middle" fill="#5F7A0C">direct image upload (signed URL)</text>
 
   <!-- Groups -->
   <rect class="grp" x="20" y="40" width="260" height="480" rx="16"/>
@@ -76,12 +74,12 @@
 
   <!-- External nodes -->
   <rect class="node" x="876" y="82" width="288" height="58" rx="9"/>
-  <text class="node-label" x="1020" y="106" text-anchor="middle">SMS / RCS gateway</text>
-  <text class="node-sub" x="1020" y="122" text-anchor="middle">OTP delivery to officer</text>
+  <text class="node-label" x="1020" y="106" text-anchor="middle">Google Cloud Storage</text>
+  <text class="node-sub" x="1020" y="122" text-anchor="middle">selfie object store</text>
 
   <rect class="node" x="876" y="162" width="288" height="58" rx="9"/>
-  <text class="node-label" x="1020" y="186" text-anchor="middle">Google Cloud Storage</text>
-  <text class="node-sub" x="1020" y="202" text-anchor="middle">selfie object store</text>
+  <text class="node-label" x="1020" y="186" text-anchor="middle">SMS / RCS gateway</text>
+  <text class="node-sub" x="1020" y="202" text-anchor="middle">OTP delivery to officer</text>
 
   <rect class="node" x="876" y="242" width="288" height="58" rx="9"/>
   <text class="node-label" x="1020" y="266" text-anchor="middle">Face Match API</text>
@@ -107,19 +105,19 @@
   <text class="edge-label" x="327" y="421" text-anchor="middle">GPS batches</text>
 
   <!-- Backend to external services -->
-  <path class="edge" d="M744 129 H870"/>
-  <text class="edge-label" x="807" y="121" text-anchor="middle">send OTP</text>
+  <path class="edge" d="M744 129 C780 129, 800 191, 870 191"/>
+  <text class="edge-label" x="807" y="132" text-anchor="middle">send OTP</text>
 
-  <path class="edge" d="M744 315 C790 315, 810 191, 870 191"/>
-  <text class="edge-label" x="807" y="234" text-anchor="middle">signed URL</text>
+  <path class="edge" d="M744 315 C790 315, 810 111, 870 111"/>
+  <text class="edge-label" x="807" y="240" text-anchor="middle">signed URL</text>
 
   <path class="edge" d="M744 336 C790 336, 812 271, 870 271"/>
-  <text class="edge-label" x="807" y="316" text-anchor="middle">match request</text>
+  <text class="edge-label" x="807" y="330" text-anchor="middle">match request</text>
 
   <!-- Backend to database -->
   <path class="edge" d="M744 429 C800 429, 810 453, 870 453"/>
-  <text class="edge-label" x="807" y="421" text-anchor="middle">location writes</text>
+  <text class="edge-label" x="804" y="421" text-anchor="middle">patrol writes</text>
 
-  <path class="edge-dashed" d="M744 240 H830 V472 H870"/>
-  <text class="edge-label" x="838" y="360" text-anchor="middle">breach rows</text>
+  <!-- Direct upload path (mobile straight to object storage), drawn above the group fills -->
+  <path class="edge-accent" d="M168 40 C168 20, 1010 20, 1010 78"/>
 </svg>

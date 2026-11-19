@@ -1,39 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" width="480" height="240" role="img" aria-labelledby="nv-up-title nv-up-desc">
   <title id="nv-up-title">Direct image upload</title>
-  <desc id="nv-up-desc">The mobile client requests a signed URL from the backend, then uploads the selfie image straight to Google Cloud Storage. The image file never passes through the API server.</desc>
+  <desc id="nv-up-desc">The mobile client requests a signed URL from the backend over the API lane, then uploads the selfie image straight to Google Cloud Storage over the storage lane. The image file never passes through the API server.</desc>
   <defs>
     <marker id="up-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 z" fill="#A9C2B2"/></marker>
-    <marker id="up-arrow-accent" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 z" fill="#5F7A0C"/></marker>
+    <marker id="up-arrow-start" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 8 1 L 0 5 L 8 9 z" fill="#A9C2B2"/></marker>
     <style>
       .node { fill: #FFFFFF; stroke: #CADBCF; stroke-width: 1; }
-      .label { fill: #0F2A1F; font: 500 12.5px "DM Mono", monospace; }
+      .label { fill: #0F2A1F; font: 500 12px "DM Mono", monospace; }
       .sub { fill: #4A5E53; font: 400 10px "DM Mono", monospace; }
-      .step { fill: #5F7A0C; font: 600 11px "DM Mono", monospace; }
+      .lane { fill: #4A5E53; font: 600 9.5px "DM Mono", monospace; letter-spacing: 1px; }
+      .step { fill: #5F7A0C; font: 600 10px "DM Mono", monospace; }
       .edge { stroke: #A9C2B2; stroke-width: 1.4; fill: none; marker-end: url(#up-arrow); }
-      .edge-accent { stroke: #5F7A0C; stroke-width: 1.4; stroke-dasharray: 5 4; fill: none; marker-end: url(#up-arrow-accent); }
+      .edge-back { stroke: #A9C2B2; stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; marker-start: url(#up-arrow-start); }
     </style>
   </defs>
 
-  <rect class="node" x="18" y="94" width="120" height="64" rx="9"/>
-  <text class="label" x="78" y="121" text-anchor="middle">Mobile client</text>
-  <text class="sub" x="78" y="139" text-anchor="middle">camera image</text>
+  <text class="lane" x="16" y="52">API LANE</text>
+  <text class="lane" x="16" y="186">STORAGE LANE</text>
 
-  <rect class="node" x="175" y="30" width="140" height="64" rx="9"/>
-  <text class="label" x="245" y="57" text-anchor="middle">Backend API</text>
-  <text class="sub" x="245" y="75" text-anchor="middle">issues URL only</text>
+  <rect class="node" x="104" y="34" width="150" height="64" rx="9"/>
+  <text class="label" x="179" y="61" text-anchor="middle">Mobile client</text>
+  <text class="sub" x="179" y="79" text-anchor="middle">holds the signed URL</text>
 
-  <rect class="node" x="336" y="160" width="128" height="64" rx="9"/>
-  <text class="label" x="400" y="187" text-anchor="middle">Cloud Storage</text>
-  <text class="sub" x="400" y="205" text-anchor="middle">selfie object</text>
+  <rect class="node" x="318" y="34" width="146" height="64" rx="9"/>
+  <text class="label" x="391" y="61" text-anchor="middle">Backend API</text>
+  <text class="sub" x="391" y="79" text-anchor="middle">issues URL only</text>
 
-  <path class="edge" d="M138 108 C155 108, 158 62, 170 62"/>
-  <text class="step" x="128" y="88">1 request</text>
+  <path class="edge" d="M256 66 H312"/>
+  <path class="edge-back" d="M312 88 H256"/>
+  <text class="step" x="284" y="24" text-anchor="middle">1 request · 2 signed URL</text>
 
-  <path class="edge-accent" d="M172 80 C155 80, 145 122, 136 130"/>
-  <text class="step" x="172" y="112">2 signed URL</text>
+  <rect class="node" x="318" y="150" width="146" height="64" rx="9"/>
+  <text class="label" x="391" y="177" text-anchor="middle">Cloud Storage</text>
+  <text class="sub" x="391" y="195" text-anchor="middle">selfie object</text>
 
-  <path class="edge" d="M138 142 C180 205, 260 205, 331 194"/>
-  <text class="step" x="214" y="223">3 upload image bytes</text>
+  <path class="edge" d="M179 100 C179 150, 230 182, 312 182"/>
+  <text class="step" x="214" y="142">3 upload image bytes</text>
 
-  <text class="sub" x="400" y="238" text-anchor="middle">image never passes through the API</text>
 </svg>

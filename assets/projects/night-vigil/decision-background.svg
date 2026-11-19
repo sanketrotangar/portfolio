@@ -31,6 +31,6 @@
   <path class="edge" d="M126 122 H150"/>
   <path class="edge" d="M330 122 H354"/>
 
-  <path class="edge" d="M328 50 C300 18, 192 18, 158 50"/>
+  <path class="edge" d="M326 60 C300 20, 190 20, 160 58"/>
   <text class="edge-label" x="243" y="22" text-anchor="middle">repeat while on duty</text>
 </svg>
