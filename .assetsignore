@@ -1,0 +1,16 @@
+# Keep build tooling, notes and raw media out of the public asset set.
+# (Cloudflare rejects any single asset over 25 MiB.)
+worker.js
+wrangler.jsonc
+api/
+scripts/
+data/
+public/
+.freebuff/
+.git/
+node_modules/
+# Raw Night Vigil photo/video dump (~86 MB, not linked from the site)
+projects/night-vigil/
+TODO-content.md
+Cloudflare Pages Workers.txt
+Minimalist AI System Architecture Diagram.png

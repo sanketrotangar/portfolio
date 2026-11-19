@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Must match the Worker name in the Cloudflare dashboard, otherwise the build
+  // deploys to a different Worker.
+  "name": "portfolio",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-19",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    // Only /api/* runs the Worker first; every other path is served as a file.
+    "run_worker_first": ["/api/*"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
