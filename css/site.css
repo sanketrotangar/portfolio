@@ -1381,3 +1381,211 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+/* --------------------------------------------------------------------------
+   Resume page (/resume)
+   Reuses the case-study scaffolding; only the role rows and fact grid are new.
+   -------------------------------------------------------------------------- */
+.resume-role {
+  margin: 0 0 28px;
+  max-width: 820px;
+}
+
+.resume-role:last-child {
+  margin-bottom: 0;
+}
+
+.resume-role__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 10px;
+}
+
+.resume-role__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.resume-role__company {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.resume-role__date {
+  color: var(--color-text-muted);
+  font: 500 11px 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.resume-facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 20px;
+  margin: 0 0 24px;
+  align-items: start;
+  color: var(--color-text-muted);
+  font: 400 12.5px 'DM Mono', monospace;
+  line-height: 1.8;
+}
+
+.resume-facts dt {
+  color: var(--color-text);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.resume-facts dd {
+  margin: 0;
+}
+
+.resume-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Match the header CTA size instead of the larger body button */
+.resume-print {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Prose links: accent underline instead of the browser default blue */
+.resume-body .meta-val a,
+.resume-body .detail-body-text a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-text);
+  text-underline-offset: 3px;
+}
+
+.resume-body .meta-val a:hover,
+.resume-body .detail-body-text a:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+.resume-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 820px;
+}
+
+.resume-list__title {
+  margin: 0 0 3px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.resume-list__title a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.resume-list__meta {
+  margin: 0 0 4px;
+  color: var(--color-text-muted);
+  font: 500 11px 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+.resume-list__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+@media (max-width: 560px) {
+  .resume-facts {
+    grid-template-columns: 1fr;
+    gap: 2px 0;
+  }
+
+  .resume-facts dd {
+    margin-bottom: 10px;
+  }
+
+  .resume-body .case-nav,
+  .resume-body .case-nav__actions {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}
+
+/* Print / Save as PDF: strip the chrome and force the light palette */
+@media print {
+  body.resume-body {
+    --color-bg: #FFFFFF;
+    --color-surface: #FFFFFF;
+    --color-surface-muted: #FFFFFF;
+    --color-text: #0F2A1F;
+    --color-text-muted: #4A5E53;
+    --color-border: #CADBCF;
+    --color-border-interactive: #75887E;
+    --color-header-bg: #FFFFFF;
+    background: #FFFFFF;
+  }
+
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .assistant-launcher,
+  .assistant-panel,
+  .resume-print {
+    display: none !important;
+  }
+
+  .case-main {
+    padding: 0;
+  }
+
+  .detail-header {
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+  }
+
+  .detail-title {
+    font-size: 32px;
+  }
+
+  .detail-oneliner {
+    margin-bottom: 18px;
+  }
+
+  .detail-meta-grid {
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  .detail-section {
+    margin-bottom: 24px;
+    break-inside: avoid;
+  }
+
+  .resume-role {
+    break-inside: avoid;
+    margin-bottom: 18px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #0F2A1F;
+  }
+}
